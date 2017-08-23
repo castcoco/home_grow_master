@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home Garden</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="demo_myphoto.js"></script>
+<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="demo_myphoto.css">
+  
+</head>
+<style>
+	body{
+		font:#eeeeee;
+	}
+
+	.navbar-header{
+		background-color: #ffffff;
+	}
+	
+	#navigationHeader{
+			background-image: url("images/headphoto-edit.jpg");
+			background-position: left;
+			background-repeat: repeat-x;
+			height:150px;	
+			width:100%;
+			text-align: center;
+	}
+	.nav navbar-nav ul li a:hover{
+		background-color: lightgreen;
+		text-decoration: none;
+	}
+  .navbar{
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+  }
+
+
+  /*modal css*/
+    /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.nav navbar-nav{
+  font:#eeeeee;
+}
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+input[type=text]{
+  width:80%;
+  padding:10px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+input[type:text]{
+  min-width:480px;
+}
+/*content*/
+.h3{
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+  display:inline-block;
+  
+}
+</style>
+
+<body>
+<header id="navigationHeader"></header>
+
+<nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html">HomeGrowMaster</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="gardenplanner">Garden Planner</a></li>
+          <li><a href="harvestdiary.html">Harvest Diary</a></li>
+          <li><a href="myphoto.html">My Photo</a></li>
+        </ul>
+      </li>
+      <li><a href="plantsearch.html">Plant Search</a></li>
+      <li><a href="lifestyle.html">Lifestyle</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+  <ul class="nav navbar-nav navbar-right">
+      <li><a id="signupbtn" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a id="mybtn" href="#mymodal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h3>Home Grow Master</h3>
+  <br/> 
+  <br/>
+  <div class="wrapper">
+    <form class="uploadBox" action="upload.php" method="post" enctype="multipart/form-data">
+              
+      <div class = "boxInput">
+        <input type = "file" id = "fileSelect" name="fileSelect[]" data-multiple-caption="{count} files selected" multiple />
+        <i class="fa fa-upload" aria-hidden="true"></i>
+        <label for ="fileselect"><strong>Choose a file to upload</strong><span class="boxdnd">or drag here</span>.</label>
+        <button type="submit" class="boxSubmitBtn" value="Upload">Upload</button>
+      </div>
+
+      <!-- <div class = "boxUploading">Uploading&hellip;</div>
+      <div class = "boxSuccess"> 100% Completed </div>
+      <div class = "boxError"> Error! </div> -->
+    </form>
+  </div>
+  <div id="uploaded_file"></div>   
+</div>
+  <br/>
+  <br/>
+
+</div>
+<!--modal-->
+<div id="mymodal" class="modal">
+    <form class="modalLogin" action="">
+      <div class="modal-content">
+        <span class="close" onclick="document.getElementById('mymodal').style.display ='none'">&times;</span>
+        <h4>Login</h4>
+        
+        <label>Username</label>
+        <input type="text" class="formGp" placeholder="enter your username">
+        <label>Password</label>
+        <input type="text" class="formGp" placeholder="enter your password">
+        <button type="submit">Login</button>
+        <br>
+        <hr>
+        <br>
+        <div class="btn-group">
+                <button type="button" class="btn btn-primary" onclick="fbLogin()"><i class="fa fa-facebook"></i> Sign in with Facebook</button>
+        </div>
+        <div class="pwd-group">
+        <input type="checkbox" checked="checked"> Remember Me
+        <p><a href="#">Forget Password</a></p>
+        <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display ='none'">Cancel</button>
+        <!-- <div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!--modal for sign up-->
+  <div id="mymodalsignup" class="modal">
+    <form class="modalSignUp" action="">
+      <div class="modal-content">
+        <span class="close" onclick="document.getElementById('mymodalsignup').style.display='none'">&times;</span>
+        <h4>Sign Up</h4>
+        <label>Email</label>
+        <input type="text" class="formGp" placeholder="enter your email">
+        <p></p>
+        <label>Password</label>
+        <input type="text" class="formGp" placeholder="enter your password">
+        <br>
+        <br>
+        <button type="submit">Create an Account</button>
+        <br>
+        <hr>
+        <div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+        
+        <button type="button" class="cancelbtn" onclick="document.getElementById('mymodalsignup').style.display ='none'">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+<script>
+  //for sign in 
+  var modal = document.getElementById('mymodal');
+  var btn= document.getElementById('mybtn');
+  // Get the <span> element that closes the modal
+  // var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function(){
+    modal.style.display ="block";
+  }
+  // span.onclick = function(){
+  //   modal.style.display = "none";
+  // }
+  window.onclick = function(event){
+    if(event.target == modal){
+      modal.style.display ="none";
+    }
+  }
+
+  //for sign up
+  var signupmodal = document.getElementById('mymodalsignup');
+  var mysignupbtn = document.getElementById('signupbtn');
+  // var span = document.getElementsByClassName("close")[0];
+  mysignupbtn.onclick = function(){
+    signupmodal.style.display = "block";
+  }
+  // span.onclick = function(){
+  //   signupmodal.style.display = "none";
+  // }
+  window.onclinck = function(event){
+    if(event.target == signupmodal){
+      signupmodal.style.display = "none";
+    }
+  }
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+body{
+	width:100%;
+	margin:0 auto;
+	padding: 0px;
+	background-color:forestgreen;
+}
+
+#wrapper{
+	text-align:center;
+	margin:0 auto;
+	padding:0px;
+	width:80%;
+}
+
+#dropArea{
+	margin-top:20px;
+	background-color:white;
+}
+
+#dropArea img{
+	max-width:200px;
+}

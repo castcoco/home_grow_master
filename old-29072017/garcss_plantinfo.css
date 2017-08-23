@@ -1,0 +1,99 @@
+/*plant properties *generic*/
+.plant{
+	width:60px;
+	height:60px;
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+}
+
+
+.basil{
+	background-image:url("images/basil.png");
+}
+.parsely{
+	background-image:url("images/parsely.png");
+}
+.mint{
+	background-image:url("images/mint2.png");
+}
+
+.strawberries{
+	background-image:url("images/strawberries2.png");
+}
+.blueberries{
+	background-image:url("images/blueberries.png");
+}
+.rasberries{
+	background-image:url("images/raspberries2.png");
+}
+.apple{
+	background-image:url("images/apple.png");
+}
+.radish{
+	background-image:url("images/radish.png");
+}
+.carrot{
+	background-image:url("images/carrot.png");
+}
+.chilipeppers{
+	background-image:url("images/chilipeppers.png");
+}
+.tomato{
+	background-image:url("images/tomato3.png");
+}
+.rose{
+	background-image:url("images/rose.png");
+}
+.lavender{
+	background-image:url("images/lavender.jpg");
+}
+.hydreangea{
+	background-image:url("images/hydreangea.png");
+}
+.tulips{
+	background-image:url("images/tulips2.png");
+}
+.avocado{
+	background-image:url("images/avocado.png");
+}
+.lemons{
+	background-image:url("images/lemons.png");
+}
+.pear{
+	background-image:url("images/pear.png");
+}
+
+/*generic*/
+.littleIcon{
+	display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    padding-right:10px;
+    cursor: pointer;
+    margin-left:10px;
+    width:30px;
+	height:30px;
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+}
+
+.eraseAllIcon{
+	background-image:url("images/eraseAll.png");
+}
+
+.printIcon{
+	background-image:url("images/printerIcon.png");
+}
+
+.copyIcon{
+	background-image:url("images/copyIcon.jpg");
+}
+
+.openNewIcon{
+	background-image:url("images/openNew.png");
+}
+
+.saveIcon{
+	background-image:url("images/saveIcon.png");
+}

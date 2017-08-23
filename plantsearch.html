@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home Garden</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="mainregister.js"></script>
+  <script type="text/javascript" src="plantfilter.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" type="text/css" href="commoncss.css">
+</head>
+<style>
+	.searchForm{
+		float:left;
+	}
+	.plantSearchMenu{
+		float:right;
+	}
+	#submitButton{
+		width:100px;
+		height:auto;
+		font-size: 1.2em;
+	}
+	.searchBoxAutoInput{
+		width:100%;
+	}
+	.fa{
+		cursor:pointer;
+		position:relative;
+		width:40px;
+		height:40px;
+		color:#388E8E;
+		font-size:16px;
+		z-index:2;
+		cursor:pointer;
+	}
+
+	#result{
+		width:100;
+		background-color:limegreen;
+		height:200px;
+	}
+	.col-sm-6 pull-right{
+		background-color: limegreen;
+	}
+	.flex-center {
+    display:flex;
+    align-items:center;
+	}
+	@media ( min-width:768px ) {
+	    .sm-flex-center {
+	        display:flex;
+	        align-items:center;
+	    }
+	}
+	@media ( min-width: 992px ) {
+	    .md-flex-center {
+	        display:flex;
+	        align-items:center;
+	    }
+	}
+	@media ( min-width: 1200px ) {
+	    .lg-flex-center {
+	        display:flex;
+	        align-items:center;
+	    }
+	}
+	#typeMenu{
+	margin-left:2%;
+	}
+
+
+	.label{
+		text-align: left;
+		line-height:10px;
+		float:left;
+		width:10%;
+		display: block;
+	}
+
+	input[type=submit]{
+		padding:8px 0px;
+		width:10%;
+		box-sizing: border-box;
+		color:white;
+		background-color: #7D9EC0;
+		border:3px solid #B7B7B7;
+		vertical-align: middle;
+		margin: 0 auto;
+		display: block;
+	}
+
+	hr{
+		border-color: :#AAAAAA;		/*wor in chrome and safari*/
+		background-color: #AAAAAA; /*work in firefox and opera*/
+		border:1px thin;
+	}
+	.sunLight{
+	background-image:url(images/sun.jpg);
+	background-size: 45px 45px;
+	width:45px;
+	height:45px;
+	vertical-align: middle;
+	}
+	.soil{
+		background-image:url(images/soil.jpg);
+		background-size: 45px 45px;
+		width:45px;
+		height:45px;
+		vertical-align: middle;
+	}
+	.plantColor{
+		background-image:url(images/color1.png);
+		background-size: 45px 45px;
+		width:45px;
+		height:45px;
+		vertical-align: middle;
+	}
+	.ul{
+		list-style-type:none;
+	}
+	.tablerow{
+		font-weight: bold;
+		font-size:1.2em;
+	}
+	.tablelist{
+		padding-left:40%;
+	}
+	#tableresult td{
+		table-layout:fixed;
+		overflow:hidden;
+	}
+  #tableresult{
+    width:100%;
+    border:1px dashed green;
+    background:gray;  
+  }
+</style>
+	<body>
+		<header id="navigationHeader"></header>
+
+<nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html">HomeGrowMaster</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="gardenplan.html">Garden Planner</a></li>
+          <li><a href="harvest_diary.html">Harvest Diary</a></li>
+          <li><a href="myphoto.html">My Photo</a></li>
+          <li><a href="gallery.html">My Gallery</a></li>
+        </ul>
+      </li>
+      <li><a href="plantsearch.html">Plant Search</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+  <ul class="nav navbar-nav navbar-right">
+      <li class="loginHide"><a id="signupbtn" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li class="loginHide"><a id="mybtn" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li class="logoutHide"><a class="logoutbtn" href="logout.php"><span class="loggedout"></span>Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h3 id="h3title">Home Grow Master</h3>
+  <p></p>
+  <div "general top-container">
+      <br>
+      
+        <h2 class="PlantDic">Plant Dictionary</h2>
+        <p>Home Grow Master provides an invaluable resource for new and experienced gardeners to look for the plant information.
+          This plant searching tool is easily searchable by plant categories and characteristics. You will be able to find the 
+          same information when you are planning your garden on our garden planner
+        </p>
+        <hr>
+      </div>
+      <div class="row sm-flex-center">
+		<div class="col-sm-6 middle">
+        	<h3 class="FindAPlant">Find a Plant</h3>
+          	<form action="filter.php" method="get" class="searchForm">
+            <div class= "general searchRow">
+              <div class="general plantName">
+                <input type="text" id="plantName" class="searchBoxAutoInput" placeholder="search by plant name" name='search'>
+                <button type='submit' id="findbtn">search</button>
+                <!-- <span class="fa fa-search" aria-hidden="true"></span> -->
+              </div>
+            </div>
+
+              <div class="plantSearchOptions">
+              <div id="sunOp">
+                <label class="sunLight"></label>
+                  <select class="plantSearchMenu" id="sunlightMenu" name="sunlightMenu">
+                    <option value="SelectOption">Select Option </option>
+                    <option value="Full">Full Sun </option>
+                    <option value="Partial">Partial Sun </option>
+                    <option value="Shade">Shade </option>
+                  </select>
+                </div>
+                  <br>
+                  <br>
+                <div id="soilOp">
+                <label class="soil"></label>
+                  <select class="plantSearchMenu" id="soilMenu" name="soilMenu">
+                    <option value="SelectOption">Select Option </option>
+                    <option value="courseSoil">Sandy</option>
+                    <option value="medSoil">Loam</option>
+                    <option value="fineSoil">Clay </option>
+
+                  </select>
+                </div>
+                <br>
+                <br>
+                <div id="cataOp">
+                <label class="plantcategories">Categories</label>
+                  <select class="plantSearchMenu" id="typeMenu" name="typeMenu">
+                    <option value="SelectOption">Select Option </option>
+                    <option value="herbs">Herbs </option>
+                    <option value="vegetable">Vegetable </option>
+                    <option value="fruits">Fruits </option>
+                    <option value="tree">Tree </option>
+                    <option value="flowers">Flowers </option>
+                    <option value="yellow">Yellow</option>
+                    <option value="orange">Orange</option>
+                  </select>
+                </div>
+                <br>
+                <br>
+                <div id="seaOp">
+                <label class="season">Season</label>
+                  <select class="plantSearchMenu" id="seasonMenu" name="seasonMenu">
+                    <option value="SelectOption">Select Option </option>
+                    <option value="spring">Spring </option>
+                    <option value="summer">Summer </option>
+                    <option value="autumn">Autumn </option>
+                    <option value="winter">Winter </option>
+                  </select>
+                </div>
+                <br>
+              </div>
+
+            <input type="submit" id="submitButton" value="Submit">
+          </form> 
+        </div>  
+          <div class="col-sm-6 middle pull-right">
+            <div class="tablelist">
+            	<table id="tableresult" class="hidden">
+
+            		 		
+            	</table>
+
+            	<!-- <ul>
+                    <div id="plantphoto"><li><img src="images/tulipdemo.jpg" style="width:150px;height:250px;"></li></div>
+
+                    <li>Scientific Name</li>
+                    <li>Common Name</li>
+                    <li>Sunlight</li>
+                    <li>Soil</li>
+                    <li>Size</li>
+                    <li>Characteristics</li>
+                    <li>How to grow</li>
+                    <li>How to care</li>
+                </ul> -->
+            </div>
+           </div>
+      </div>
+      <br>
+</div>
+	</body>
+</html>

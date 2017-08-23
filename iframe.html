@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Garden</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="commoncss.css">
+  <link rel="stylesheet" type="text/css" href="gardenplanning.css">
+  <link rel="stylesheet" type="text/css" href="gardenprint.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+<!--   <script type="text/javascript" src="jquery-ui-1.11.4.custom.js"></script>
+ -->  <!-- jquery-ui-droppable-iframe -->
+<!--   <script type="text/javascript" src="jquery-ui-droppable-iframe.js"></script>    
+ -->  <!--Activate drag and drop zones -->
+ <!--  <script src="jquery.ui.touch-punch.min.js" type="text/javascript"></script>   -->
+  <!--Activate touch on small device-->
+  <style>
+    iframe{
+      border: 1px;
+      background-size: 10px 10px;
+      background-image: linear-gradient(to right, powderblue 1px, transparent 1px), linear-gradient(to bottom, powderblue 1px, transparent 1px);
+      background-color: #ffffff;
+      box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+      border-radius: 15px;
+      margin-left:auto;
+      margin-right:auto;
+      margin-top:20px;
+      margin-bottom:50px;
+      text-align: center;
+    }
+    .toolbar{
+      border:1px solid black;
+      width:50%;
+      height:80px;
+      margin:0 auto;
+      border-radius: 15px;
+    }
+   .content-info{
+
+    }
+  </style>
+  <script type="text/javascript">
+    $(function() {
+    //After frame loaded
+    $("#frame").attr('src','iframe-garden.html').load(function() {
+        //Activate droppable zones
+        $(this).contents().find('.droppable').droppable({
+            drop: function(event, ui) {
+                //ACTION ON DROP HERE
+            }
+        });
+    });
+
+    //Activate draggable zones
+    $('.draggable').draggable({
+        iframeFix: true,    //Core jquery ui params needs for fix iframe bug
+        iframeScroll: true  //This param needs for activate iframeScroll
+    });
+
+});
+
+  </script>
+  </head>
+  <body>
+  <div class = "container">
+  <h3 id="h3title">Home Grow Master</h3>
+  <br/>
+          <div class="loginmsg"></div>
+          <div class="logoutmsg"></div>
+  <div class="form-content">
+      <!--  <form enctype='application/json'> -->
+          <form id="measurement-form" action="process_measurements.php" method="POST">
+            <label>Garden Name:</label>
+            <input type = "text" class="gardenInput" id="garName" name="garName" size="8">
+            <label>Garden Type:</label>
+            <input type = "hidden" name="user_id" value="1">
+            <label>Width: </label>
+              <select class ="widthMenu" id= "widthMenu" name="widthMenu" style="width: 100px">
+              <option value="1000"> 10 meters </option>
+              <option value="900" > 9 meters </option>
+              <option value="800"> 8 meters</option>
+              <option value="700"> 7 meters</option>
+              <option value="600"  selected = "selected"> 6 meters</option>
+              <option value="500"> 5 meters</option>
+              <option value="400"> 4 meters</option>
+              <option value="300"> 3 meters</option>
+              <option value="200"> 2 meters</option>
+              <option value="100"> 1 meters</option>
+              </select>
+            <label>Length:</label>
+              <select class="heightMenu" id= "heightMenu" name="lengthMenu" style="width: 100px">
+              <option value="1000" > 10 meters </option>
+              <option value="900"> 9 meters </option>
+              <option value="800"> 8 meters </option>
+              <option value="700"> 7 meters</option>
+              <option value="600" > 6 meters</option>
+              <option value="500" selected = "selected"> 5 meters</option>
+              <option value="400"> 4 meters</option>
+              <option value="300"> 3 meters</option>
+              <option value="200"> 2 meters</option>
+              <option value="100"> 1 meters</option>
+              </select>
+              <button type="submit" id="saveBtn" name="formSave" >SAVE</button>
+          </form>
+    </div>
+<div class="popUpElem"></div>
+    <br/>
+     <div class="wrapper">
+        <div id="controls">
+          <label class="cat">Categories:</label>
+            <select class="categoriesSelect" data-target=".content-info">
+              <option value="herbs" data-show=".herb">herb</option>
+              <option value="fruit" data-show=".fruit">fruit</option>
+              <option value="vegetable" data-show=".vegetable">veggie</option>
+              <option value="flower" data-show=".flower">flower</option>
+              <option value="tree" data-show=".tree">tree</option>
+            </select>
+            <br/>
+            <br/>
+        </div>
+    
+         <div class="toolbar" id="toolbar">
+            <div class="content-info">    
+              <div class="herb hide" id="origin">
+                <img class ="plant basil dragObject" id ="barEle1" src ="images/basil.png" data-plant = "basil" >
+                <img class ="plant parsely dragObject" id ="barEle2" src ="images/parsely.png" data-plant = "parsely">
+                <img class ="plant mint dragObject" id ="barEle3" src ="images/mint2.png" data-plant = "mint" >
+                <img class ="plant radish dragObject" id ="barEle4" src ="images/radish.png" data-plant = "radish">
+              </div>
+              <div class="fruit hide">
+                <img class ="plant strawberries dragObject" id ="barEle5" src="images/strawberries2.png" data-plant = "strawberry">
+                <img class ="plant blueberries dragObject" id ="barEle6" src="images/blueberries.png" data-plant = "blueberry">
+                <img class ="plant rasberries dragObject" id ="barEle7" src="images/raspberries2.png" data-plant = "raspberry">
+                <img class ="plant apple dragObject" id ="barEle8" src="images/apple.png" data-plant = "apple">
+              </div>
+              
+              <div class="vegetable hide">
+                <img class ="plant radish dragObject" id ="barEle9" src ="images/radish.png" data-plant = "radish">
+                <img class ="plant carrot dragObject" id ="barEle10" src="images/carrot.png" data-plant = "carrot">
+                <img class ="plant chilipeppers dragObject" id ="barEle11" src="images/chilipeppers.png" data-plant = "chilipeppers">
+                <img class ="plant tomato dragObject" id ="barEle12" src="images/tomato3.png" data-plant = "tomato">
+              </div>
+
+              <div class="flower hide">
+                <img class ="plant rose dragObject" id ="barEle13" src="images/rose.png" data-plant = "rose">
+                <img class ="plant lavender dragObject" id ="barEle14" src="images/lavender.png" data-plant = "lavender">
+                <img class ="plant hydreangea dragObject" id ="barEle15" src="images/hydreangea.png" data-plant = "hydreangea">
+                <img class ="plant tulips dragObject" id ="barEle16" src="images/tulips2.png" data-plant = "tulips">
+              </div>
+
+              <div class="tree hide">
+                <img class ="plant avocado dragObject" id ="barEle17" src="images/avocado.png" data-plant = "rose">
+                <img class ="plant lemons dragObject" id ="barEle18" src="images/lemons.png" data-plant = "lavender">
+                <img class ="plant pear dragObject" id ="barEle19" src="images/pear.png" data-plant = "hydreangea">
+                <img class ="plant apple dragObject" id ="barEle20" src="images/apple.png" data-plant = "apple">
+              </div>
+            </div>
+          </div>
+      </div> 
+      <div id="operation-bar">
+        <img class ="littleIcon" id ="eraseAllIcon" src ="images/eraseAll.png" alt="eraseAll" width= "40" height ="30">
+        
+        <img class ="littleIcon" id ="printIcon" src ="images/printerIcon.png" alt="printerIcon" width= "40" height ="30" onclick="printdiv('#containerDrop')">
+
+        <img class ="littleIcon" id ="addNewIcon" src ="images/addNewIcon.png" alt="addNewIcon" width= "40" height ="30">
+
+        <img class ="littleIcon" id ="openNewIcon" src ="images/openNew.png" alt="openNewIcon" width= "40" height ="30">
+
+        <img class ="littleIcon" id ="saveIcon" src ="images/saveIcon.png" alt="saveIcon" width= "40" height ="30">
+        
+      </div>
+      <div class="gardenarea">
+        <p></p>
+        <br />
+        <iframe id="myframe" class="myframe" src="" width="600" height="500"></div>
+      </div>
+       <script src = "demojs3/-new.js"></script>
+  </body>
+</html>

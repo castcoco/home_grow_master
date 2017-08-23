@@ -1,0 +1,23 @@
+.siteContainer{
+	margin: 30px auto;
+    width:65%;
+    height:auto;
+    font-family: sans-serif;
+    display:block;
+    position: relative;
+}
+
+.top-container{
+	text-align: left;
+	display:block;
+	width:auto;
+	height:auto;
+	/*background-color: #00CD66;*/
+	position: absolute;
+}
+
+body{
+	background: #ffffff;
+}
+
+

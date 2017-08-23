@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Garden: Home Grow Master</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ 		<script src="harvestTable.js"></script> 
+ 			<script src="main.js"></script> 
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="sitecenter.css">
+	<link rel="stylesheet" type="text/css" href="navbar.css">
+	<link rel="stylesheet" type="text/css" href="model.css">
+	<link rel="stylesheet" type="text/css" href="plantdiary.css">
+
+	</head>
+	<body>
+	<div id="header"></div>
+	<!-- <header id="navigationHeader">
+	<div id="navbar">
+		<ul>
+			<li class="nav-item"><a href="index.html">HOME</a></li>
+			<li class="nav-item"><a href="#">MY GARDEN</a>
+				<ul>
+					<li class="nav-item"><a href="gardenplanner.html">GARDEN PLANNER</a>
+					</li>
+					<li class="nav-item"><a href="harvestDiary.html">HARVEST DIARY</a></li>
+					<li class="nav-item"><a href="#">MY PHOTO</a></li>
+					<li class="nav-item"><a href="#">MY ACCOUNT</a></li>
+				</ul>
+			</li> 
+			<li class="nav-item"><a href="plantsearch.html">PLANT SEARCH</a></li>
+			<li class="nav-item"><a href="lifestyle.html">LIFESTYLE</a></li>
+			<li class="nav-item"><a href="contact.html">CONTACT</a></li>
+ 			<li class="nav-item"><a href = "#mainModal" class="modal-toggle" data-toggle="modal" data-target="#mainModal" data-href="#">LOGIN / SIGN UP</a></li>
+ 		</ul>
+	</div>
+	</header>
+	<header id ="clearfix holder">
+		<div class="column left">
+			<ul id = "socialLink" class="socialLink">
+ 				<li class="socialLink-item">
+					<a href="www.facebook.com" class="fa fa-facebook"></a>
+				</li>
+				<li class="socialLink-item">
+					<a href="#www.pinterest.com" class="fa fa-pinterest"></a>
+				</li>
+				<li class="socialLink-item">
+					<a href="#www.twitter.com" class="fa fa-twitter"></a>
+				</li>
+		</ul>
+		</div>
+		<div class="column middle">
+			<h1>HOME GROW MASTER</h1>
+		</div>
+		<div class="column right">
+			<form class="searchForm" method="get" action="plantSearchForm.php">
+				<input type="text" class="fieldText" name="fieldText">
+				<input type="button" id="searchIcon" value="Search">
+			</form>
+		</div>
+	<br>
+	<hr>
+	</header> -->
+	<div class="siteContainer">
+		<div class="general top-container">
+		<br>
+			<h2 class="Gardening">Harvest Diary</h2>
+				<p>Using our harvest diary enables you to know how much you can save and get each year compared with the supermarket.</p>
+		</div>
+		<br>
+		<br>
+		
+		<table class="myTable" id="myTable">
+			<thead>
+				<tr>
+					<th>Insert</th>
+					<th>Plant Name</th>
+					<th>Quantities</th>
+					<th>Months to Sow</th>
+					<th>Months to Harvest</th>
+					<th>Harvested in KG</th>
+					<th>Price in KG</th>
+					<th>Total Amout</th>
+<!-- 					<th></th> -->
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tfoot>
+					<td>Grand Total</td>
+					<td> - </td>
+					<td class="sumQty"></td>
+					<td> - </td>
+					<td> - </td>
+					<td class="sumVol"></td>
+					<td></td>
+					<td class="sumAmt">0.00</td>
+					<td></td>
+					
+
+			</tfoot>
+			<tbody id="editVolume">
+				<tr>
+					<td><button class="rowBtn" onclick="insertRowFunction()">insert</button></td>
+					<td><div contenteditable = "true"></div></td>
+					<td><div contenteditable = "true" class="pQty" id="pQty"></div></td>
+					<td><div contenteditable = "true"></div></td>
+					<td><div contenteditable = "true"></div></td>
+					<td><div contenteditable = "true" class="pVol" id="pVol"></div></td>
+					<td><div contenteditable = "true" class="pPrice" id="pPrice"></div></td>
+					<td><div class="total" id="total">0.00</div></td>
+					<td><input class="deleteBtn" type="button" value="Remove"></td>
+<!-- 					<td><i class="fa fa-trash-o" aria-hidden="true"></i></td> -->
+				</tr>
+				<tr>
+					<td><button class="rowBtn" onclick="insertRowFunction()">insert</button></td>
+					<td><div contenteditable = "true"></div></td>
+					<td><div contenteditable = "true" class="pQty" id="pQty"></div></td>
+					<td><div contenteditable = "true"></div></td>
+					<td><div contenteditable = "true"></div></td>
+					<td><div contenteditable = "true" class="pVol" id="pVol"></div></td>
+					<td><div contenteditable = "true" class="pPrice" id="pPrice"></div></td>
+					<td><div class="total" id="total">0.00</div></td>
+					<td><input class="deleteBtn" type="button" value="Remove"></td>
+				</tr>
+			</tbody>
+			
+
+		</table>	
+		
+	</div>
+	</body>
+
+	<!--modal-->
+	<div class="mainModal" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="display: none">
+		<div class="modalContent" style="max-width:600px">
+			<div class="modalHeadContainer"><br>
+				<span onclick="document.getElementById('mainModal').style.display='none'" class="cross-corner">&times;</span>
+					<div class="modalHead">
+						<h2>Sign In / Register</h2>
+					</div>
+			</div>
+			<br>
+			<br>
+				<div class="tabArea">
+					<ul class="nav nav-tabs" data-tabs="tabs" role="tabList">
+						<li class="active"><a href="#SignInTab" data-toggle="tab">SIGN IN</a></li>
+						<li><a href="#registerTab" data-toggle="tab">REGISTER</a></li>
+					</ul>
+				</div>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="SignInTab">
+					<form class="SignForm" role="form" class="containerArea" action="signInForm.php" method="post">
+					<br>
+					<br>
+						<div class="modalContainer">
+							<p class="fieldset">
+						        <label class="Username">Username</label>
+						        <input class = "username" name="username" type="text" placeholder="please enter username" size="25" required>
+						        <span class="errorMsg" value="invalid!"></span>
+						    </p>
+						    <p class="fieldset">
+						        <label class="Lpassword">Password</label>
+						        <input class="showPassword" name="pwd" type="text" placeholder="please enter password" size="25" required>
+						        <a href="#0" id="toggle" class="hide-password">Hide</a>
+						        <span class="errorMsg" value="invalid!"></span>
+						    </p>
+						    <p class="fieldset">
+						        <button class="loginButton" type="submit">Login</button>
+						    </p>
+						    <p class="fieldset">
+								<input type="checkbox" id="rememberMe" checked="checked"><span class="nav-text"> Remember Me</span>
+							</p>
+						</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="registerTab">
+				<form class="RegForm" role="form" class="containerArea" action="registerForm.php" method="post">
+					<br>
+					<br>
+					<div class="modalContainer">
+						<p class="fieldset">
+					        <label class="Lusername">Username</label>
+					        <input class = "username" name="username" type="text" placeholder="please enter username" size="25" required>
+					        <span class="errorMsg"></span>
+					    </p>
+					    <p class="fieldset">
+					        <label class="Lpassword">Password</label>
+					        <input class="showPassword" name="pwd" type="text" placeholder="please enter password" size="25"required>
+					        <a href="#0" id="toggle" class="hide-password">Hide</a>
+					        <span class="errorMsg" value="invalid!"></span>
+					    </p>
+					    <br>
+					    <p class="fieldset">
+					        <label class="Lemail">Email</label>
+					        <input class="email" name="email" type="text" placeholder="please enter e-mail" size="25" required>
+					        <span class="errorMsg" value="invalid!"></span>
+					    </p>
+					    <p class="fieldset">
+					        <button class="createButton" type="submit">Create an Account</button>
+					    </p>
+					</div>
+				</form>
+				</div>
+			</div>	
+				
+				<div class="formbottom">
+					<button onclick="document.getElementById('mainModal').style.display='none'" type="button" class="cancellButton">Cancel</button>
+    				<span class="forgetPwd">Forgot <a href="forgot_password.html" target="_blank"">password</a></span>
+				</div>
+				<div class="decoline"><hr></div>
+					<div class="row">	
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-danger"><i class="fa fa-google-plus"></i>Sign in with Google</button>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-info"><i class="fa fa-linkedin"></i>Sign in with Linkedin</button>
+							</div>
+						</div>
+					</div>	
+				</div>
+		</div>
+	</div>
+	<div id="footer"></div>
+</html>

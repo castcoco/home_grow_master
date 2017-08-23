@@ -1,0 +1,116 @@
+#containerDrop { 
+width:500px;
+	height:500px;
+	border: 1px;
+	background-size: 10px 10px;
+	background-image: linear-gradient(to right, powderblue 1px, transparent 1px), linear-gradient(to bottom, powderblue 1px, transparent 1px);
+	background-color: #ffffff;
+	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+	border-radius: 15px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+	margin-bottom:50px;
+	text-align: center;
+	}
+
+
+.content-info div{
+	margin-left:auto;
+	margin-right:auto;
+	max-width:30%;
+	/*height:90px;*/
+	height:auto;
+	background:#ffffff;
+	cursor:pointer;
+	-webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+	-moz-box-shadow:4px 4px 8px rgba(0,0,0,0.5);
+	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+	padding:10px;
+}
+
+.littleIcon{
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	padding-right:10px;
+	cursor: pointer;
+}
+
+#operation-bar{
+	text-align:center;
+	margin:0 auto;
+	width:40%;
+	max-width:340px;
+}
+
+#dragObject{
+	position:fixed;
+	display:block;
+}
+
+.dragObject:hover{
+	opacity:0.7;
+	filter:alpha(opaticy=40); /*for ie*/
+	cursor:pointer;
+}
+
+#measurement-form input[type=text]{
+  width:80%;
+  max-width: 200px;
+  padding:0;
+  height:auto;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+#measurement-form{
+	float: left;
+  	width:85%;
+	background-color:#C0FF3E;
+	padding-left:10px;
+	clear:both;
+	height:auto;
+	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+}
+.form-content{
+	height:auto;
+}
+
+/*img of control*/
+.plant{
+	width:60px;
+	height:60px;
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+}
+
+.controls_operators{
+  margin:0 auto;
+  width:200px;
+  cursor:pointer;
+}
+
+.controls_prev{
+  float:left;
+  cursor:pointer;
+}
+.controls_next{
+  float:right;
+}
+#containerDrop .plant{
+  overflow:auto;
+  resize:both;
+}
+#controls{
+	margin-top:80px;
+}
+
+/*popup element after form is submitted*/
+/*.popUpElem{
+	visibility:hidden;
+	position:absolute;
+	color:blue;
+}*/

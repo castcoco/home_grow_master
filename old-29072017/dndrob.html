@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content-type="width=device-width intial-scale=1">
+	<script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+	<style>
+	#containerDrop { 
+		width:500px;
+		height:500px;
+		border: 1px;
+		background-size: 10px 10px;
+		background-image: linear-gradient(to right, powderblue 1px, transparent 1px), linear-gradient(to bottom, powderblue 1px, transparent 1px);
+		background-color: #ffffff;
+		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+		border-radius: 15px;
+		margin-left:auto;
+		margin-right:auto;
+		margin-top:20px;
+		text-align: center;
+		}
+
+	#origin
+		{
+		  background-color: lightgreen;
+		}
+
+	#origin img, #drop img {
+	  margin-top: 3px;
+	  margin-left: 5px;
+	}
+
+
+	.content-info div{
+		margin:0 10px;
+		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+
+	}
+
+	.littleIcon{
+	display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    padding-right:10px;
+    cursor: pointer;
+
+	}
+
+	#operation-bar{
+		text-align:center;
+		clear: both;
+
+	}
+
+	.dragObject{
+		position:fixed;
+		display:block;
+	}
+
+	.dragObject:hover{
+		opacity:0.7;
+		filter:alpha(opaticy=40); /*for ie*/
+		cursor:pointer;
+	}
+	.herbhide .plant {
+		float:left;
+		cursor:pointer;
+
+
+	}
+	.herbhide .plant:hover {
+		/* margin:1px 1px 0 0; */
+	}
+
+	.herbhide .dragObject{
+		position: relative;
+	}
+
+	.plant{
+	width: 60px; 
+	height:60px;
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+	}
+
+	.radish{
+		background-image:url("images/radish.png");
+	}
+	.basil{
+		background-image:url("images/basil.png");
+	}
+	.parsely{
+		background-image:url("images/parsely.png");
+	}
+	.mint2{
+		background-image:url("images/mint2.png");
+	}
+
+	.toolbar{
+		width:600px;
+		height:80px;
+		background-color: powderblue;
+	}
+	</style>
+
+
+
+	</script>
+</head>
+<body>
+<div class="toolbar" id="toolbar">
+<div class="content-info">
+			
+			<div class="herbhide" id="origin">
+				<div class ="plant basil dragObject" id ="barEle1"  data-plant="basil" ></div>
+				<div class ="plant parsely dragObject" id ="barEle2"  data-plant="parsely" ></div>
+				<div class ="plant mint2 dragObject" id ="barEle3"  data-plant="mint" ></div>
+				<div class ="plant radish dragObject" id ="barEle4" data-plant="radish"></div>
+			</div>
+</div>
+</div>
+
+<div id="operation-bar">
+				<img class ="littleIcon" id ="eraseAllIcon" src ="images/eraseAll.png" alt="eraseAll" width= "30" height ="30">
+				
+				<img class ="littleIcon" id ="printIcon" src ="images/printerIcon.png" alt="printerIcon" width= "30" height ="30" onclick="printdiv('#containerDrop')">
+
+				<img class ="littleIcon" id ="copyIcon" src ="images/copyIcon.jpg" alt="copyIcon" width= "30" height ="30">
+
+				<img class ="littleIcon" id ="openNewIcon" src ="images/openNew.png" alt="openNewIcon" width= "30" height ="30">
+
+				<img class ="littleIcon" id ="saveIcon" src ="images/saveIcon.png" alt="saveIcon" width= "30" height ="30">
+
+				<button class="button">Publish</button>
+			</div>
+
+	<div class = "containerDrop" id="containerDrop" width="600" height="500">
+		<br>
+		<p>Drop here</p>
+	</div>
+
+</div>
+<script src = "dnd-rob.js"></script>
+</body>
+</html>

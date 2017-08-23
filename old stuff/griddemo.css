@@ -1,0 +1,29 @@
+
+
+iframe.advanced {
+    background: #fff url('grid.png'); background-repeat:repeat;
+    width:500px;
+    height:500px;
+    left:-25px;
+	border:none;
+
+}
+
+
+.advanced {
+    width: 600px;
+    background: url(grid.png) repeat center top #fff;
+    margin: 0 auto;
+    height: 200px;
+    margin-top:200px; 
+}
+
+h2.italic {
+	font-style: italic;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.center{
+	text-align:center;
+}
+

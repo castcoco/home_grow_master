@@ -1,0 +1,189 @@
+<html>
+	<head><title>Tips on Garden and Indoor Plant</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content-type="width=device-width intial-scale=1">
+	<script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="navbar.css">	
+	<link rel="stylesheet" type="text/css" href="model.css">
+	<link rel="stylesheet" type="text/css" href="contactform.css">
+
+	</head>
+	<body>
+	<div class="container">
+		<header id="navigationHeader">
+			<div id="navbar" class="topnav">
+				<ul>
+					<li class="nav-item"><a href="index.html">HOME</a></li>
+					<li class="nav-item"><a href="#">MY GARDEN</a>
+						<ul>
+							<li class="nav-item"><a href="gardenplanner.html">GARDEN PLANNER</a>
+								<!-- <ul>
+									<li class="nav-item"><a href="#">NEW GARDEN VIEW</a></li>
+									<li class="nav-item"><a href="#">SAVED GARDEN</a></li>
+								</ul> -->
+							</li>
+							<li class="nav-item"><a href="harvestDiary.html">HARVEST DIARY</a></li>
+							<li class="nav-item"><a href="#">MY PHOTO</a></li>
+							<li class="nav-item"><a href="#">MY ACCOUNT</a></li>
+						</ul>
+					</li> 
+					<li class="nav-item"><a href="plantsearch.html">PLANT SEARCH</a></li>
+					<li class="nav-item"><a href="lifestyle.html">LIFESTYLE</a></li>
+					<li class="nav-item"><a href="contact.html">CONTACT</a></li>
+		 			<li class="nav-item"><a href = "#mainModal" class="modal-toggle" data-toggle="modal" data-target="#mainModal" data-href="#">LOGIN / SIGN UP</a></li>
+		 			<!-- <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a> -->
+		 		</ul>
+			</div>
+		</header>
+
+		<div class="siteContainer">
+				<div class="general top-container">
+					<br>
+					<h2 class="contact">Contact Form</h2>
+					<p>You are welcome to contact us in regard to the website
+					</p>
+					<br>
+					<hr>
+				</div>
+					<form action="" method="post" id="contactform">
+						<div class="contactUs">
+							<table class="center">
+								<tr>
+									<td><label for="firstname">First Name </label></td>
+									<td><input type="text" placeholder="Your first name" id="firstname"></td>
+								</tr>
+								<tr>
+									<td><label for="lastname">Last Name</label></td>
+									<td><input type="text" placeholder="Your last name" id="lastname"></td>
+								</tr>
+								<tr>
+									<td><label for="email">Email</label></td>
+									<td><input type="text" placeholder="Your e-mail" id="email"></td>
+								</tr>
+								<tr>
+									<td><label for="subject">Subject</label></td>
+									<td><input type="text" placeholder="Subject.." id="subject"></td>
+								</tr>
+								<tr>
+									<td><label for="message">Message </label></td>
+									<td><input type="text" placeholder="Message.." id="message"></td>
+								</tr>
+								
+							</table>
+							<div>
+							<input type="submit" id="submitButton" value="Submit">
+							<label id="info"></label>
+							</div>
+						</div>
+					</form>	
+				<br>
+				
+		</div>
+	</div>
+	<script src="contactform.js"></script>
+	</body>
+
+	<!--modal-->
+	<div class="mainModal" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="display: none">
+		<div class="modalContent" style="max-width:600px">
+			<div class="modalHeadContainer"><br>
+				<span onclick="document.getElementById('mainModal').style.display='none'" class="cross-corner">&times;</span>
+					<div class="modalHead">
+						<h2>Sign In / Register</h2>
+					</div>
+			</div>
+			<br>
+			<br>
+				<div class="tabArea">
+					<ul class="nav nav-tabs" data-tabs="tabs" role="tabList">
+						<li class="active"><a href="#SignInTab" data-toggle="tab">SIGN IN</a></li>
+						<li><a href="#registerTab" data-toggle="tab">REGISTER</a></li>
+					</ul>
+				</div>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="SignInTab">
+					<form class="SignForm" role="form" class="containerArea" action="signInForm.php" method="post">
+					<br>
+					<br>
+						<div class="modalContainer">
+							<p class="fieldset">
+						        <label class="Username">Username</label>
+						        <input class = "username" name="username" type="text" placeholder="please enter username" size="25" required>
+						        <span class="errorMsg" value="invalid!"></span>
+						    </p>
+						    <p class="fieldset">
+						        <label class="Lpassword">Password</label>
+						        <input class="showPassword" name="pwd" type="text" placeholder="please enter password" size="25" required>
+						        <a href="#0" id="toggle" class="hide-password">Hide</a>
+						        <span class="errorMsg" value="invalid!"></span>
+						    </p>
+						    <p class="fieldset">
+						        <button class="loginButton" type="submit">Login</button>
+						    </p>
+						    <p class="fieldset">
+								<input type="checkbox" id="rememberMe" checked="checked"><span class="nav-text"> Remember Me</span>
+							</p>
+						</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="registerTab">
+				<form class="RegForm" role="form" class="containerArea" action="registerForm.php" method="post">
+					<br>
+					<br>
+					<div class="modalContainer">
+						<p class="fieldset">
+					        <label class="Lusername">Username</label>
+					        <input class = "username" name="username" type="text" placeholder="please enter username" size="25" required>
+					        <span class="errorMsg"></span>
+					    </p>
+					    <p class="fieldset">
+					        <label class="Lpassword">Password</label>
+					        <input class="showPassword" name="pwd" type="text" placeholder="please enter password" size="25"required>
+					        <a href="#0" id="toggle" class="hide-password">Hide</a>
+					        <span class="errorMsg" value="invalid!"></span>
+					    </p>
+					    <br>
+					    <p class="fieldset">
+					        <label class="Lemail">Email</label>
+					        <input class="email" name="email" type="text" placeholder="please enter e-mail" size="25" required>
+					        <span class="errorMsg" value="invalid!"></span>
+					    </p>
+					    <p class="fieldset">
+					        <button class="createButton" type="submit">Create an Account</button>
+					    </p>
+					</div>
+				</form>
+				</div>
+			</div>	
+				
+				<div class="formbottom">
+					<button onclick="document.getElementById('mainModal').style.display='none'" type="button" class="cancellButton">Cancel</button>
+    				<span class="forgetPwd">Forgot <a href=""forgot_password.html" target="_blank"">password</a></span>
+				</div>
+				<div class="decoline"><hr></div>
+					<div class="row">	
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-danger"><i class="fa fa-google-plus"></i>Sign in with Google</button>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-info"><i class="fa fa-linkedin"></i>Sign in with Linkedin</button>
+							</div>
+						</div>
+					</div>	
+				</div>
+		</div>
+	</div>
+
+</html>

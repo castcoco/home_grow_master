@@ -1,0 +1,179 @@
+	ul{
+	list-style:none;
+	margin: 0px; padding: 0px;
+	}
+	ul li a{
+		text-decoration: none;
+		color: black;
+		display:block;
+	}
+	ul li{
+		margin: 0;
+		padding: 0;
+		float:left;
+		width:200px;
+		height:45px;
+		background-color:white;
+		font-size: 16px;
+		font-family: Verdana;
+		line-height:45px;
+		text-align: center;
+/*		opacity:.6;*/
+		position:relative;
+	}
+
+	#navbar ul li a:hover{
+		background-color: #76EE00;
+		text-decoration: none;
+	}
+	ul li ul li{
+		display:none;
+	}
+
+	ul li:hover ul li{
+		display:block;
+		border: dotted 1px;
+	}
+/*
+	ul ul ul{
+		margin-left:200px;
+		top:0px;
+		position:absolute;
+	}*/
+	#navigationHeader{
+			background-image: url("images/headphoto-edit.jpg");
+			background-position: right;
+			background-repeat: repeat-x;
+			height:200px;
+			width:100%;
+			text-align: center;
+	}
+	#navbar ul{
+		float:right;
+	}
+	#navbar{
+		float:right;
+		margin-top: 200px;
+		width:100%;
+		background: #ffffff;
+		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+		cursor:pointer;
+	}
+	
+	.container{
+		background-color: #ffffff;
+	}
+	/*header*/
+	.clearfix:before,
+	.clearfix:after {
+	    content: " ";
+	    display: table;
+	}
+	.clearfix:after {
+	    clear: both;
+	}
+	.clearfix {
+	    *zoom: 1;
+	}
+	.holder{
+	    text-align:center;
+	}
+	.column{
+	    display:inline-block;
+	    *display:inline;
+	    *zoom:1;
+	    width:auto;
+	}
+	.left{
+/*	    background-color:#ff0;*/
+	    float:left;
+	    display: inline-block;
+	    padding-left:5%;
+	    padding-top:1%;
+	}
+	.middle{
+	   /* background-color:#006400;*/
+	    display:inline-block;
+	    vertical-align: center;
+	    color: #006400;
+	    padding-left:25%;
+	}
+
+	.right{
+/*		background-color:#0ff;*/
+	    float:right;
+	    padding-top:30px;
+	    margin-right:40px;
+
+	}
+
+/*	.fa {
+		background-color: #ffffff;
+		text-decoration: none;
+	}
+*/
+	.socialLink-item{
+		display:inline-block;
+		line-height:1.2em;
+		width:1.6em;
+		border:1px solid #000;
+		border-radius:50%;
+		text-align:center;
+	  	margin: 5px 5px;
+		list-style:none;
+		padding:5px;
+		font-size: 2em;
+		color:#CDCDC1;
+	}
+	.nav-text {
+		   vertical-align:middle;
+	}
+	.fa fa-search{
+		width:30px;
+		height:30px;
+		color:#388E8E;
+		position: absolute;
+		background-color: #CAFF70;
+		overflow: hidden;	
+	}
+
+	.cell{
+		display:table-cell;
+		border:solid 1px;
+	}
+
+	.cell-fluid {
+	 	width: 100%;
+	}
+
+	.general top-container{
+		background:#ffffff;
+	}
+
+	.newsBox{
+	    margin-bottom: 20px;
+	    padding: 30px 15px;
+	    background: #fff;
+	    background: rgba(255,255,255,0.9);
+	}
+
+	.plantNews{
+		background-image: url("images/tulipcover.jpg")
+		background-size: 100px 100px;
+		width:100px;
+		height:100px;
+	}
+
+	.news-container{
+		margin-top:10%;
+		float:left;
+		display:block;
+		text-align: left;
+		width:100%;
+		height:auto;
+		background-color: #C0FF3E;
+		opacity: .8;
+		position: absolute;
+		list-style: none;
+		text-decoration: none;
+	}

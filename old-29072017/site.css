@@ -1,0 +1,193 @@
+/*.siteContainer{
+	text-align: center;
+	width:70%;
+	background-color: #7171C6;
+	margin:10px auto;
+	position: relative;
+	height:100%;
+}
+
+.top-container{
+	text-align: left;
+	display:inline-block;
+	width:auto;
+	height:auto;
+	background-color: #CDC5BF;
+	position: absolute;
+centering 
+	margin:0px 0 0 -35%;
+	left:50%;
+}
+.clear{
+	clear:both;
+}
+.quickFind .searchRow{
+	text-align: center;
+	display:inline-block;
+	width:100%;
+	height:100%;
+	background-color: powderblue;
+	position: absolute;
+	/*centering */
+/*	margin-top:200px;
+	margin:0px 0 0 -40%;
+	left:30%;
+}*/
+
+.general {
+	margin:30px;
+	text-align: left;
+}
+
+.siteContainer{
+	margin: 30px auto;
+    width:65%;
+    height:auto;
+    font-family: sans-serif;
+}
+
+input[type=text]{
+	width:80%;
+	padding:10px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 3px solid #ccc;
+	-webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.fa {
+	float:right;
+	overflow: hidden;
+	width:30px;
+	height:30px;
+	color:#388E8E;
+/*	display:inline-block;
+*/	position: absolute;
+	margin-left:17px;
+	margin-top:17px;
+	font-size:20px;
+}
+.clearfix{
+	clear:both;
+}
+
+/*dropdown search*/
+/*#moreOption ul{
+	padding:0;
+	float:right;
+	list-style: none;
+	padding:0px;
+	display:inline-block;
+	color:#6C7B8B;
+}*/
+
+/*#moreOption ul li{
+	margin-right:0%;
+	display:block;
+	float:left;
+	border: solid 1px grey;
+	color:#6C7B8B;
+}*/
+
+
+.sunLight{
+	background-image:url(images/sun.jpg);
+	background-size: 45px 45px;
+	width:45px;
+	height:45px;
+	vertical-align: middle;
+}
+.soil{
+	background-image:url(images/soil.jpg);
+	background-size: 45px 45px;
+	width:45px;
+	height:45px;
+	vertical-align: middle;
+}
+.plantcolor{
+	background-image:url(images/color1.png);
+	background-size: 45px 45px;
+	width:45px;
+	height:45px;
+	vertical-align: middle;
+}
+.plantCategories .plantchar{
+	color:#6C7B8B;
+	display: block;
+	block:25em;
+	clear:right;
+}
+.plantSearchMenu{
+	width:70%;
+	padding:8px 20px;
+	margin: 5px 0;
+	box-sizing: border-box;
+	border: 3px solid #ccc;
+	-webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    font-size: 1.2em;
+    display: inline-block;
+    line-height:10px;
+    margin-left:5%;
+    vertical-align: left;
+}
+
+.label{
+	text-align: left;
+	line-height:10px;
+	float:left;
+	width:10%;
+	display: block;
+}
+
+input[type=submit]{
+	padding:8px 0px;
+	width:10%;
+	box-sizing: border-box;
+	color:white;
+	background-color: #7D9EC0;
+	border:3px solid #B7B7B7;
+	vertical-align: middle;
+	margin: 0 auto;
+	display: block;
+}
+
+hr{
+	border-color: :#AAAAAA;		/*wor in chrome and safari*/
+	background-color: #AAAAAA; /*work in firefox and opera*/
+	border:1px thin;
+}
+
+.image{
+	margin-top: 30px;
+	display:inline-block;
+	width:180px; 
+	height:180px;
+	background-size:180px 180px;
+    -ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+	transform: rotate(90deg);
+	margin-right: 40px;
+}
+
+.imageContainer{
+	margin:0 auto;
+	display: block;
+/*	text-align: center;*/
+}
+
+#tup1{
+	background-image: url("images/tup1.jpg")
+
+}
+
+#tup2{
+	background-image: url("images/tup2.jpg")
+}
+
+#tup3{
+	background-image: url("images/tup3.jpg")
+}

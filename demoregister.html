@@ -1,0 +1,148 @@
+<html>
+	<head>
+		<title>demo</title>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<style>
+		.modalSignUp{
+			width:500px;
+			height:auto;
+			border:2px solid black;
+			margin:0 auto;
+			padding:5px;
+
+		}
+		.signIn{
+			width:500px;
+			height:auto;
+			border:2px solid black;
+			margin:0 auto;
+			padding:5px;
+		}
+	</style>
+	<script>
+	var id = 2;
+	$(document).ready(function(){
+		$('#register').on('click', function(){
+	      		var username = $('#signUser').val();
+	      		var email = $('#signEmail').val();
+	      		var password = $('#signPwd').val();
+	      		console.log(username, email, password)
+	      		$.ajax({
+	      			cache:false,
+					type:"POST",
+					url:"demoreg.php",
+					dataType:"json",
+					//data:{username:username,password:password},
+					data:$('.modalSignUp').serialize(),
+					ContentType:"application/json",
+					success:function(response){
+					console.log(response)
+					;		          	//alert(JSON.stringify(response));
+					if(response.success =='Yes')
+					{
+					window.location.href = 'index.html';
+					}
+					else{
+					alert("response.message");
+					}
+					}
+					});
+
+		});
+	});
+$(document).ready(function(){
+		$('#login').on('click', function(){
+	      		var username = $('#username').val();
+	      		var password = $('#password').val();
+	      		console.log(username,password)
+	      		$.ajax({
+	      			cache:false,
+					type:"POST",
+					url:"demoreg.php",
+					dataType:"json",
+					//data:{username:username,password:password},
+					data:$('.signIn').serialize(),
+					ContentType:"application/json",
+					success:function(result){
+					console.log(result)
+					;		          	//alert(JSON.stringify(response));
+					if(response.success =='Yes')
+					{
+					window.location.href = 'index.html';
+					}
+					else{
+					alert("response.message");
+					}
+					}
+					});
+
+		});
+	});
+
+	      //if(username !='' && password !=''){
+	       // ev.preventDefault;
+	//         consloe.log(username)
+	//         $.ajax({
+	//           method:"POST",
+	//           url:"demoreg.php",
+	//           dataType:"json",
+	//           data:{username:username,password:password},
+	//           success:function(){
+	//           	alert(JSON.stringify(response));
+	//             if(response.success =='Yes')
+	//             {
+	//               window.location.href = 'index1.html';
+	//             }
+	//             else{
+	// 				alert("response.message");
+	//             }
+	//           }
+	//         });
+	//       }
+	//       else{
+	//         alert("Please enter username and password!");
+	//       }
+	//       return false;
+	//     });
+	// }
+	// })
+		//function signInFunction(){
+
+	      
+	</script>
+	<body>
+	<br/>
+	<div id="result"></div>
+	<br/>
+
+	<form class="modalSignUp" action="" method="POST">
+		<div class="row"><label>Username</label>
+        <input type="text" class="formGp" placeholder="enter your username" id='signUser'></div>
+        <br>
+        <div class="row"><label>Email</label>
+        <input type="text" class="formGp" placeholder="enter your email" id=signEmail></div>
+        <br>
+        <div class="row"><label>Password</label>
+        <input type="password" class="formGpPass" placeholder="enter your password" id="signPwd"></div>
+        <br>
+        <button type="submit" id="register" value="register">Create an Account</button>
+      </form>
+
+      <br/>
+      <br/>
+
+      <form class="signIn" action="demoReg.php" method="POST">
+		<div class="row"><label>Username</label>
+        <input type="text" class="formGp" placeholder="enter your username" id='signUser'></div>
+        <br>
+        <div class="row"><label>Password</label>
+        <input type="password" class="formGpPass" placeholder="enter your password" id="signpwd"></div>
+        <br>
+        <button type="submit" id="login" value="login">submit</button>
+      </form>
+
+	</body>
+</html>

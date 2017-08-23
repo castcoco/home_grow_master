@@ -1,0 +1,37 @@
+.uploadBox{
+	margin:0 auto;
+	width:70%;
+	height:auto;
+	background-color:#CAFF70;
+	border-color: #00FA9A;
+	opacity: 0.6;
+	position:relative;
+}
+
+.boxdnd, .boxUploading, .boxSuccess, .boxError{
+	display:none;
+} 
+
+.boxInput{	
+	margin:0 auto;
+	width:90%;
+	height:100%;
+	background-color:#7CFC00;
+	text-align: center;
+	padding:20%;
+	/*display:block;*/
+	outline: 2px dashed grey;
+  	outline-offset: -10px;
+  	font-size: 1.6em;
+  	font-weight:bold;
+}
+
+.file_drag_over{
+	outline-color:#eeeeee;
+	background-color:#ccc;
+}
+
+button{
+	border-radius:10%;
+	background-color:#EEB422;
+}

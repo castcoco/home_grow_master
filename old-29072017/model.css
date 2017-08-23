@@ -1,0 +1,90 @@
+.modalContent{
+background-color: #ffffff;
+}
+.mainModal{
+position: absolute;
+text-align:center;
+left:50%;
+right:50%;
+margin-left:-300px;
+margin-right:-300px;
+padding:10px;
+width:auto;
+height:auto;
+display:inline-block;
+/*		border-radius: 20px;
+*/		border-color: green;
+border:solid 0.5px;
+box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+cursor:pointer;
+background-color: #ffffff;
+
+}
+.cancellButton{
+	background-color: #EE0000;
+	color:#ffffff;
+	margin-top: 10px;
+}
+
+.formbottom, .modalHeadContainer, .modalHead {
+	background-color: #CDC8B1;
+	height:40px;
+}
+.signin{
+	display:block;
+}
+
+.modalContainer{
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+	opacity:.7;
+	
+}
+.loginButton{
+	display:block;
+	background-color:#7CFC00;
+	width:100%;
+	height:auto;
+	margin:0;
+	padding:5px;
+
+}
+.cross-corner{
+	float:right;
+	margin-right:10px;
+}
+.tab-pane{
+	position:relative;
+	display:block;
+	height:auto;
+}
+.createButton{
+	display:block;
+	width:100%;
+	height:auto;
+	padding:5px;
+}
+
+.decoline hr{
+	width:100%;
+	color:blue;
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+.tab-content label {
+	width:30%;
+	display: inline-block;
+	text-align: right;
+}
+.tab-content input{
+	width:65%;
+}
+
+.hide-password{
+	text-align:left;
+	float:right;
+}

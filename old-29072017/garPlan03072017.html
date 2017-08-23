@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Garden Planner</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content-type="width=device-width intial-scale=1">
+		<script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+		
+		
+		<link rel="stylesheet" type="text/css" href="garcss03072017.css">
+		<link rel="stylesheet" type="text/css" href="garcss_plantinfo.css">
+		
+	</head>
+
+	<body>
+	<div class = "container"> 
+	<header>
+		<h1>Welcome to Garden Planner</h1>
+	</header>
+	
+<!-- 	<form action="php-form.php" name="php-form" id="php-form" method="post">
+ --> 	<form enctype='application/json'>
+		<label>Garden Name:</label>
+		<input type = "text" id="garName" name="garName" size="10">
+		<p></p>
+		<label>Garden Type:</label>
+		<input type = "text" id="garType" name="garType" size="10">
+		<p></p>
+		<label>Width: </label>
+			<select class ="widthMenu" id= "widthMenu" name="widthMenu" style="width: 100px">
+			<option value="1000"> 10 meters </option>
+			<option value="900" > 9 meters </option>
+			<option value="800"> 8 meters</option>
+			<option value="700"> 7 meters</option>
+			<option value="600"  selected = "selected"> 6 meters</option>
+			<option value="500"> 5 meters</option>
+			<option value="400"> 4 meters</option>
+			<option value="300"> 3 meters</option>
+			<option value="200"> 2 meters</option>
+			<option value="100"> 1 meters</option>
+			</select>
+			<p></p>
+		<label>Length:</label>
+			<select class="heightMenu" id= "heightMenu" name="lengthMenu" style="width: 100px">
+			<option value="1000" > 10 meters </option>
+			<option value="900"> 9 meters </option>
+			<option value="800"> 8 meters </option>
+			<option value="700"> 7 meters</option>
+			<option value="600" > 6 meters</option>
+			<option value="500" selected = "selected"> 5 meters</option>
+			<option value="400"> 4 meters</option>
+			<option value="300"> 3 meters</option>
+			<option value="200"> 2 meters</option>
+			<option value="100"> 1 meters</option>
+			</select>
+			<p></p>
+			<button type="submit" id="saveBtn" name="formSave">SAVE</button>
+	</form>
+
+	<article>
+		<p>Gardening</p>
+		<p>this gardening aims to help gardener to plan and develop a suitable garden planner to organise the garden </p>
+		<div id="controls">
+		
+		Categories:<select class="categoriesSelect" data-target=".content-info">
+		  <option value="herbs" data-show=".herb">herb</option>
+		  <option value="fruit" data-show=".fruit">fruit</option>
+		  <option value="vegetable" data-show=".vegetable">veggie</option>
+		  <option value="flower" data-show=".flower">flower</option>
+		  <option value="tree" data-show=".tree">tree</option>
+		</select>
+		
+		</div>
+		<div class="toolbar" id="toolbar">
+		<div class="content-info">
+			
+			<div class="herb hide">
+				<div class ="plant parsely dragObject" id ="barEle" data-plant = "parsely"></div>
+				<div class ="plant basil dragObject" id ="barEle"  data-plant = "basil"></div>
+				<div class ="plant mint dragObject" id ="barEle"  data-plant = "mint"></div>
+			</div>	
+			<div class="fruit hide">
+				<div class ="plant strawberries dragObject" id ="barEle" data-plant = "strawberry"></div>
+				<div class ="plant blueberries dragObject" id ="barEle" data-plant = "blueberry"></div>
+				<div class ="plant rasberries dragObject" id ="barEle" data-plant = "raspberry"></div>
+				<div class ="plant apple dragObject" id ="barEle" data-plant = "apple"></div>
+			</div>
+			
+			<div class="vegetable hide">
+				<div class ="plant radish dragObject" id ="barEle" data-plant = "radish"></div>
+				<div class ="plant carrot dragObject" id ="barEle" data-plant = "carrot"></div>
+				<div class ="plant chilipeppers dragObject" id ="barEle" data-plant = "chilipeppers"></div>
+				<div class ="plant tomato dragObject" id ="barEle" data-plant = "tomato"></div>
+			</div>
+			<div class="flower hide">
+				<div class ="plant rose dragObject" id ="barEle" data-plant = "rose"></div>
+				<div class ="plant lavender dragObject" id ="barEle" data-plant = "lavender"></div>
+				<div class ="plant hydreangea dragObject" id ="barEle" data-plant = "hydreangea"></div>
+				<div class ="plant tulips dragObject" id ="barEle" data-plant = "tulips"></div>
+			</div>
+			<div class="tree hide">
+				<div class ="plant avocado dragObject" id ="barEle" data-plant = "rose"></div>
+				<div class ="plant lemons dragObject" id ="barEle" data-plant = "lavender"></div>
+				<div class ="plant pear dragObject" id ="barEle" data-plant = "hydreangea"></div>
+				<div class ="plant apple dragObject" id ="barEle" data-plant = "apple"></div>
+			</div>
+		</div>
+		</div>
+		<br/>
+			<div class="operation-bar">
+				<div class ="littleIcon eraseAllIcon"></div>
+				<div class ="littleIcon printIcon"></div>
+				<div class ="littleIcon copyIcon"></div>
+				<div class ="littleIcon openNewIcon"></div>
+				<div class ="littleIcon saveIcon"  id ="saveIcon"></div>
+				<button class="button">Publish</button>
+			</div>
+				
+			<div id="containerDrop" width="600" height="500"></div>
+			 <script src = "demojs3.js"></script>
+			
+	</br>
+	</br>
+	</article>
+	
+	<footer>Copyright</footer>
+	</div>
+	</body>
+</html>

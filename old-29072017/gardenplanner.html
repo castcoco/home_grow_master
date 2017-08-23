@@ -1,0 +1,252 @@
+<html>
+	<head><title>Tips on Garden and Indoor Plant</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content-type="width=device-width intial-scale=1">
+	<script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/base/jquery-ui.css">	
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
+	<link rel="stylesheet" type="text/css" href="navbar.css">	
+	<link rel="stylesheet" type="text/css" href="model.css">
+	<link rel="stylesheet" type="text/css" href="gardenplan.css">
+	<link rel="stylesheet" type="text/css" href="garcss_plantinfo.css">
+
+	</head>
+	<body>
+
+		<header id="navigationHeader">
+			<div id="navbar" class="topnav">
+				<ul>
+					<li class="nav-item"><a href="index.html">HOME</a></li>
+					<li class="nav-item"><a href="#">MY GARDEN</a>
+						<ul>
+							<li class="nav-item"><a href="gardenplanner.html">GARDEN PLANNER</a>
+								<!-- <ul>
+									<li class="nav-item"><a href="#">NEW GARDEN VIEW</a></li>
+									<li class="nav-item"><a href="#">SAVED GARDEN</a></li>
+								</ul> -->
+							</li>
+							<li class="nav-item"><a href="harvestDiary.html">HARVEST DIARY</a></li>
+							<li class="nav-item"><a href="#">MY PHOTO</a></li>
+							<li class="nav-item"><a href="#">MY ACCOUNT</a></li>
+						</ul>
+					</li> 
+					<li class="nav-item"><a href="plantsearch.html">PLANT SEARCH</a></li>
+					<li class="nav-item"><a href="lifestyle.html">LIFESTYLE</a></li>
+					<li class="nav-item"><a href="contact.html">CONTACT</a></li>
+		 			<li class="nav-item"><a href = "#mainModal" class="modal-toggle" data-toggle="modal" data-target="#mainModal" data-href="#">LOGIN / SIGN UP</a></li>
+		 			<!-- <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a> -->
+		 		</ul>
+			</div>
+	</header>
+		<div class = "container-fluid">
+			<div class="row-fluid">
+				<div class="span2">
+		<!-- 	<form enctype='application/json'> -->
+				<form id="measurement-form" action="process_measurements.php" method="POST">
+					<label>Garden Name:</label>
+					<input type = "text" id="garName" name="garName" size="10">
+					<p></p>
+					<label>Garden Type:</label>
+					<input type = "text" id="garType" name="garType" size="10">
+					<p></p>
+					<label>Width: </label>
+						<select class ="widthMenu" id= "widthMenu" name="widthMenu" style="width: 100px">
+						<option value="1000"> 10 meters </option>
+						<option value="900" > 9 meters </option>
+						<option value="800"> 8 meters</option>
+						<option value="700"> 7 meters</option>
+						<option value="600"  selected = "selected"> 6 meters</option>
+						<option value="500"> 5 meters</option>
+						<option value="400"> 4 meters</option>
+						<option value="300"> 3 meters</option>
+						<option value="200"> 2 meters</option>
+						<option value="100"> 1 meters</option>
+						</select>
+						<p></p>
+					<label>Length:</label>
+						<select class="heightMenu" id= "heightMenu" name="lengthMenu" style="width: 100px">
+						<option value="1000" > 10 meters </option>
+						<option value="900"> 9 meters </option>
+						<option value="800"> 8 meters </option>
+						<option value="700"> 7 meters</option>
+						<option value="600" > 6 meters</option>
+						<option value="500" selected = "selected"> 5 meters</option>
+						<option value="400"> 4 meters</option>
+						<option value="300"> 3 meters</option>
+						<option value="200"> 2 meters</option>
+						<option value="100"> 1 meters</option>
+						</select>
+						<p></p>
+						<button type="submit" id="saveBtn" name="formSave">SAVE</button>
+				</form>
+				</div>
+			
+			<div class="span10">
+			<div id="controls">
+				<label class="cat">Categories:</label>
+				<select class="categoriesSelect" data-target=".content-info">
+				  <option value="herbs" data-show=".herb">herb</option>
+				  <option value="fruit" data-show=".fruit">fruit</option>
+				  <option value="vegetable" data-show=".vegetable">veggie</option>
+				  <option value="flower" data-show=".flower">flower</option>
+				  <option value="tree" data-show=".tree">tree</option>
+				</select>
+			
+			</div>
+			<div class="toolbar" id="toolbar">
+					<div class="content-info">			
+						<div class="herb hide" id=origin>
+							<div class ="plant parsely dragObject" id ="barEle" data-plant = "parsely"></div>
+							<div class ="plant basil dragObject" id ="barEle"  data-plant = "basil"></div>
+							<div class ="plant mint dragObject" id ="barEle"  data-plant = "mint"></div>
+						</div>	
+						<div class="fruit hide">
+							<div class ="plant strawberries dragObject" id ="barEle" data-plant = "strawberry"></div>
+							<div class ="plant blueberries dragObject" id ="barEle" data-plant = "blueberry"></div>
+							<div class ="plant rasberries dragObject" id ="barEle" data-plant = "raspberry"></div>
+							<div class ="plant apple dragObject" id ="barEle" data-plant = "apple"></div>
+						</div>
+						
+						<div class="vegetable hide">
+							<div class ="plant radish dragObject" id ="barEle" data-plant = "radish"></div>
+							<div class ="plant carrot dragObject" id ="barEle" data-plant = "carrot"></div>
+							<div class ="plant chilipeppers dragObject" id ="barEle" data-plant = "chilipeppers"></div>
+							<div class ="plant tomato dragObject" id ="barEle" data-plant = "tomato"></div>
+						</div>
+						<div class="flower hide">
+							<div class ="plant rose dragObject" id ="barEle" data-plant = "rose"></div>
+							<div class ="plant lavender dragObject" id ="barEle" data-plant = "lavender"></div>
+							<div class ="plant hydreangea dragObject" id ="barEle" data-plant = "hydreangea"></div>
+							<div class ="plant tulips dragObject" id ="barEle" data-plant = "tulips"></div>
+						</div>
+						<div class="tree hide">
+							<div class ="plant avocado dragObject" id ="barEle" data-plant = "rose"></div>
+							<div class ="plant lemons dragObject" id ="barEle" data-plant = "lavender"></div>
+							<div class ="plant pear dragObject" id ="barEle" data-plant = "hydreangea"></div>
+							<div class ="plant apple dragObject" id ="barEle" data-plant = "apple"></div>
+						</div>
+					</div>
+				</div>
+				<br/>
+				<div class="operation-bar">
+					<div class ="littleIcon eraseAllIcon"></div>
+					<div class ="littleIcon printIcon"></div>
+					<div class ="littleIcon copyIcon"></div>
+					<div class ="littleIcon openNewIcon"></div>
+					<div class ="littleIcon saveIcon"  id ="saveIcon"></div>
+					<button class="button">Publish</button>
+				</div>
+					
+				<div id="containerDrop" width="600" height="500"></div>
+			</div> 
+			</br>
+			</br>
+					<script src = "demojs3.js"></script>	
+		</div>
+		</div>			
+
+	</body>
+	<!--modal-->
+	<div class="mainModal" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="display: none">
+		<div class="modalContent" style="max-width:600px">
+			<div class="modalHeadContainer"><br>
+				<span onclick="document.getElementById('mainModal').style.display='none'" class="cross-corner">&times;</span>
+					<div class="modalHead">
+						<h2>Sign In / Register</h2>
+					</div>
+			</div>
+			<br>
+			<br>
+				<div class="tabArea">
+					<ul class="nav nav-tabs" data-tabs="tabs" role="tabList">
+						<li class="active"><a href="#SignInTab" data-toggle="tab">SIGN IN</a></li>
+						<li><a href="#registerTab" data-toggle="tab">REGISTER</a></li>
+					</ul>
+				</div>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="SignInTab">
+					<form class="SignForm" role="form" class="containerArea" action="signInForm.php" method="post">
+					<br>
+					<br>
+						<div class="modalContainer">
+							<p class="fieldset">
+						        <label class="Username">Username</label>
+						        <input class = "username" name="username" type="text" placeholder="please enter username" size="25" required>
+						        <span class="errorMsg" value="invalid!"></span>
+						    </p>
+						    <p class="fieldset">
+						        <label class="Lpassword">Password</label>
+						        <input class="showPassword" name="pwd" type="text" placeholder="please enter password" size="25" required>
+						        <a href="#0" id="toggle" class="hide-password">Hide</a>
+						        <span class="errorMsg" value="invalid!"></span>
+						    </p>
+						    <p class="fieldset">
+						        <button class="loginButton" type="submit">Login</button>
+						    </p>
+						    <p class="fieldset">
+								<input type="checkbox" id="rememberMe" checked="checked"><span class="nav-text"> Remember Me</span>
+							</p>
+						</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="registerTab">
+				<form class="RegForm" role="form" class="containerArea" action="registerForm.php" method="post">
+					<br>
+					<br>
+					<div class="modalContainer">
+						<p class="fieldset">
+					        <label class="Lusername">Username</label>
+					        <input class = "username" name="username" type="text" placeholder="please enter username" size="25" required>
+					        <span class="errorMsg"></span>
+					    </p>
+					    <p class="fieldset">
+					        <label class="Lpassword">Password</label>
+					        <input class="showPassword" name="pwd" type="text" placeholder="please enter password" size="25"required>
+					        <a href="#0" id="toggle" class="hide-password">Hide</a>
+					        <span class="errorMsg" value="invalid!"></span>
+					    </p>
+					    <br>
+					    <p class="fieldset">
+					        <label class="Lemail">Email</label>
+					        <input class="email" name="email" type="text" placeholder="please enter e-mail" size="25" required>
+					        <span class="errorMsg" value="invalid!"></span>
+					    </p>
+					    <p class="fieldset">
+					        <button class="createButton" type="submit">Create an Account</button>
+					    </p>
+					</div>
+				</form>
+				</div>
+			</div>	
+				
+				<div class="formbottom">
+					<button onclick="document.getElementById('mainModal').style.display='none'" type="button" class="cancellButton">Cancel</button>
+    				<span class="forgetPwd">Forgot <a href=""forgot_password.html" target="_blank"">password</a></span>
+				</div>
+				<div class="decoline"><hr></div>
+					<div class="row">	
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-danger"><i class="fa fa-google-plus"></i>Sign in with Google</button>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-info"><i class="fa fa-linkedin"></i>Sign in with Linkedin</button>
+							</div>
+						</div>
+					</div>	
+				</div>
+		</div>
+		<br>
+	</div>
+	<footer>Copyright</footer>
+</html>

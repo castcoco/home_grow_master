@@ -1,0 +1,217 @@
+	body{
+		font:#eeeeee;
+	}
+
+	.navbar-header{
+		background-color: #ffffff;
+	}
+	
+#navigationHeader{
+		background-image: url("images/headphoto-edit.jpg");
+		background-position: left;
+		background-repeat: repeat-x;
+		height:150px;	
+		width:100%;
+		text-align: center;
+}
+
+#header{
+  width:100%;
+  height:auto;
+}
+
+  /*navigation bar overwrite bootstrap style*/
+.navbar-inverse .navbar-nav>li>a {
+  color:purple;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+  color:green;
+}
+
+.navbar-inverse .navbar-nav>.active>a, 
+.navbar-inverse .navbar-nav>.active>a:focus, 
+.navbar-inverse .navbar-nav>.active>a:hover {
+  color:white;
+  background-color:purple;
+}
+.navbar-inverse .navbar-brand {
+  color:purple;
+}
+.navbar-inverse .navbar-brand:focus, 
+.navbar-inverse .navbar-brand:hover {
+  color:green;
+}
+
+	.nav navbar-nav ul li a:hover{
+		background-color: lightgreen;
+		text-decoration: none;
+	}
+  .navbar{
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+  }
+  footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1em;
+  color: white;
+  background: #00EE76;
+  text-align:center;
+  z-index:100;
+ }
+
+.navbar-toggle {
+  background-color:purple;
+}
+.navbar-inverse .navbar-toggle {
+  border-color:none;
+}
+  /*modal css*/
+    /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+.modal input[type=text]{
+  width:80%;
+  padding:10px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.modal input[type=password]{
+  width:80%;
+  padding:10px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.modal-content .pwd-group{
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+}
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+input[type:text]{
+  min-width:480px;
+}
+/*content*/
+#h3title{
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+  display:inline-block;
+}
+
+  /*password mask*/
+#password + .unmask {
+  position: absolute;
+  right: 80px;
+  top: 140px;
+  text-indent: -9999px;
+  width: 25px;
+  height: 25px;
+  background: #aaa;
+  border-radius: 50%;
+  cursor:pointer;
+  border: none;
+  -webkit-appearance:none;
+}
+
+#password + .unmask:before {
+  content: "";
+  position:absolute;
+  top:4px; left:4px;
+  width: 17px;
+  height: 17px;
+  background: #e3e3e3;
+  z-index:1;
+  border-radius: 50%;
+}
+#password[type="password"] + .unmask:after {
+  content: "";
+  position:absolute;
+  top:6px; left:6px;
+  width: 13px;
+  height: 13px;
+  background: #aaa;
+  z-index:2;
+  border-radius: 50%;
+}
+#signpwd + .unmask {
+  position: absolute;
+  right: 70px;
+  top: 202px;
+  text-indent: -9999px;
+  width: 25px;
+  height: 25px;
+  background: #aaa;
+  border-radius: 50%;
+  cursor:pointer;
+  border: none;
+  -webkit-appearance:none;
+}
+
+/*password for everypage*/
+#signpwd + .unmask:before {
+  content: "";
+  position:absolute;
+  top:4px; left:4px;
+  width: 17px;
+  height: 17px;
+  background: #e3e3e3;
+  z-index:1;
+  border-radius: 50%;
+}
+#signpwd[type="password"] + .unmask:after {
+  content: "";
+  position:absolute;
+  top:6px; left:6px;
+  width: 13px;
+  height: 13px;
+  background: #aaa;
+  z-index:2;
+  border-radius: 50%;
+}

@@ -1,0 +1,7 @@
+  @media print {
+    #containerDrop{ border: 1px solid black; }
+    #containerDrop .plant{margin-left:-50px;}
+    .container .slideOut, #toolbar, #operation-bar , #controls, #controls_operators, #hometitle{
+      display:none;
+    }
+  }

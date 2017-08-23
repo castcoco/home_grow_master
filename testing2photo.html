@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- https://www.youtube.com/watch?v=M8mLkeP7rB4 -->
+<html>
+	<head>	
+	<title>Home Garden</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	</head>
+	<style>
+		#droparea{
+			margin:0 auto;
+			width:400px;
+			height:400px;
+			border:2px dashed blue;
+			padding:50px;
+			margin-top:20px;
+		}
+
+		#files{
+			border:1px dotted blue;
+			padding:20px;
+			width:300px;
+			height:auto;
+			margin:0 auto;
+		}
+		#error{
+			color:red;
+		}
+		h1{
+			margin:0 auto;
+		}
+	</style>
+
+	<body>
+		<div id="droparea">
+			<p>please drag the photos</p>
+			<input type="file" id="fileupload" name="attachments[]" multiple>
+		</div>
+		<h1 id="error"></h1><br><br>
+		<h1 id="progress"></h1><br><br>
+		<div id="files"></div>
+		<script type="text/javascript">
+		$(function(){
+			var files = $('#files');
+
+			$('#fileupload').fileupload({
+				url:'imagetest.php',
+				dropZone:'#droparea',
+				dataType:'json',
+				autoUpload:false
+			}).on('fileuploadadd', function(e,data){
+				//verify file
+				var fileTypeAllowed = /.\.(gif|jpg|png|jpeg)$/i;
+				var fileName =data.originalFiles[0]['name'];
+				var fileSize =data.originalFiles[0]['size'];
+				
+				if (!fileTypeAllowed.test(fileName))
+					$('#error').html('Only images are allowed!');
+				else if(fileSize > 1000000)
+					$('#error').html("your file size is too large!");
+				else {
+					$('#error').html('');
+					data.submit();
+				}
+			}).on('fileuploaddone', function(e, data){
+				console.log(data);
+				var status = data.jqXHR.responseJSON.status;
+				var msg = data.jqXHR.responseJSON.msg;
+
+				if (status == 1){
+					var path = data.jqXHR.responseJSON.path;
+					$('#files').fadeIn().append('<p><img style="width:200px;height:200px;" src ="'+ path +'"/></p>');
+				}else
+					$('#error').html(msg);
+			}).on('fileuploadprogressall', function(e, data){
+				// console.log(data);
+				var progress = parseInt(data.loaded / data.total * 100, 10);
+				$('#progress').html('Completed:' + progress + '%');
+			});
+
+		});
+		</script>
+		<script type="text/javascript" src="jquery.ui.widget.js"></script>
+		<script type="text/javascript" src="jquery.iframe-transport.js"></script>
+		<script type="text/javascript" src="jquery.fileupload.js"></script>
+	</body>
+</html>

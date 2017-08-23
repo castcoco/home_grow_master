@@ -1,0 +1,113 @@
+/*.searchForm{
+	display: inline-block;
+    border: 5px solid red;
+    background: #fff;
+}*/
+.fa {
+/*	float:right;*/
+	position:relative;
+	width:50px;
+	height:50px;
+	color:#388E8E;
+	/*margin-left:-2.5%;
+	margin-top:0.6%;*/
+	font-size:20px;
+	z-index:2;
+	cursor:pointer;
+}
+.searchBoxAutoInput{
+	width:80%;
+	height:50px;
+	padding:8px 20px;
+	box-sizing: border-box;
+	border: 3px solid #ccc;
+	-webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    font-size: 1.2em;
+    line-height:10px;
+    margin-left:10%;
+    vertical-align: left;
+}
+.clearfix{
+	clear:both;
+}
+
+.general {
+	margin:30px;
+	text-align: left;
+}
+
+.sunLight{
+	background-image:url(images/sun.jpg);
+	background-size: 45px 45px;
+	width:45px;
+	height:45px;
+	vertical-align: middle;
+}
+.soil{
+	background-image:url(images/soil.jpg);
+	background-size: 45px 45px;
+	width:45px;
+	height:45px;
+	vertical-align: middle;
+}
+.plantColor{
+	background-image:url(images/color1.png);
+	background-size: 45px 45px;
+	width:45px;
+	height:45px;
+	vertical-align: middle;
+}
+.plantCategories .plantchar{
+	color:#6C7B8B;
+	display: block;
+	block:25em;
+	clear:right;
+}
+.plantSearchMenu{
+	width:70%;
+	padding:8px 20px;
+	/*margin: 10px 0;*/
+	box-sizing: border-box;
+	border: 3px solid #ccc;
+	-webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    font-size: 1.2em;
+    display: inline-block;
+    line-height:10px;
+    margin-left:5%;
+    vertical-align: left;
+}
+
+#typeMenu{
+	margin-left:2%;
+}
+
+
+.label{
+	text-align: left;
+	line-height:10px;
+	float:left;
+	width:10%;
+	display: block;
+}
+
+input[type=submit]{
+	padding:8px 0px;
+	width:10%;
+	box-sizing: border-box;
+	color:white;
+	background-color: #7D9EC0;
+	border:3px solid #B7B7B7;
+	vertical-align: middle;
+	margin: 0 auto;
+	display: block;
+}
+
+hr{
+	border-color: :#AAAAAA;		/*wor in chrome and safari*/
+	background-color: #AAAAAA; /*work in firefox and opera*/
+	border:1px thin;
+}

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>Garden: Home Grow Master</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- 	<link rel="stylesheet" type="text/css" href="mycssone.css">
+ -->
+	<style>
+	ul{
+	list-style:none;
+	margin: 0px; padding: 0px;
+
+	}
+	ul li a{
+		text-decoration: none;
+		color: black;
+		display:block;
+	}
+
+	ul li{
+		margin: 0;
+		padding: 0;
+		float:left;
+		width:200px;
+		height:45px;
+	/*	background-color:white;*/
+		font-size: 16px;
+		font-family: Verdana;
+		line-height:45px;
+		text-align: center;
+		opacity:.6;
+		position:relative;
+
+	}
+
+	ul li a:hover{
+		background-color: #76EE00;
+	}
+
+
+	ul li ul li{
+		display:none;
+	}
+
+	ul li:hover ul li{
+		display:block;
+	}
+
+	ul ul ul{
+		margin-left:200px;
+		top:0px;
+		position:absolute;
+	}
+	#navigationHeader{
+			background-image: url("images/headphoto-edit.jpg");
+			background-position: right;
+			background-repeat: repeat-x;
+			height:200px;
+			width:100%;
+
+	}
+	#navbar ul{
+		float:right;
+	}
+	#navbar{
+		float:right;
+		margin-top: 200px;
+		width:100%;
+		background: white;
+		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+		cursor:pointer;
+	}
+/*	/*for mobile*/
+	@media only screen and (min-width: 320px) and (max-width: 768px) {
+	#navbar {
+		width:100%;
+	}
+	.nav-item {
+		width:100%;
+		float:none;
+	}
+	}*/
+
+	.navMobile{
+		position:absolute;
+		display:none; /*hide if browser doesnt support*/
+		cursor:pointer;
+	}
+	.mainModal{
+		position: absolute;
+		text-align:center;
+		left:50%;
+		right:50%;
+		margin-left:-300px;
+		margin-right:-300px;
+		padding:10px;
+		width:auto;
+		height:auto;
+		display:inline-block;
+/*		border-radius: 20px;
+*/		border-color: green;
+		border:solid 0.5px;
+		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+		cursor:pointer;
+		background-color: #ffffff;
+
+	}
+		.cancellButton{
+			background-color: #EE0000;
+			color:#ffffff;
+			margin-top: 10px;
+		}
+
+		.formbottom, .modalHeadContainer, .modalHead {
+			background-color: #CDC8B1;
+			height:40px;
+		}
+		.signin{
+			display:block;
+		}
+
+		.modalContainer{
+			display: inline-block;
+			text-align: left;
+			vertical-align: middle;
+			opacity:.7;
+			
+		}
+		.loginButton{
+			display:block;
+			background-color:#7CFC00;
+			width:100%;
+			height:auto;
+			margin:0;
+			padding:5px;
+
+		}
+		.cross-corner{
+			float:right;
+			margin-right:10px;
+		}
+		.tab-pane{
+			position:relative;
+			display:block;
+			height:auto;
+		}
+		.createButton{
+			display:block;
+			width:100%;
+			height:auto;
+			padding:5px;
+		}
+
+		.decoline hr{
+			width:100%;
+			color:blue;
+		}
+
+		.modal-backdrop {
+		  z-index: -1;
+		}
+
+		.tab-content label {
+			width:30%;
+			display: inline-block;
+			text-align: right;
+		}
+		.tab-content input{
+			width:65%;
+		}
+
+		.hide-password{
+			text-align:left;
+			float:right;
+
+		}
+		.container{
+			background-color: #ffffff;
+		}
+
+		/*header*/
+		.clearfix:before,
+		.clearfix:after {
+		    content: " ";
+		    display: table;
+		}
+		.clearfix:after {
+		    clear: both;
+		}
+		.clearfix {
+		    *zoom: 1;
+		}
+
+		.holder{
+		    text-align:center;
+		}
+		.column{
+		    display:inline-block;
+		    *display:inline;
+		    *zoom:1;
+		    width:auto;
+		}
+		.left{
+	/*	    background-color:#ff0;*/
+		    float:left;
+		    display: inline-block;
+		    padding-left:5%;
+		    padding-top:1%;
+		}
+
+		.middle{
+		   /* background-color:#006400;*/
+		    display:inline-block;
+		    vertical-align: center;
+		    color: #006400;
+		    padding-left:25%;
+
+
+		}
+		.right{
+/*		    background-color:#0ff;*/
+		    float:right;
+		    padding-top:20px;
+
+		}
+
+/*		.fa {
+		  padding: 10px;
+		  font-size: 2em;
+		  width: 5px;
+		  text-align: left;
+		  margin: 5px 2px;
+		  border-radius: 50%;
+		}*/
+
+		.socialLink-item{
+			display:inline-block;
+			line-height:1.2em;
+			width:1.6em;
+			border:1px solid #000;
+			border-radius:50%;
+			text-align:center;
+		  	margin: 5px 5px;
+			list-style:none;
+			padding:5px;
+			font-size: 2em;
+			color:#CDCDC1;
+
+		}
+
+
+
+
+	</style>
+
+
+	<script>
+	//responsive to mobile
+	// var mobile = document.createElement('div')
+	// mobile.className ='navMobile';
+	// document.querySelector('#navbar').appendChild(mobile);
+
+	//hidden password in login modal --incompleted
+		$(document).ready(function(){
+			$(".showPassword").change(function(index, input){
+				var $input = $(input);
+				var change="";
+				$(".hide-password").click(function(){
+					if ($(this).html() ==="Show"){
+						//change attribute
+						$(".showpassword").attr("type", "text");
+						//change the text
+						$(this).html("Hide")
+						change="text";
+					}else{
+						//change attribute
+						$(".showPassword").attr("type", "password");
+						//change thext
+						$(this).html("Show");
+						change="password";
+					}
+
+				});
+			});
+		});
+
+
+	</script>
+	</head>
+	<body>
+	<header id="navigationHeader">
+	<div id="navbar">
+		<ul>
+			<li class="nav-item"><a href="#">HOME</a></li>
+			<li class="nav-item"><a href="#">MY GARDEN</a>
+				<ul>
+					<li class="nav-item"><a href="#">GARDEN PLANNER</a>
+						<ul>
+							<li class="nav-item"><a href="#">NEW GARDEN VIEW</a></li>
+							<li class="nav-item"><a href="#">SAVED GARDEN</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a href="#">HARVEST DIARY</a></li>
+					<li class="nav-item"><a href="#">MY PHOTO</a></li>
+					<li class="nav-item"><a href="#">MY ACCOUNT</a></li>
+				</ul>
+			</li> 
+			<li class="nav-item"><a href="#">PLANT SEARCH</a></li>
+			<li class="nav-item"><a href="#">LIFESTYLE</a></li>
+ 			<li class="nav-item"><a href = "#mainModal" class="modal-toggle" data-toggle="modal" data-target="#mainModal" data-href="#">LOGIN / SIGN UP</a></li>
+ 		</ul>
+	</div>
+	</header>
+	<header id ="clearfix holder">
+		<div class="column left">
+			<ul id = "socialLink" class="socialLink">
+<!-- 				<li><a class="socialLink-item" href="www.facebook.com">
+					<i class="fa fa-facebook" aria-hidden="true"></i>
+				</a></li>
+				<li><a class="socialLink-item" href="www.pinterest.com">
+					<i class="fa fa-pinterest" aria-hidden="true"></i>
+				</a></li>
+				<li><a class="socialLink-item" href="www.twitter.com">
+					<i class="fa fa-twitter" aria-hidden="true"></i>
+				</a></li> -->
+
+ 				<li class="socialLink-item">
+					<a href="www.facebook.com" class="fa fa-facebook"></a>
+				</li>
+				<li class="socialLink-item">
+					<a href="#www.pinterest.com" class="fa fa-pinterest"></a>
+				</li>
+				<li class="socialLink-item">
+					<a href="#www.twitter.com" class="fa fa-twitter"></a>
+				</li>
+		</ul>
+		</div>
+		<div class="column middle">
+			<h1>HOME GROW MASTER</h1>
+		</div>
+		<div class="column right">
+			<form class="searchForm" method="get" action="plantSearchForm.php">
+				<input type="text" class="fieldText" name="fieldText">
+				<input type="button" id="searchIcon" value="Search">
+			</form>
+		</div>
+	<br>
+	<hr>
+	</header>
+	<div class="siteContainer">
+		<div class="inner-container">
+			
+		</div>
+	</div>
+	</body>
+
+	<!--modal-->
+	<div class="mainModal" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="display: none">
+		<div class="modalContent" style="max-width:600px">
+			<div class="modalHeadContainer"><br>
+				<span onclick="document.getElementById('mainModal').style.display='none'" class="cross-corner">&times;</span>
+					<div class="modalHead">
+						<h2>Sign In / Register</h2>
+					</div>
+			</div>
+			<br>
+			<br>
+				<div class="tabArea">
+					<ul class="nav nav-tabs" data-tabs="tabs" role="tabList">
+						<li class="active"><a href="#SignInTab" data-toggle="tab">SIGN IN</a></li>
+						<li><a href="#registerTab" data-toggle="tab">REGISTER</a></li>
+					</ul>
+				</div>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="SignInTab">
+					<form class="SignForm" role="form" class="containerArea" action="signInForm.php" method="post">
+					<br>
+					<br>
+						<div class="modalContainer">
+							<p class="fieldset">
+						        <label class="Username">Username</label>
+						        <input class = "username" name="username" type="text" placeholder="please enter username" size="25" required>
+						        <span class="errorMsg" value="invalid!"></span>
+						    </p>
+						    <p class="fieldset">
+						        <label class="Lpassword">Password</label>
+						        <input class="showPassword" name="pwd" type="text" placeholder="please enter password" size="25" required>
+						        <a href="#0" id="toggle" class="hide-password">Hide</a>
+						        <span class="errorMsg" value="invalid!"></span>
+						    </p>
+						    <p class="fieldset">
+						        <button class="loginButton" type="submit">Login</button>
+						    </p>
+						    <p class="fieldset">
+								<input type="checkbox" id="rememberMe" checked="checked">Remember Me
+							</p>
+						</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="registerTab">
+				<form class="RegForm" role="form" class="containerArea" action="registerForm.php" method="post">
+					<br>
+					<br>
+					<div class="modalContainer">
+						<p class="fieldset">
+					        <label class="Lusername">Username</label>
+					        <input class = "username" name="username" type="text" placeholder="please enter username" size="25" required>
+					        <span class="errorMsg"></span>
+					    </p>
+					    <p class="fieldset">
+					        <label class="Lpassword">Password</label>
+					        <input class="showPassword" name="pwd" type="text" placeholder="please enter password" size="25"required>
+					        <a href="#0" id="toggle" class="hide-password">Hide</a>
+					        <span class="errorMsg" value="invalid!"></span>
+					    </p>
+					    <br>
+					    <p class="fieldset">
+					        <label class="Lemail">Email</label>
+					        <input class="email" name="email" type="text" placeholder="please enter e-mail" size="25" required>
+					        <span class="errorMsg" value="invalid!"></span>
+					    </p>
+					    <p class="fieldset">
+					        <button class="createButton" type="submit">Create an Account</button>
+					    </p>
+					</div>
+				</form>
+				</div>
+			</div>	
+				
+				<div class="formbottom">
+					<button onclick="document.getElementById('mainModal').style.display='none'" type="button" class="cancellButton">Cancel</button>
+    				<span class="forgetPwd">Forgot <a href="#">password</a></span>
+				</div>
+				<div class="decoline"><hr></div>
+					<div class="row">	
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-danger"><i class="fa fa-google-plus"></i>Sign in with Google</button>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-info"><i class="fa fa-linkedin"></i>Sign in with Linkedin</button>
+							</div>
+						</div>
+					</div>	
+				</div>
+		</div>
+	</div>
+</html>
