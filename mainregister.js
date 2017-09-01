@@ -90,6 +90,7 @@ function checkLoggedin(){
   }else{
     $('html').removeClass('loggedin');
     $('.logoutHide').hide();
+    $('nav .gallery').hide();
   }
 };
 

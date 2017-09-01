@@ -199,18 +199,20 @@
 			for (i=0; i<data.length; i++){
 				img+=
         "<td class='arrange'>"
-        + "<form class='imageform' method='get' action= 'deleteimage.php'>"+"<img src="+data[i].path+" style='width:30%; height:20%; margin-right:1%;margin-bottom:0.5em;'><p><input type='hidden' name='product_id' value="+data[i].id+"><input type='submit' value='delete'></p></form>"
+        + "<form class='imageform' method='get' action= 'deleteimage.php'>"+"<img src="+data[i].path+" style='width:30%; height:20%; margin-right:1%;margin-bottom:0.5em;'><p><input type='hidden' name='product_id' value="+data[i].id+"><input type='submit' value='delete' id='deletehide'></p></form>"
         +"</td>";
 			}
 
       img += '</tr>';
 			if (img!=""){
 				$('#imageTable').append(img);
+        
 			}
 		} 
     else{
       if(data.length==0){
         $('#noimage').removeClass('hidden');
+        ('#deletehide').css(display,none);
       }
     }  
 	});

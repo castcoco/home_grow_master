@@ -8,7 +8,7 @@ function changewidth(){
 	$("select.widthMenu").bind("change", function(evt){
 		var selwidth = $("option:selected", this).attr("value");
 		console.log("selected width");
-		$("#myframe").attr("src", width(selwidth));
+		$("#myframe").width(selwidth);
 
 	});
 };

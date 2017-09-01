@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <title>Home Garden</title>
   <meta charset="utf-8">
@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="harvestTable_edit.js"></script> 
+  <script src="harvesttable_edit.js"></script> 
   <script type="text/javascript" src="mainregister.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -142,8 +142,9 @@
     </table>
     <br/>
     <div class="datadisplay">
+    <form class='recordform' method='post' action='updatediaryrecord.php'>
       <table id="hiddentable" class="hidden">
-      <tr>
+      <tr class='recordtable'>
           <th>Plant Name</th>
           <th>Quantities</th>
           <th>Months to Sow</th>
@@ -153,6 +154,8 @@
           <th>Total Amount</th>
           <th></th>         
       </tr>
+      
+      </form>
       </table>
     </div>
     <br />
@@ -261,7 +264,7 @@
   // span.onclick = function(){
   //   signupmodal.style.display = "none";
   // }
-  window.onclinck = function(event){
+  window.onclick = function(event){
     if(event.target == signupmodal){
       signupmodal.style.display = "none";
     }

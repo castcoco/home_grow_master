@@ -39,6 +39,11 @@ $(".dragObject").draggable({
   	cursor:'move',
   	revert:"invalid",
   	tolerant:'fit',
+  	drag:function(event){
+  		o = $(this).offset();
+  		p = $(this).position();
+  		
+  	}
 
 });
 
@@ -97,101 +102,3 @@ $("#printIcon").click(function(){
 	$("#containerDrop").show();
 	window.print();
 });
-
-// saving the form to JSON and to database
-// $("#saveIcon").submit(function(ev){
-// 	var formData = JSON.stringify($("#php-form").serializeArray());
-// 	console.log($(this).serializeArray());
-// 	ev.preventDefault();
-// 	var fData = {"id":$(this).data('id'), "name":$(this).data('name'), "width":$(this).data('width'), "length":$(this).data("length"), 
-// 				"garden_type":$(this).data("garden_type")}
-// 	var request = $.ajax({
-// 	  url: "php-form.php",
-// 	  method: "POST",
-// 	  data: formData,
-// 	  dataType: "JSON"
-// 	 }); 
-// });
-
-
-// $('#containerDrop').droppable({
-//   accept:'.dragObject',
-//   drop: function(ev, ui) { 
-//   	var $clone = ui.helper.clone()
-//   	// clone.css('position', 'absolute'); <-----it fixed the dragged item on the canvas but cant clone 	
-//   	 if (!$clone.is('#containerDrop')){
-//   	  	$(this).append($clone.addClass('#containerDrop').draggable({
-//  	  	containment:'#containerDrop',
-//     		tolerance:'fit',
-//     		position:'absolute'
-//     	}));
-//   	 }
-  	 // if (ui.draggable[0].id) {
-    //  $(this).append($(ui.helper).clone(true).draggable({containment:"#containerDrop", position:'absolute', tolerance:'fit', scroll: false}));
-  
-//  } 
- //}
-//});
-
-
-// var x = null;
-// $(function(){
-// var x = null;
-// 	$(".dragObject").draggable({
-//   	helper:'clone',
-//   	cursor:'move',
-//   	revert:"invalid",
-//   	tolerant:'fit',
-
-// });
-// 	$('#containerDrop').droppable({
-// 	  accept:'.dragObject',
-// 	  activeClass: "#containerDrop",
-// 	  drop: function(ev, ui) { 
-// 	  	if (ui.draggable[0].id != "") {
-
-// 	  		x =ui.helper.clone();
-// 	  		ui.helper.remove();
-// 	  		x.draggable({
-// 	  			helper:'original',
-// 	  			cursor:'move',
-// 	  			containment:'#containerDrop',
-// 	  			tolerance:'fit',
-// 	  			drop: function( ev, ui){
-// 	  				$(ui.draggable).remove();
-// 	  			}
-// 	  		});
-
-// 	  		x.resizable({
-// 	  			maxHeight: $('#containerDrop').height(),
-// 	  			maxWidth: $('#containerDrop').width()
-// 	  		});
-
-// 	  		x.addClass('remove');
-// 	  		var deleteElement = $("<span><a href='Javascript:void(0)' class=\"closeIcon delete\" title=\"Remove\">X</a></span>");
-// 	  		$(deleteElement).insertAfter($(x.find('.dragObject')));
-// 	  		x.appendTo('#containerDrop');
-// 	  		$('.close').on('click', function(){
-// 	  			$(this).parent().parent('span').remove();
-// 	  		});
-// 	  		$('.close').parent().parent('span').dbclick(function(){
-// 	  			$(this).remove();
-// 	  		});
-// 	  		}
-// 		}
-// 	});
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
