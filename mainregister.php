@@ -9,9 +9,17 @@
 	//}
 	
 	$username = mysqli_real_escape_string($conn, trim($_POST['signUser']));
-	$password = mysqli_real_escape_string($conn, trim(md5($_POST['signPwd'])));
+	
+	//hash password store in database
+	$password = mysqli_real_escape_string($conn, trim(($_POST['signPwd']))); 
+	
+	//$password = mysqli_real_escape_string($conn, trim(($_POST['signPwd'])));
+	
 	$email = mysqli_real_escape_string($conn, trim($_POST['signEmail']));
-
+	
+	//add the salt on password automatically
+	$hashed_password = password_hash($password, PASSWORD_DEFAULT); 
+	
 	//validation, if js is not available
 	if (empty($username) || empty($email) || empty($password))
 	{
@@ -19,11 +27,7 @@
 		exit();
 	}
 	
-	//validation
-	/* $dupname = "SELECT username FROM users WHERE username = $username";
-	$dupname = rtrim($dupname, ',');
-	$result = $conn->query(dupname); */
-		
+		//fetch the rows to see if user exists
 	if ($result->num_rows == 1)
 	{
 		echo "Username $username is existed already!";
@@ -31,7 +35,7 @@
 	}
 	else
 	{
-	$sql = "INSERT INTO `users`(`username`, `pwd`, `email`)VALUES('$username','$password','$email')";
+	$sql = "INSERT INTO `users`(`username`, `pwd`, `email`)VALUES('$username','$hashed_password','$email')";
 	
 		if ($conn->query($sql) === TRUE) {
 			header('Location:index.html');

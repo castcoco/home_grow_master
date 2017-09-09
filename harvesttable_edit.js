@@ -193,18 +193,19 @@ $(document).ready(function(){
 		 		//success: function(data){console.log(data)},
 		 	 	}).done(function(data){
 		 		console.log(data);
-		 		//use json index to find the value
-		 		//Object.keys(data).forEach(function(key, keyIndex){
-		 		//			console.log('index:', keyIndex,'key:',key, 'value:', data[key]);
-		 		//		});
 		 		var text ='';
-		 		if(data.length >0){
+		 		if(typeof(data) == "object" && data.length >0){
+		 		//if(data.length >0){
 		 			for(i=0; i<data.length;i++){
 		 				var saveddiaryname = data[i].diary_name;
 		 				//alert(diaryname);
 		 				text+=
-		 				"<form class='imageform' method='get' action= 'getdiary.php'>"
-		 				+"<p><input type='button' id="+saveddiaryname+" name='saveddiarynamex' value="+data[i].diary_name+" onClick='clickthis(this.id)'></p></form>";
+		 				'<form class="imageform" method="get" action= "getdiary.php">'
+
+						+'<p><input type="button" id="'+saveddiaryname+'" name="saveddiaryname" value="'+data[i].diary_name+'" onClick="clickthis(this.id)"></p></form>';			 					
+
+		 				// "<form class='imageform' method='get' action= 'getdiary.php'>"
+		 				// +"<p><input type='button' id="+saveddiaryname+" name='saveddiarynamex' value="+data[i].diary_name+" onClick='clickthis(this.id)'></p></form>";
 		 				//+"<p id="+saveddiaryname+">" +saveddiaryname+ "</p></form>";	
 		 				//console.log(saveddiaryname);
 		 	
@@ -216,6 +217,8 @@ $(document).ready(function(){
 		        	$("#dialogbox").append(text).css({"font-size":"1.6em", "cursor":"pointer"});  //append the saved diaryname from the user in dialogbox
 		        	
 		 		}
+		 	}else{
+		 		$('#dialogbox').html("no record");
 		 	}
 		 	});
 }	
@@ -229,221 +232,73 @@ function clickthis(click_id){
 
 	$.ajax({
 		method:"GET",
-		//data:click_id,
+		data:{id2:click_id},
 		url:'getdiary.php',
 		}).done(function(data){
 		console.log(click_id);
 		console.log(data);
 		var str = '';
 		//display json data into str in html
-		if(data.length > 0){
+		 if(typeof(data) == "object" && data.length >0){
 			for (i=0; i< data.length; i++){
 				var rowId = data[i].id;
 				str +=
-				"<tr class='recordtable'>"
-				+"<form class='recordform' method='post' action='updatediaryrecord.php'>"
-				+"<td><div name='plantName2' id='plantName-" + rowId + "' contenteditable='true'>"+data[i].name+"</div></td>"
-				+"<td><div name='pQty2' contenteditable='true' id='pQty-" + rowId + "'>"+data[i].quantity+"</div></td>"
-				+"<td><div name='datepicker_sow2' contenteditable='true' id='datepicker_sow-" + rowId + "'>"+data[i].sow_date+"</div></td>"
-				+"<td><div name='datepicker_harvest2' contenteditable='true' id='datepicker_harvest-" + rowId + "'>"+data[i].harvest_date+"</div></td>"
-				+"<td><div name='pVol2' contenteditable='true' id='pVol-" + rowId + "'>"+data[i].harvest_volume+"</div></td>"
-				+"<td><div name='pPrice2' contenteditable='true' id='pPrice-" + rowId + "'>"+data[i].price+"</div></td>"
-				+"<td><div name='total2' contenteditable='true' id='total-" + rowId + "'>"+data[i].total_amt+"</div></td>"
-				+"<td class='hidden' id='diary_name'><div name='diary_name2'>"+data[i].diary_name+"</div></td>"
-				+"<td class='hidden' id='id2'><div name='id'>"+data[i].id+"</div></td>"
-				+"<td><input type='submit' value='"+data[i].id+"' id='recordsavebtn'></td></form>"
-				+"</tr>" ;
+				'<tr class="recordtable">'
+				+'<td><div name="plantName2" id="plantName-' + rowId + '" contenteditable="true">'+data[i].name+'</div></td>'
+				+'<td><div name="pQty2" contenteditable="true" id="pQty-' + rowId + '">'+data[i].quantity+'</div></td>'
+				+'<td><div name="datepicker_sow2" contenteditable="true" id="datepicker_sow-' + rowId + '">'+data[i].sow_date+'</div></td>'
+				+'<td><div name="datepicker_harvest2" contenteditable="true" id="datepicker_harvest-' + rowId + '">'+data[i].harvest_date+'</div></td>'
+				+'<td><div name="pVol2" contenteditable="true" id="pVol-' + rowId + '">'+data[i].harvest_volume+'</div></td>'
+				+'<td><div name="pPrice2" contenteditable="true" id="pPrice-' + rowId + '">'+data[i].price+'</div></td>'
+				+'<td><div name="total2" contenteditable="true" id="total-' + rowId + '">'+data[i].total_amt+'</div></td>'
+				+'<td class="hidden" id="diary_name"><div name="diary_name2">'+data[i].diary_name+'</div></td>'
+				+'<td class="hidden" id="id2"><div name="id2- ' + rowId + ' ">'+data[i].id+'</div></td>'
+				+'<td><button type="button" value="'+rowId+'" class="recordsavebtn">Update</td>'
+				+'</tr>' ;
 				console.log(rowId, data[i].name);
 			}
 			if(str != ""){
         		$(".datadisplay #hiddentable").append(str).removeClass("hidden");
-    			$('#recordsavebtn').click(updateDiary);
+    			$('.recordsavebtn').click(updateDiary);
 			}
 		}	
 		});
  };
 
 
-function updateDiary(){	
-	var rowId = $('#id2').text();
+function updateDiary(ev){	
+	var rowId = $(this).val();
+	//console.log("button value = " + btnclick);
+	ev.preventDefault();
+	
+	//var diaryn = $('#diary_name').text();
 	console.log('hello')
-	var dataObj = {"data":[]};
-	$("#hiddentable recordtable > td").each(function(){ 		
-	var obj = { "name":$(this).find('div#plantName-' + rowId ).text(), 
-				"quantity":$(this).find('div#pQty-' + rowId  ).text(), 
-				"sow_date":$(this).find('div#datepicker_sow-' + rowId ).text(), 
-				"harvest_date": $(this).find('div#datepicker_harvest-' + rowId ).text(), 
-				"harvest_volume": $(this).find('div#pVol-' + rowId ).text(),
-				"price": $(this).find('div#pPrice-' + rowId ).text(),
-				"total_amt": $(this).find('div#total-' + rowId ).text(),
-				"id": $(this).find('div#id2').text(),
-				};
-		console.log(obj);					
-		dataObj["data"].push(obj);	
-		//console.log(dataObj["data"][0]);
-		//console.log(result);
-	});	
-	
-	console.log(JSON.stringify(dataObj));
+	console.log($("div#plantName-" + rowId).text());
+	//var dataObj = {"data":[]};
 
-	var request = $.ajax({
-	   url: "updatediaryrecord.php",
-	   method: "POST",
-	   data: dataObj,
-	   dataType: "JSON",
-	   success: function(data)
-	   {console.log(data);}
-}) 
+	var dataObj = {
+		'plantName2': $("div#plantName-" + rowId).text(),
+		'pQty2': $("div#pQty-" + rowId).text(),
+		'datepicker_sow2': $("div#datepicker_sow-" + rowId).text(),
+		'datepicker_harvest2': $("div#datepicker_harvest-" + rowId).text(),
+		'pVol2': $("div#pVol-" + rowId).text(),
+		'pPrice2': $("div#pPrice-" + rowId).text(),
+		'total2': $("div#total-" + rowId).text(),
+		//'diary_name': diaryn,
+		'id2': rowId
+
+	};
+	
+	
+	//console.log(JSON.stringify(dataObj));
+
+	$.ajax({
+		method:"POST",
+		data:dataObj,
+		url:'updatediaryrecord.php',
+		}).done(function(data){
+		console.log(data);
+			
+		}
+	);
 };
-
-
-// function getDiary(e){
-// 	console.log(e.target)
-// 	const diaryname = e.target.attr('id')
-// 	//console.log(e.target)
-//  	//var diaryname =$("#dialogbox p").attr('id'); // get the value of clicked record name
-//  	//var rowId = $('#dialogbox#melon').val();
-//  	console.log(diaryname);
-//  	$('.datadisplay #hiddentable').empty();
-// 	$.ajax({
-// 		method:"GET",
-// 		url:'getdiary.php',
-// 		}).done(function(data){
-// 		console.log(data);
-// 		var str = '';
-// 		//display json data into str in html
-// 		if(data.length > 0){
-// 			for (i=0; i< data.length; i++){
-// 				var rowId = data[i].id;
-// 				str +=
-// 				"<tr class='recordtable'>"
-// 				+"<form class='recordform' method='post' action='updatediaryrecord.php'>"
-// 				+"<td><div name='plantName2' id='plantName-" + rowId + "' contenteditable='true'>"+data[i].name+"</div></td>"
-// 				+"<td><div name='pQty2' contenteditable='true' id='pQty-" + rowId + "'>"+data[i].quantity+"</div></td>"
-// 				+"<td><div name='datepicker_sow2' contenteditable='true' id='datepicker_sow-" + rowId + "'>"+data[i].sow_date+"</div></td>"
-// 				+"<td><div name='datepicker_harvest2' contenteditable='true' id='datepicker_harvest-" + rowId + "'>"+data[i].harvest_date+"</div></td>"
-// 				+"<td><div name='pVol2' contenteditable='true' id='pVol-" + rowId + "'>"+data[i].harvest_volume+"</div></td>"
-// 				+"<td><div name='pPrice2' contenteditable='true' id='pPrice-" + rowId + "'>"+data[i].price+"</div></td>"
-// 				+"<td><div name='total2' contenteditable='true' id='total-" + rowId + "'>"+data[i].total_amt+"</div></td>"
-// 				+"<td class='hidden' id='diary_name'><div name='diary_name2'>"+data[i].diary_name+"</div></td>"
-// 				+"<td class='hidden' id='id2'><div name='id'>"+data[i].id+"</div></td>"
-// 				+"<td><input type='submit' value='"+data[i].id+"' id='recordsavebtn'></td></form>"
-// 				+"</tr>" ;
-// 				console.log(rowId, data[i].name);
-// 			}
-// 			if(str != ""){
-//         		$(".datadisplay #hiddentable").append(str).removeClass("hidden");
-//     		//$('#recordsavebtn').click(updateDiary);
-// 			}
-// 		}	
-// 		});
-//  };
-
-
-// diary record is retrieved by clicking the #recordsavebtn, it posted the record to database
-// function updateDiary(){	
-// 	var rowId = $('#id2').text();
-// 	console.log(rowId);
-// 	console.log(diaryname);
-// 	var dataObj = {"data":[]};
-// 	$("#hiddentable recordtable >td").each(function(){ 		
-// 	var obj = { "name":$(this).find('div#plantName-' + rowId ).text(), 
-// 				"quantity":$(this).find('div#pQty-' + rowId  ).text(), 
-// 				"sow_date":$(this).find('div#datepicker_sow-' + rowId ).text(), 
-// 				"harvest_date": $(this).find('div#datepicker_harvest-' + rowId ).text(), 
-// 				"harvest_volume": $(this).find('div#pVol-' + rowId ).text(),
-// 				"price": $(this).find('div#pPrice-' + rowId ).text(),
-// 				"total_amt": $(this).find('div#total-' + rowId ).text(),
-// 				"id": $(this).find('div#id2').text(),
-// 				};
-
-// 				console.log(obj);
-				
-// 		dataObj["data"].push(obj);	
-// 		console.log(dataObj["data"][0]);
-// 			//console.log(result);
-// 	});	
-// 	console.log(JSON.stringify(dataObj));
-
-// 	var request = $.ajax({
-// 	   url: "updatediaryrecord.php",
-// 	   method: "POST",
-// 	   data: dataObj,
-// 	   dataType: "JSON",
-// 	   success: function(data)
-// 	   {console.log(data);}
-// }) 
-// };
-
-
-// function getDiary(){
-// 	$.ajax({
-// 	url : 'getdiary.php',
-// 	method:'GET',
-// 	// data: { "name":name, 
-// 	// 		"quantity": quantity, 
-// 	// 		"sow_date":sow_date, 
-// 	// 		"harvest_date":harvest_date, 
-// 	// 		"harvest_volume": harvest_volume,
-// 	// 		"price": price,
-// 	// 		"total_amt": total_amt},	
-	
-// 	}).done(function(data){
-// 		console.log(data);
-// 		var str = '';
-// 		//display json data into str in html
-// 		for (i=0; i< data.length; i++){
-// 			str +='<div class="item-details">' + 'plantName:' + data[i].name + '<br/>' +
-// 				  'quantity:' + data[i].quantity + '<br/>' +
-// 				  'sowing date:' + data[i].sow_date + '<br/>' +
-// 				  'harvest date:' + data[i].harvest_date + '<br/>' +
-// 				  'harvest volume:' + data[i].harvest_volume + '<br/>' +
-// 				  'price:' + data[i].price + '<br/>' +
-// 				  'total amount:' + data[i].total_amt + '<br/>' +
-// 				  '</div>';
-// 		}
-// 		$('.datadisplay').empty();
-// 		$(".datadisplay").append(str);
-// 	});	
-// };
-
-
-
- // function getDiary(){
- // 	var diaryname =$("#dialogbox p").attr('id'); // get the value of clicked record name
- // 	//var rowId = $('#dialogbox#melon').val();
- // 	console.log(diaryname);
- // 	$('.datadisplay #hiddentable').empty();
-	// $.ajax({
-	// 	method:"GET",
-	// 	url:'getdiary.php',
-	// 	}).done(function(data){
-	// 	console.log(data);
-	// 	var str = '';
-	// 	//display json data into str in html
-	// 	if(data.length > 0){
-	// 		for (i=0; i< data.length; i++){
-	// 			var rowId = data[i].id;
-	// 			str +=
-	// 			"<tr class='recordtable'>"
-	// 			+"<form class='recordform' method='post' action='updatediaryrecord.php'>"
-	// 			+"<td><div name='plantName2' id='plantName-" + rowId + "' contenteditable='true'>"+data[i].name+"</div></td>"
-	// 			+"<td><div name='pQty2' contenteditable='true' id='pQty-" + rowId + "'>"+data[i].quantity+"</div></td>"
-	// 			+"<td><div name='datepicker_sow2' contenteditable='true' id='datepicker_sow-" + rowId + "'>"+data[i].sow_date+"</div></td>"
-	// 			+"<td><div name='datepicker_harvest2' contenteditable='true' id='datepicker_harvest-" + rowId + "'>"+data[i].harvest_date+"</div></td>"
-	// 			+"<td><div name='pVol2' contenteditable='true' id='pVol-" + rowId + "'>"+data[i].harvest_volume+"</div></td>"
-	// 			+"<td><div name='pPrice2' contenteditable='true' id='pPrice-" + rowId + "'>"+data[i].price+"</div></td>"
-	// 			+"<td><div name='total2' contenteditable='true' id='total-" + rowId + "'>"+data[i].total_amt+"</div></td>"
-	// 			+"<td class='hidden' id='diary_name'><div name='diary_name2'>"+data[i].diary_name+"</div></td>"
-	// 			+"<td class='hidden' id='id2'><div name='id'>"+data[i].id+"</div></td>"
-	// 			+"<td><input type='submit' value='"+data[i].id+"' id='recordsavebtn'></td></form>"
-	// 			+"</tr>" ;
-	// 			console.log(rowId, data[i].name);
-	// 		}
-	// 		if(str != ""){
- //        		$(".datadisplay #hiddentable").append(str).removeClass("hidden");
- //    		//$('#recordsavebtn').click(updateDiary);
-	// 		}
-	// 	}	
-	// 	});
- // };

@@ -7,7 +7,7 @@ header('Content-type:application/json');
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT * FROM `photo` WHERE user_id = $_SESSION['user_id'];"; 
+$sql = "SELECT * FROM `photo` WHERE user_id = $user_id;"; 
 //$result = mysqli_query($sql) or exit('could not be executed!');
 $sql = rtrim($sql, ',');
 

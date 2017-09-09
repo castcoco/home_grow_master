@@ -6,13 +6,13 @@
 	$cookie_name = "loggedin";
 	
 	$username = mysqli_real_escape_string($conn, trim($_POST['username']));
-	//$password = mysqli_real_escape_string($conn, trim(md5($_POST['password'])));
+
 	$password = mysqli_real_escape_string($conn, trim(($_POST['password'])));
 	
 	$password_encrypted = password_hash($password, PASSWORD_DEFAULT); 
 	var_dump($password_encrypted);
-	
-	$sql = "SELECT id,username,email FROM users WHERE (`username` = '$username')";
+
+	$sql = "SELECT `username`, `password` FROM users WHERE (`username` = '$username')";
 	$sql = rtrim($sql, ',');
 	$result = $conn->query($sql);
 	
@@ -24,11 +24,12 @@
 		$_SESSION['username'] = $user['username'];
 		if (password_verify($password, $user["password"]))
 		{
-		echo 'success';
+			echo 'success';
 		}
 		else
 		{
 			echo 'fail!';	
+
 		}
 		setcookie("loggedin", 'true');
 		header('Location: /index.html');
@@ -37,16 +38,17 @@
 	else
 	{
 		echo "Login fail! Please try again!";
+		exit;
 	} 
-	
-	//validate
+		//validate
 	
 	if (empty($username) || empty($password))
 	{
-		//echo "username and password are missing!!";
-		header('Location: /index.html#');
+		echo "username and password are missing!!";
+		//header('Location: /index.html#');
 		exit();
-	}
+	}	
+	
 	
 	$conn->close();
 	

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Home Garden</title>
+  <title>Home Garden - Photo Upload</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content= "Home Grow Master let you to upload the garden photo in the server so that users can monitor the garden by viewing in gallery.">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,7 +19,6 @@
 
 <body>
 <header id="navigationHeader"></header>
-
 <nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -35,9 +35,9 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="gardenplan.html">Garden Planner</a></li>
-          <li><a href="harvest_diary.html">Harvest Diary</a></li>
-          <li><a href="myphoto.html">My Photo</a></li>
-          <li><a href="gallery.html">My Gallery</a></li>
+          <li><a href="harvestdiary.html">Harvest Diary</a></li>
+          <li class="photohide"><a href="myphoto.html">My Photo</a></li>
+          <li class="photohide"><a href="gallery.html">My Gallery</a></li>
         </ul>
       </li>
       <li><a href="plantsearch.html">Plant Search</a></li>
@@ -50,11 +50,12 @@
       <li class="logoutHide"><a class="logoutbtn" href="logout.php"><span class="loggedout"></span>Logout</a></li>
     </ul>
   </div>
+  </div>
 </nav>
 
-
 <div class="container">
-  <h3>Home Grow Master</h3>
+  <h1>Photo Gallery</h1>
+  <p>Enjoy your garden gallery to keep track your garden.</p>
   <br/> 
   <br/>
   <div class="wrapper">
@@ -62,13 +63,14 @@
       <div class="uploadBox">        
         <div id = "droparea">
           <i class="fa fa-upload" aria-hidden="true"></i>
-          <label for ="chooseFiles"><strong>Choose a file to upload</strong>.</label>
-          <input type = "file" id = "fileupload" name="attachments[]" multiple />         
+          <label for="chooseFiles"><strong>Choose a file to upload</strong>.</label>
+          <input type="file" id="fileupload" name="attachments[]" multiple />         
         </div>
-   </form>
       </div>
-    <h1 id="error"></h1><br><br>
-    <h1 id="progress"></h1><br><br>
+   </form>
+    
+    <h2 id="error"></h2><br><br>
+    <h3 id="progress"></h3><br><br>
     <div id="files">Image Preview</div>
   </div>
   <br/>
@@ -86,15 +88,14 @@
         <input type="text" class="formGp" placeholder="enter your username" id="username" name="username">
         <br>
         <label>Password</label>
-        <div id='pwdfield'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
+        <div id='pwdfield1'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
         <button type="submit" id="loginbtn" class="btn">Login</button>
         <button class="unmask" type="button" title="mask/unmask password" onclick="unmask()">Unmask</button></div>
         <br>
         <hr>
         <br>
         <div class="pwd-group">
-        <input type="checkbox" checked="checked"> Remember Me
-        <p><a href="forgot_password.html">Forget Password</a></p>
+        <p><a href="forgot-password.html">Forget Password</a></p>
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display ='none'">Cancel</button>       
         </div>
       </div>
@@ -121,7 +122,8 @@
         <button type="submit" id="registerbtn" value="register">Create an Account</button>
         <div id='ack'></div>
 
-        <hr>       
+        <hr>   
+        <p><a href="privacyterm.html">Privacy Term</a></p>     
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodalsignup').style.display ='none'">Cancel</button>
       </div>
     </form>
@@ -244,7 +246,7 @@
 <script type="text/javascript" src="jquery.iframe-transport.js"></script>
 <script type="text/javascript" src="jquery.fileupload.js"></script>
 </body>
-<br/>
-<br/>
+<br>
+<br>
 <footer>Educational Purpose</footer>
 </html>

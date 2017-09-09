@@ -1,136 +1,115 @@
 .searchForm{
-		float:left;
-	}
+	float:left;
+}
 
-  #sunOp{
-    margin-top:20px;
-  }
-	.plantSearchMenu{
-		float:right;
-	}
-	#submitButton #clearButton{
-		width:100px;
-		height:auto;
-		font-size: 1.2em;
-	}
-	.searchBoxAutoInput{
-		width:100%;
-	}
-	.fa{
-		cursor:pointer;
-		position:relative;
-		width:40px;
-		height:40px;
-		color:#388E8E;
-		font-size:16px;
-		z-index:2;
-		cursor:pointer;
-	}
+#sunOp{
+	margin-top:20px;
+}
+.plantSearchMenu{
+	float:right;
+}
+#submitButton #clearButton{
+	width:100px;
+	height:auto;
+	font-size: 1.2em;
+}
+.searchBoxAutoInput{
+	width:100%;
+}
 
-	#result{
-		width:100;
-		background-color:limegreen;
-		height:200px;
-	}
-	.col-sm-6 pull-right{
-		background-color: limegreen;
-	}
-	.flex-center {
+#result{
+	width:100;
+	background-color:limegreen;
+	height:200px;
+}
+.col-sm-6 pull-right{
+	background-color: limegreen;
+}
+.flex-center {
+	display:flex;
+	align-items:center;
+}
+@media ( min-width:768px ) {
+.sm-flex-center {
     display:flex;
     align-items:center;
-	}
-	@media ( min-width:768px ) {
-	    .sm-flex-center {
-	        display:flex;
-	        align-items:center;
-	    }
-	}
-	@media ( min-width: 992px ) {
-	    .md-flex-center {
-	        display:flex;
-	        align-items:center;
-	    }
-	}
-	@media ( min-width: 1200px ) {
-	    .lg-flex-center {
-	        display:flex;
-	        align-items:center;
-	    }
-	}
-	#typeMenu{
+}
+}
+@media ( min-width: 992px ) {
+.md-flex-center {
+    display:flex;
+    align-items:center;
+}
+}
+@media ( min-width: 1200px ) {
+.lg-flex-center {
+    display:flex;
+    align-items:center;
+}
+}
+#typeMenu{
 	margin-left:2%;
-	}
+}
 
 
-	.label{
-		text-align: left;
-		line-height:10px;
-		float:left;
-		width:10%;
-		display: block;
-	}
+.label{
+	text-align: left;
+	line-height:10px;
+	float:left;
+	width:10%;
+	display: block;
+}
 
-	input[type=submit]{
-		padding:8px 0px;
-		width:10%;
-		box-sizing: border-box;
-		color:white;
-		background-color: #7D9EC0;
-		border:3px solid #B7B7B7;
-		vertical-align: middle;
-		margin: 0 auto;
-		display: block;
-	}
-  .col-sm-6 {
-    margin:0 auto;
-  }
-	hr{
-		border-color: :#AAAAAA;		/*wor in chrome and safari*/
-		background-color: #AAAAAA; /*work in firefox and opera*/
-		border:1px thin;
-	}
-	.sunLight{
+.col-sm-6 {
+	margin:0 auto;
+}
+hr{
+	border-color: :#AAAAAA;		/*wor in chrome and safari*/
+	background-color: #AAAAAA; /*work in firefox and opera*/
+	border:1px thin;
+}
+.sunLight{
 	background-image:url(images/sun.jpg);
 	background-size: 45px 45px;
 	width:45px;
 	height:45px;
 	vertical-align: middle;
-	}
-	.soil{
-		background-image:url(images/soil.jpg);
-		background-size: 45px 45px;
-		width:45px;
-		height:45px;
-		vertical-align: middle;
-	}
-	.plantColor{
-		background-image:url(images/color1.png);
-		background-size: 45px 45px;
-		width:45px;
-		height:45px;
-		vertical-align: middle;
-	}
-	.ul{
-		list-style-type:none;
-	}
-	.tablerow{
-		font-weight: bold;
-		font-size:1.2em;
-	}
-	.tablelist{
-		padding-left:5%;
-	}
-	#tableresult td{
-		table-layout:fixed;
-		overflow:hidden;
-    height: 50px;
-    font-size:1.6em;
-	}
-  #tableresult{
-    width:100%;
-    border:1px dashed green;
-    background:gold;  
-    margin:0 auto;
-  }
+}
+.soil{
+	background-image:url(images/soil.jpg);
+	background-size: 45px 45px;
+	width:45px;
+	height:45px;
+	vertical-align: middle;
+}
+.plantColor{
+	background-image:url(images/color1.png);
+	background-size: 45px 45px;
+	width:45px;
+	height:45px;
+	vertical-align: middle;
+}
+.ul{
+	list-style-type:none;
+}
+.tablerow{
+	font-weight: bold;
+	font-size:1em;
+}
+.tablelist{
+	padding-left:5%;
+}
+#tableresult td{
+	table-layout:fixed;
+	overflow:hidden;
+	height: 20px;
+	font-size:1em;
+}
+#tableresult{
+	width:100%;
+	border:1px dashed green;
+	background:gold;  
+	margin:0 auto;
+}
 
 

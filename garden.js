@@ -101,19 +101,28 @@ function saveform(){
 }
 
 
-//source is extracted from https://stackoverflow.com/questions/33668608/generate-an-image-of-a-div-and-save-as
+
 function saveToImg(){
 	$("#saveIcon").click(function(){
 		html2canvas($('#containerDrop'), {
 			onrendered: function(canvas) {
-				var img = canvas.toDataURL();
-				downloadURI(img, "garden.png");
-				//window.open(img, "01.png");
-  			},
+				if (canvas.msToBlob)
+				{
+					//for IE
+					var blob = canvas.msToBlob();
+					window.navigator.msSaveBlob(blob,"garden.png");
+				}
+				else{
+					//for other browsers
+					var img = canvas.toDataURL();
+					downloadURI(img, "garden.png");
+				}
+  			}
 		});
 	})	
 };
 
+//source is extracted from https://stackoverflow.com/questions/33668608/generate-an-image-of-a-div-and-save-as
 function downloadURI(uri, name) {
     var link = document.createElement("a");
 

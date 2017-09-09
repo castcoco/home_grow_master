@@ -1,185 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Home Garden</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="mainregister.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="contactform.css">
-  <link rel="stylesheet" type="text/css" href="commoncss.css">
-</head>
-<body>
-<header id="navigationHeader"></header>
+    <head>
+        <title>Home Garden - Contact Us</title>
+        <meta charset="utf-8">
+        <meta name="description" content= "Home Grow Master weclomes every comment about the improvement of website.Feel free to contact the administrator by filling in the form.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="mainregister.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="contactform.css">
+        <link rel="stylesheet" type="text/css" href="commoncss.css">
+    </head>
+    <body>
+        <header id="navigationHeader"></header>
+        <nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="index.html">HomeGrowMaster</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="gardenplan.html">Garden Planner</a></li>
+                                <li><a href="harvestdiary.html">Harvest Diary</a></li>
+                                <li class="photohide"><a href="myphoto.html">My Photo</a></li>
+                                <li class="photohide"><a href="gallery.html">My Gallery</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="plantsearch.html">Plant Search</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
 
-<nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="index.html">HomeGrowMaster</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="gardenplan.html">Garden Planner</a></li>
-          <li><a href="harvest_diary.html">Harvest Diary</a></li>
-          <li><a href="myphoto.html">My Photo</a></li>
-          <li><a href="gallery.html">My Gallery</a></li>
-        </ul>
-      </li>
-      <li><a href="plantsearch.html">Plant Search</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-
-  <ul class="nav navbar-nav navbar-right">
-      <li class="loginHide"><a id="signupbtn" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li class="loginHide"><a id="mybtn" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li class="logoutHide"><a class="logoutbtn" href="logout.php"><span class="loggedout"></span>Logout</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="container">
-  <h3 id="h3title">Home Grow Master</h3>
-  <p></p>
-  <div class="general top-container">
-          <br>
-          <h2 class="contact">Contact Form</h2>
-          <p>You are welcome to contact us in regard to the website!</p>
-          <br>
-          <hr>
-  </div>
-          <form action="" method="post" id="contactform">
-            <div class="contactUs">
-              <table class="center">
-                <tr>
-                  <td><label for="firstname">First Name </label></td>
-                  <td><input type="text" placeholder="Your first name" id="firstname"></td>
-                </tr>
-                <tr>
-                  <td><label for="lastname">Last Name</label></td>
-                  <td><input type="text" placeholder="Your last name" id="lastname"></td>
-                </tr>
-                <tr>
-                  <td><label for="email">Email</label></td>
-                  <td><input type="text" placeholder="Your e-mail" id="email"></td>
-                </tr>
-                <tr>
-                  <td><label for="subject">Subject</label></td>
-                  <td><input type="text" placeholder="Subject.." id="subject"></td>
-                </tr>
-                <tr>
-                  <td><label for="message">Message </label></td>
-                  <td><input type="text" placeholder="Message.." id="message"></td>
-                </tr>  
-              </table>
-            <div>
-              <input type="submit" id="submitButton" value="Submit">
-              </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="loginHide"><a id="signupbtn" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li class="loginHide"><a id="mybtn" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li class="logoutHide"><a class="logoutbtn" href="logout.php"><span class="loggedout"></span>Logout</a></li>
+                    </ul>
+                </div>
             </div>
-          </form> 
-        <br>
-</div>
+        </nav>
 
-<!--modal-->
-<div id="mymodal" class="modal">
-    <form class="modalLogin" action="dummysignin.php" method="POST">
-      <div class="modal-content">
-        <span class="close" onclick="document.getElementById('mymodal').style.display ='none'">&times;</span>
-        <h4>Login</h4>        
-        <label>Username</label>
-        <input type="text" class="formGp" placeholder="enter your username" id="username" name="username">
-        <br>
-        <label>Password</label>
-        <div id='pwdfield'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
-        <button class="unmask" type="button" title="mask/unmask password" onclick="unmask()">Show</button></div>
-        <br />
-        <br />
-        <button type="submit" id="loginbtn" class="btn">Login</button>
-        <hr>
-        <div id='loginerror'></div>
-        <br>
-        <div class="pwd-group">
-        <input type="checkbox" checked="checked"> Remember Me
-        <p><a href="forgot_password.html">Forget Password</a></p>
-        <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display ='none'">Cancel</button>       
+        <div class="container">
+            <div class="general top-container">
+                <br>
+                <h1 class="contact">Contact Form</h1>
+                <p>You are welcome to contact us in regard to the website!</p>
+                <br>
+                <hr>
+            </div>
+            
+            <div id="info"></div>
+            
+            <form action="contactmail.php" method="post" id="contactform">
+                <div class="contactUs">
+                    <table class="center">
+                        <tr>
+                            <td><label for="firstname">First Name </label></td>
+                            <td><input type="text" placeholder="Your first name" id="firstname" name="firstname"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="lastname">Last Name</label></td>
+                            <td><input type="text" placeholder="Your last name" id="lastname" name="lastname"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="email">Email</label></td>
+                            <td><input type="text" placeholder="Your e-mail" id="email" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="subject">Subject</label></td>
+                            <td><input type="text" placeholder="Subject.." id="subject" name="subject"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="message">Message </label></td>
+                            <td><input type="text" placeholder="Message.." id="message" name="message"></td>
+                        </tr>  
+                    </table>
+                    <div>
+                        <input type="submit" id="submitButton" value="Submit">
+                    </div>
+                </div>
+            </form> 
+            <br>
         </div>
-      </div>
-    </form>
-</div>
 
+        <!--modal-->
+        <div id="mymodal" class="modal">
+            <form class="modalLogin" action="dummysignin.php" method="POST">
+                <div class="modal-content">
+                    <span class="close" onclick="document.getElementById('mymodal').style.display = 'none'">&times;</span>
+                    <h4>Login</h4>        
+                    <label>Username</label>
+                    <input type="text" class="formGp" placeholder="enter your username" id="username" name="username">
+                    <br>
+                    <label>Password</label>
+                    <div id='pwdfield1'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
+                        <button class="unmask" type="button" title="mask/unmask password" onclick="unmask()">Show</button></div>
+                    <br>
 
-  <!--modal for sign up-->
-  <div id="mymodalsignup" class="modal">
-    <form class="modalSignUp" action="mainregister.php" method="POST">
-      <div class="modal-content">
-        <span class="close" onclick="document.getElementById('mymodalsignup').style.display='none'">&times;</span>
-        <h4>Sign Up</h4>
-        <label>Username</label>
-        <input type="text" class="formGp" placeholder="enter your email" id='signUser' name='signUser'>
+                    <button type="submit" id="loginbtn" class="btn">Login</button>
+                    <hr>
+                    <div id='loginerror'></div>
+                    <br>
+                    <div class="pwd-group">
+                        <p><a href="forgot-password.html">Forget Password</a></p>
+                        <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display = 'none'">Cancel</button>       
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--modal for sign up-->
+        <div id="mymodalsignup" class="modal">
+            <form class="modalSignUp" action="mainregister.php" method="POST">
+                <div class="modal-content">
+                    <span class="close" onclick="document.getElementById('mymodalsignup').style.display = 'none'">&times;</span>
+                    <h4>Sign Up</h4>
+                    <label>Username</label>
+                    <input type="text" class="formGp" placeholder="enter your email" id='signUser' name='signUser'>
+                    <br/>
+                    <label>Email</label>
+                    <input type="text" class="formGp" placeholder="enter your email" id=signEmail name='signEmail'>
+                    <br/>
+                    <label>Password</label>
+                    <div id='pwdfield'><input type="password" class="formGpPass" placeholder="enter your password" id="signPwd" name='signPwd'><button class="unmask" type="button" title="mask/unmask password" onclick="unmaskSignup()">Show</button></div>
+                    <br>
+                    <div id='signuperror'></div>
+                    <br>
+                    <button type="submit" id="registerbtn" value="register">Create an Account</button>
+                    <hr>    
+                    <p><a href="privacyterm.html">Privacy Term</a></p>    
+                    <button type="button" class="cancelbtn" onclick="document.getElementById('mymodalsignup').style.display = 'none'">Cancel</button>
+                </div>
+            </form>
+        </div>
         <br/>
-        <label>Email</label>
-        <input type="text" class="formGp" placeholder="enter your email" id=signEmail name='signEmail'>
-        <br/>
-        <label>Password</label>
-        <div id='pwdfield'><input type="password" class="formGpPass" placeholder="enter your password" id="signPwd" name='signPwd'>
-        <button class="unmask" type="button" title="mask/unmask password" onclick="unmaskSignup()">Show</button></div>
-        <br>
-        <br>
-        <button type="submit" id="registerbtn" value="register">Create an Account</button>
-        <div id='signuperror'></div>
+        <footer>Copyright</footer>
+        
+        <script>
 
-        <hr>       
-        <button type="button" class="cancelbtn" onclick="document.getElementById('mymodalsignup').style.display ='none'">Cancel</button>
-      </div>
-    </form>
-  </div>
+            var modal = document.getElementById('mymodal');
+            var btn = document.getElementById('mybtn');
+            // Get the <span> element that closes the modal
+            // var span = document.getElementsByClassName("close")[0];
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+            // span.onclick = function(){
+            //   modal.style.display = "none";
+            // }
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
 
-<script>
-  //for sign in 
-  var modal = document.getElementById('mymodal');
-  var btn= document.getElementById('mybtn');
-  // Get the <span> element that closes the modal
-  // var span = document.getElementsByClassName("close")[0];
-  btn.onclick = function(){
-    modal.style.display ="block";
-  }
-  // span.onclick = function(){
-  //   modal.style.display = "none";
-  // }
-  window.onclick = function(event){
-    if(event.target == modal){
-      modal.style.display ="none";
-    }
-  }
+            //for sign up
+            var signupmodal = document.getElementById('mymodalsignup');
+            var mysignupbtn = document.getElementById('signupbtn');
+            // var span = document.getElementsByClassName("close")[0];
+            mysignupbtn.onclick = function () {
+                signupmodal.style.display = "block";
+            }
+            // span.onclick = function(){
+            //   signupmodal.style.display = "none";
+            // }
+            window.onclinck = function (event) {
+                if (event.target == signupmodal) {
+                    signupmodal.style.display = "none";
+                }
+            }
 
-  //for sign up
-  var signupmodal = document.getElementById('mymodalsignup');
-  var mysignupbtn = document.getElementById('signupbtn');
-  // var span = document.getElementsByClassName("close")[0];
-  mysignupbtn.onclick = function(){
-    signupmodal.style.display = "block";
-  }
-  // span.onclick = function(){
-  //   signupmodal.style.display = "none";
-  // }
-  window.onclinck = function(event){
-    if(event.target == signupmodal){
-      signupmodal.style.display = "none";
-    }
-  }
 
-</script>
-<script src="contactform.js"></script>
-</body>
-<br/>
-<footer>Copyright</footer>
+            //mask password for sign in and sign up
+            function unmask() {
+                var passUnmask = document.getElementById('password').type = 'text';
+                var passValue = password.value;
+                console.log(passValue);
+                $('.unmask').on('click', function () {
+                    if (password.type == 'password') {
+                        password.type = 'text';
+                    } else {
+                        password.type = 'password';
+                    }
+                    password.value = passValue;
+                });
+            }
+
+            function unmaskSignup() {
+                var passUnmask = document.getElementById('signPwd').type = 'text';
+                var passValue = signPwd.value;
+                console.log(passValue);
+                $('.unmask').on('click', function () {
+                    if (signPwd.type == 'password') {
+                        signPwd.type = 'text';
+                    } else {
+                        signPwd.type = 'password';
+                    }
+                    signPwd.value = passValue;
+                });
+            }
+        </script>
+        <script src="contactform.js"></script>
+    </body>
 </html>

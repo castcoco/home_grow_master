@@ -4,6 +4,8 @@ width:500px;
 	border: 1px;
 	background-size: 10px 10px;
 	background-image: linear-gradient(to right, powderblue 1px, transparent 1px), linear-gradient(to bottom, powderblue 1px, transparent 1px);
+	background-image: -o-linear-gradient(to right, powderblue 1px, transparent 1px),-o-linear-gradient(to bottom, powderblue 1px, transparent 1px);
+
 	background-color: #ffffff;
 	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
 	border-radius: 15px;
@@ -29,20 +31,84 @@ width:500px;
 	padding:10px;
 }
 
-.littleIcon{
-	display: inline-block;
+.littleIcon {
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30px;
 	padding-right:10px;
 	cursor: pointer;
+	position:relative;
 }
 
+.imgtext{
+	position:relative;
+	display:inline-block;
+}
+.imgtext .erase{
+	visibility: hidden;
+    width: 120px;
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+   
+}
+
+.imgtext:hover .erase{
+	visibility:visible;
+	opacity:1;
+}
+
+
+.imgtext .printtext{
+	visibility: hidden;
+    width: 120px;
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+   
+}
+
+.imgtext:hover .printtext{
+	visibility:visible;
+	opacity:1;
+}
+
+
+.imgtext .snapshot{
+	visibility: hidden;
+    width: 120px;
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+   
+}
+
+.imgtext:hover .snapshot{
+	visibility:visible;
+	opacity:1;
+}
 #operation-bar{
 	text-align:center;
 	margin:0 auto;
 	width:40%;
 	max-width:340px;
+
 }
 
 #dragObject{
@@ -107,10 +173,3 @@ width:500px;
 #controls{
 	margin-top:80px;
 }
-
-/*popup element after form is submitted*/
-/*.popUpElem{
-	visibility:hidden;
-	position:absolute;
-	color:blue;
-}*/

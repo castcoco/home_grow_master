@@ -1,66 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Home Garden</title>
+  <title>Home Garden - Photo Gallery</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content= "Garden photo gallery helps you to monitor your garden after uploading your garden photo. You can preview it anytime.">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="mainregister.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="commoncss.css">
   <link rel="stylesheet" type="text/css" href="demo_myphoto.css">
- 	 
-   <style>
-
-   </style>
+ 	
 </head>
-
-	 <body>
+	<body>
 
 	<header id="navigationHeader"></header>
+<nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html">HomeGrowMaster</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="gardenplan.html">Garden Planner</a></li>
+          <li><a href="harvestdiary.html">Harvest Diary</a></li>
+          <li class="photohide"><a href="myphoto.html">My Photo</a></li>
+          <li class="photohide"><a href="gallery.html">My Gallery</a></li>
+        </ul>
+      </li>
+      <li><a href="plantsearch.html">Plant Search</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
 
-	<nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>                        
-	      </button>
-	      <a class="navbar-brand" href="index.html">HomeGrowMaster</a>
-	    </div>
-	    <div class="collapse navbar-collapse" id="myNavbar">
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="index.html">Home</a></li>
-	      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
-	        <ul class="dropdown-menu">
-	          <li><a href="gardenplan.html">Garden Planner</a></li>
-	          <li><a href="harvest_diary.html">Harvest Diary</a></li>
-	          <li><a href="myphoto.html">My Photo</a></li>
-	          <li><a href="gallery.html">My Gallery</a></li>
-	        </ul>
-	      </li>
-	      <li><a href="plantsearch.html">Plant Search</a></li>
-	      <li><a href="contact.html">Contact</a></li>
-	    </ul>
-
-	  <ul class="nav navbar-nav navbar-right">
-	      <li class="loginHide"><a id="signupbtn" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	      <li class="loginHide"><a id="mybtn" href="#mymodal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	      <li class="logoutHide"><a class="logoutbtn" href="logout.php"><span class="loggedout"></span>Logout</a></li>
-	    </ul>
-	  </div>
-	</nav>
+  <ul class="nav navbar-nav navbar-right">
+      <li class="loginHide"><a id="signupbtn" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li class="loginHide"><a id="mybtn" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li class="logoutHide"><a class="logoutbtn" href="logout.php"><span class="loggedout"></span>Logout</a></li>
+    </ul>
+  </div>
+  </div>
+</nav>
 	 <h1 id="photogallery">Photo Gallery</h1>
 	 	<div class = "gallery-content">
 	 		<table id='imageTable'>
-        <p class="hidden" id="noimage">No image in the gallery!</p>
+        <!-- <tr>
+        <td><p class="hidden" id="noimage">No image in the gallery!</p></td>
+        </tr> -->
       </table>
 	 	</div>
 	 
 
-	 <!--modal-->
+	
+<!--modal-->
 <div id="mymodal" class="modal">
     <form class="modalLogin" action="dummysignin.php" method="POST">
       <div class="modal-content">
@@ -70,15 +70,16 @@
         <input type="text" class="formGp" placeholder="enter your username" id="username" name="username">
         <br>
         <label>Password</label>
-        <div id='pwdfield'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
-        <button type="submit" id="loginbtn" class="btn">Login</button>
+        <div id='pwdfield1'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
         <button class="unmask" type="button" title="mask/unmask password" onclick="unmask()">Show</button></div>
         <br>
+
+        <button type="submit" id="loginbtn" class="btn">Login</button>
         <hr>
+        <div id='loginerror'></div>
         <br>
         <div class="pwd-group">
-        <input type="checkbox" checked="checked"> Remember Me
-        <p><a href="forgot_password.html">Forget Password</a></p>
+        <p><a href="forgot-password.html">Forget Password</a></p>
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display ='none'">Cancel</button>       
         </div>
       </div>
@@ -101,11 +102,11 @@
         <div id='pwdfield'><input type="password" class="formGpPass" placeholder="enter your password" id="signPwd" name='signPwd'>
         <button class="unmask" type="button" title="mask/unmask password" onclick="unmaskSignup()">Show</button></div>
         <br>
+        <div id='signuperror'></div>
         <br>
         <button type="submit" id="registerbtn" value="register">Create an Account</button>
-        <div id='ack'></div>
-
         <hr>       
+        <p><a href="privacyterm.html">Privacy Term</a></p> 
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodalsignup').style.display ='none'">Cancel</button>
       </div>
     </form>
@@ -199,7 +200,7 @@
 			for (i=0; i<data.length; i++){
 				img+=
         "<td class='arrange'>"
-        + "<form class='imageform' method='get' action= 'deleteimage.php'>"+"<img src="+data[i].path+" style='width:30%; height:20%; margin-right:1%;margin-bottom:0.5em;'><p><input type='hidden' name='product_id' value="+data[i].id+"><input type='submit' value='delete' id='deletehide'></p></form>"
+        + "<form class='imageform' method='get' action= 'deleteimage.php'>"+"<img src="+data[i].path+" style='width:40%; height:30%; margin-right:1%;margin-bottom:0.5em;'><p><input type='hidden' name='product_id' value="+data[i].id+"><input type='submit' value='delete' id='deletehide'></p></form>"
         +"</td>";
 			}
 
@@ -212,7 +213,8 @@
     else{
       if(data.length==0){
         $('#noimage').removeClass('hidden');
-        ('#deletehide').css(display,none);
+        $('#deletehide').css("display","none");
+        $('#imageTable').html("No image in the gallery!")
       }
     }  
 	});
@@ -221,8 +223,8 @@
 </script>
 
 </body>
-<br />
-<br />
+<br>
+<br>
 <footer>Educational Purpose</footer>
 
  </html>

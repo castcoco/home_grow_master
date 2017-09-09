@@ -1,18 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
- <title>Home Garden - Planning, Growing, Organising and Searching Plants</title>
- <meta charset="UTF-8">
+  <title>Home Garden - Harvest Diary</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content= "Home Grow Master provides a way to plan your garden and search for plants, allow you to grow your plants easily.">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="mainregister.js"></script>
+  <meta name="description" content= "Harvest Diary assists you to track record for your garden.">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="harvesttable_edit.js"></script> 
+  <script type="text/javascript" src="mainregister.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="plantdiary.css">
   <link rel="stylesheet" type="text/css" href="commoncss.css">
-  <link rel="stylesheet" type="text/css" href="navbar.css">
-  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <style>
+    .item-details{
+      margin-top:10px;
+      border:1.5px solid black;
+      padding:6px;
+      font-size: 16px;
+      font-family: Georgia;
+    }
+    
+    .datadisplay{
+      background:#ffffff;
+      width:100%;
+      height:auto;
+    }
+    
+  </style>
 </head>
 <body>
 <header id="navigationHeader"></header>
@@ -50,32 +69,100 @@
   </div>
 </nav>
 
-<div class="container">
-  <p></p>
-      <div class="general top-container">
-      <br>
-          <h2 class="h2title">Welcome to Home Grow Master</h2>
-          <div id="loginmsg"></div>
-          <div class="logoutmsg"></div>
-          <p>Home Grow Master is a new gardening platform for gardeners to plan and organise your garden. 
-          </p>
-          <hr>
-        <div class="subscribeDiv">
-          <h3 class='welcomemsg'> What we have in this page.</h3>
-          <p>In this page, there are 4 main components.</p>
-          <ul>
-            <li>Garden Planner</li>
-            <li>Harvest Diary</li>
-            <li>Upload Photo with Gallery</li>
-            <li>Search Option</li>
-          </ul>
-          <h3 class='welcomemsg'> How to use....</h3>
-            <p>If you would like to monitor the growth of your plants, you can upload the photo and review it in the gallery to keep track your plants!</p>
-        </div>
 
-        
-      </div>
+<div class="container">
+
+  <h3 id="h3title">Home Grow Master</h3>
+  <p></p>
+  	<div class="general top-container">
+    	<br>
+      <h2 class="Gardening">Harvest Diary</h2>
+        <p>Using our harvest diary enables you to know how much you can save and get each year compared with the supermarket.</p>
+    </div>
+    <br>
+    <div class="diaryForm">
+      <div id="dialogbox"></div>
+      <button id="myRecord">My Record</button>
+	    <button id="clearAllBtn">Clear All</button>
+	    <button id="saveBtn">Save</button>
+    </div>
+    
+    <p></p>
+    <table class="myTable" id="myTable">
+      <thead>
+        <tr>
+          <th>Insert</th>
+          <th>Plant Name</th>
+          <th>Quantities</th>
+          <th>Months to Sow</th>
+          <th>Months to Harvest</th>
+          <th>Harvested in KG</th>
+          <th>Price in KG</th>
+          <th>Total Amount</th>
+<!--          <th></th> -->
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tfoot>
+          <td>Grand Total</td>
+          <td> - </td>
+          <td class="sumQty"></td>
+          <td> - </td>
+          <td> - </td>
+          <td class="sumVol"></td>
+          <td></td>
+          <td class="sumAmt">0.00</td>
+          <td></td>
+          
+      </tfoot>
+      <tbody id="editVolume">
+        <tr class="hello">
+          <td><button class="rowBtn">insert</button></td>
+          <td><input type="text" class="plantName" name="plantName"/></td>
+          <td><input type="number" class="pQty" name="pQty" min="0" max="999"/></td>
+          <td><input type="text" class="datepicker_sow" name="datepicker_sow"/></td>
+          <td><input type="text" class="datepicker_harvest" name="datepicker_harvest"/></td>
+          <td><input type="text" class="pVol" name="pVol"/></td>
+          <td><input type="text" class="pPrice" name="pPrice" /></td>
+          <td><div class="total" name="total">0.00</div></td>
+          <td></td>
+<!--          <td><i class="fa fa-trash-o" aria-hidden="true"></i></td> -->
+        </tr>
+        <tr class="hello">
+          <td><button class="rowBtn">insert</button></td>
+          <td><input type="text" class="plantName" name="plantName"/></td>
+          <td><input type="number" class="pQty" name="pQty" min="0" max="999"/></td>
+          <td><input type="text" class="datepicker_sow" name="datepicker_sow"/></td>
+          <td><input type="text" class="datepicker_harvest" name="datepicker_harvest"/></td>
+          <td><input type="text" class="pVol" name="pVol" /></td>
+          <td><input type="text" class="pPrice" name="pPrice" /></td>
+          <td><div class="total">0.00</div></td>
+          <td><input class="deleteBtn" type="button" value="Remove"/></td>
+        </tr>
+      </tbody>   
+    </table>
+    <br/>
+    <div class="datadisplay">
+    <form class='recordform' method='post' action='updatediaryrecord.php'>
+      <table id="hiddentable" class="hidden">
+      <tr class='recordtable'>
+          <th>Plant Name</th>
+          <th>Quantities</th>
+          <th>Months to Sow</th>
+          <th>Months to Harvest</th>
+          <th>Harvested in KG</th>
+          <th>Price in KG</th>
+          <th>Total Amount</th>
+          <th></th>         
+      </tr>
+      
+      </form>
+      </table>
+    </div>
+    <br />
+    <br />
 </div>
+<br />
 
 <!--modal-->
 <div id="mymodal" class="modal">
@@ -130,8 +217,8 @@
     </form>
   </div>
 
-<script>
 
+<script>
   var modal = document.getElementById('mymodal');
   var btn= document.getElementById('mybtn');
   // Get the <span> element that closes the modal
@@ -158,7 +245,7 @@
   // span.onclick = function(){
   //   signupmodal.style.display = "none";
   // }
-  window.onclinck = function(event){
+  window.onclick = function(event){
     if(event.target == signupmodal){
       signupmodal.style.display = "none";
     }
@@ -195,9 +282,11 @@
         signPwd.value = passValue;
       });
   } 
+
 </script>
 
-
+</body>
+<br />
 <br />
 <footer>Educational Purpose</footer>
 </html>

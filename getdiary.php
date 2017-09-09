@@ -1,32 +1,51 @@
 <?php
+
 include_once("connection.php");
 require_once("headfile.php");
 
 //converting db values into json
-header('Content-type:application/json');
+header("Content-type:application/json");
 
-$user_id = $_SESSION['user_id'];
-
-//if (isset($_GET['saveddiaryname']{
-	///$diary_name = $_GET['saveddiaryname'];
-
-$sql = "SELECT id, `name`, quantity, sow_date, harvest_date, harvest_volume, price, total_amt FROM plant_diary WHERE diary_name = 'abc garden' AND user_id = $user_id;";
-//$sql = "SELECT id, name, quantity, sow_date, harvest_date, harvest_volume, price, total_amt FROM plant_diary WHERE `diary_name` = $diary_name AND user_id =$user_id ORDER BY name;";
-
-$sql = rtrim($sql, ',');
-
-//$grand ="SELECT SUM(quantity), SUM(harvest_volume), SUM(total_amt) FROM `plant_diary`";
-//$grand =rtrim($grand, ',');
-
-	if($result = $conn->query($sql))
-	{	
-		$rows = array();
+// Check that user id is set
+if(isset($_SESSION['user_id'])) {
+	$user_id = $_SESSION['user_id'];
+	
+	// Check that data has been sent by the ajax request
+	if (isset($_GET['id2'])){
 		
-		while($row = $result->fetch_assoc())
-		{
-			$rows[] = $row; 
+		$diary_name = $_GET['id2'];
+
+		$sql = 'SELECT `id`, `name`, `quantity`, `sow_date`, `harvest_date`, `harvest_volume`, `price`, `total_amt` FROM `plant_diary` WHERE `diary_name` = "' . $diary_name . '" AND `user_id` = ' . $user_id . ' ORDER BY `name`;';	
+		$sql = rtrim($sql, ',');
+		
+		if($result = $conn->query($sql)) {	
+			
+			$rows = array();
+			
+			while($row = $result->fetch_assoc())
+			{
+				$rows[] = $row; 
+			}
+
+			// return db results
+			echo json_encode($rows);
+
+		} else {
+			// return some text and handle fail in ajax success function
+			echo json_encode("FAIL1");
 		}	
-		echo json_encode($rows);
+
+	} else {
+		// return some text and handle fail in ajax success function
+		echo json_encode("FAIL2");
 	}
-//}
-$conn->close();
+
+	$conn->close(); 
+} else {
+	// return some text and handle fail in ajax success function
+	echo json_encode("FAIL3");
+}
+
+
+
+

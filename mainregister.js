@@ -2,40 +2,92 @@ $(document).ready(function(){
   checkLoggedin();
   register();
   signin();
-  //validation();
   $('.logoutbtn').click(logout);
 });
 
+
+function validation(){
+  var username = $('#signUser');
+  var email = $('#signEmail');
+  var password = $('#signPwd');
+  var valid = true;
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+  if ($.trim(username.val()) ===""){
+    username.css('border-color','red');
+    valid = false;
+  }
+
+  if (!regex.test(email.val())){
+        
+    email.css('border-color','red');
+    valid = false;
+  }
+  if ($.trim(password.val()) === ""){
+    password.css('border-color','red');
+    valid = false;
+  }
+  return valid;
+}
+
 function register(){
-  $('#registerbtn').click(function(e){
+  $('#registerbtn').on('click', function(e){
     e.preventDefault();
+    var username = $('#signUser');
+    var email = $('#signEmail');
+    var password = $('#signPwd');
+    password.css('border-color','#ccc');
+    email.css('border-color','#ccc');
+    username.css('border-color','#ccc');
+    $('#singuperror').empty();
     console.log('register');
-    var username = $('#signUser').val();
-    var email = $('#signEmail').val();
-    var password = $('#signPwd').val();
-    if (username == "" || password == "" || email == "" ){
-      $('div#singuperror').html("Please fill in all the fields").css('color','red');
-    }else{
+    if (validation()){
+        console.log("validation if");
         //serialise the data
         $.post( $('.modalSignUp').attr('action'),
-        $('.modalSignUp :input').serializeArray(),
-        function(info){
-        //call back 
-        $('div#singuperror').empty();
-        $('div#signuperror').html('Fail!');
-        clear();
-        }); 
-      }
-      $('.modalSignUp').submit(function(){
-        return false;
-      });
+                $('.modalSignUp :input').serializeArray(),
+                function(info){
+                    //call back 
+                    console.log("callback");                   
+                    $('#singuperror').empty();
+                    $('.modalSignUp :input').val('');
+                    $('#signuperror').html('success, please go to login!');
+                }
+        ); 
+    } else {
+      console.log("validation else");
+        //serialise the data
+        $('#singuperror').empty();
+        $('#signuperror').html('Fail!');
+    }
+     $('.modalSignUp').submit(function(){
+         return false;
+       });
   })
-};		
+};  
 
 function clear(){
 	$('.modalSignUp :input').val('');
   $('div#signuperror').empty();
 }
+
+
+
+function validationSingin(){
+  var username = $('#Username');
+  var password = $('#password');
+  var valid = true;
+  if ($.trim(username.val()) ===""){
+    username.css('border-color','red');
+    valid = false;
+  }
+  if ($.trim(password.val()) === ""){
+    password.css('border-color','red');
+    valid = false;
+  }
+  return valid;
+}
+
 
 //signin
 function signin(){
@@ -43,25 +95,23 @@ function signin(){
     var user = $('#username').val();
     var pass = $('#password').val();
     if ( user =='' || ( pass == '')){
-    	console.log(user, pass);
-    	$('#loginerror').html("Please fill in all the fields");
+      console.log(user, pass);
+      $('#loginerror').html("Please fill in all the fields");
     }
     else{
       $.post( $('.modalLogin').attr('action'),
       $('.modalLogin :input').serializeArray(),      
       function(info){
-
         //call back 
         $('.modal-content #loginerror').html('Login fail!');
-      }); 
-
+      }
+    )
     $('.modalLogin').submit(function(){
       return false;
     });
    }
   });
 }
-
 
 function checkLoggedin(){
   var loggedin = getCookie('loggedin');
@@ -74,8 +124,8 @@ function checkLoggedin(){
     //enable the link for registered users
     $("li .photohide").removeClass("disabled").find("a").removeAttr("onclick");
     //enable save button and myrecord button in harvestdiary 
-    document.getElementById('saveBtn').disabled=false;
-    document.getElementById('myRecord').disabled=false;
+    $('#saveBtn').prop("disabled",false);
+    $('#myRecord').prop("disabled",false);
   }else{
     //hide logout button
     $('html').removeClass('loggedin');
@@ -84,8 +134,8 @@ function checkLoggedin(){
     //disable the link for un-registered users
     $("li .photohide").addClass("disabled").find("a").attr("onclick", "return false;");
     //disable save button and myrecord button if the user isn't logged in
-     document.getElementById('saveBtn').disabled=true;
-     document.getElementById('myRecord').disabled=true;
+     $('#saveBtn').prop("disabled",true);
+     $('#myRecord').prop("disabled",true);
   }
 };
 
@@ -113,3 +163,31 @@ function getCookie(c_name) {
     }
     return c_value;
 }
+
+
+//signin
+// function signin(){
+//   $('#loginbtn').submit(function(){
+//     e.preventDefault();
+//     var username = $('#username').val();
+//     var password = $('#password').val();
+//     password.css('border-color','#ccc');
+//     username.css('border-color','#ccc');
+//     if ( user =='' || ( pass == '')){
+//       console.log(user, pass);
+//       $('#loginerror').html("Please fill in all the fields");
+//     }
+//     else{
+//       $.post( $('.modalLogin').attr('action'),
+//       $('.modalLogin :input').serializeArray(),      
+//       function(info){
+//         //call back 
+//         $('.modal-content #loginerror').html('Login fail!');
+//       }
+//     )
+//     $('.modalLogin').submit(function(){
+//       return false;
+//     });
+//    }
+//   });
+// }

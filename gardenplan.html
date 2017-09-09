@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Home Garden</title>
+	<title>Home Garden - Garden Planning</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content= "Garden plan provides a way for you to arrange and organise the garden by dragging and dropping the plants.">
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="commoncss.css">
@@ -12,18 +13,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-  <script src="jquery.ui.touch-punch.min.js" type="text/javascript"></script>  
+  <script src="jquery.ui.touch-punch.min.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="html2canvas.min.js"></script>
+  <script type="text/javascript" src="promise.min.js"></script>
   <script type="text/javascript" src="mainregister.js"></script>
 
-  
-<!--   <script src="gardenForm.js"></script> -->
-<style>
-  
-</style>
 </head>
 <body>
 <header id="navigationHeader"></header>
-
 <nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -40,9 +37,9 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="gardenplan.html">Garden Planner</a></li>
-          <li><a href="harvest_diary.html">Harvest Diary</a></li>
-          <li><a href="myphoto.html">My Photo</a></li>
-          <li><a href="gallery.html">My Gallery</a></li>
+          <li><a href="harvestdiary.html">Harvest Diary</a></li>
+          <li class="photohide"><a href="myphoto.html">My Photo</a></li>
+          <li class="photohide"><a href="gallery.html">My Gallery</a></li>
         </ul>
       </li>
       <li><a href="plantsearch.html">Plant Search</a></li>
@@ -55,15 +52,18 @@
       <li class="logoutHide"><a class="logoutbtn" href="logout.php"><span class="loggedout"></span>Logout</a></li>
     </ul>
   </div>
+  </div>
 </nav>
 
 <div class = "container">
-	<h3 id="h3title">Home Grow Master</h3>
-	<br/>
+	<h1 id="h3title">Garden Planner</h1>
+  <p>Garden plan provides you an experience to arrange the plants in your garden. You can customeise the garden size by selecting the width and length of your garden.</p>
+	<br>
           <div class="loginmsg"></div>
           <div class="logoutmsg"></div>
+  <br>
+  <div id="formsavedmsg"></div>
 	<div class="form-content">
-      <!--  <form enctype='application/json'> -->
           <form id="measurement-form" action="process_measurements.php" method="POST">
             <label>Garden Name:</label>
             <input type = "text" class="gardenInput" id="garName" name="garName" size="8">
@@ -99,7 +99,7 @@
           </form>
     </div>
     <div class="popUpElem"></div>
-    <br/>
+    <br>
 	   <div class="wrapper">
 	      <div id="controls">
 	        <label class="cat">Categories:</label>
@@ -110,68 +110,61 @@
 	            <option value="flower" data-show=".flower">flower</option>
 	            <option value="tree" data-show=".tree">tree</option>
 	          </select>
-	          <br/>
-	          <br/>
+	          <br>
+	          <br>
 	      </div>
 	  </div> 
  <div class="toolbar" id="toolbar">
 		<div class="content-info">		
 			<div class="herb hide" id="origin">
-				<img class ="plant basil dragObject" id ="barEle1" src ="images/basil.png" data-plant = "basil" >
-				<img class ="plant parsely dragObject" id ="barEle2" src ="images/parsely.png" data-plant = "parsely">
-				<img class ="plant mint dragObject" id ="barEle3" src ="images/mint2.png" data-plant = "mint" >
-				<img class ="plant radish dragObject" id ="barEle4" src ="images/radish.png" data-plant = "radish">
+				<img class ="plant basil dragObject" id ="barEle1" src ="images/basil.png" data-plant = "basil" alt="basil" >
+				<img class ="plant parsely dragObject" id ="barEle2" src ="images/parsely.png" data-plant = "parsely" alt="parsely">
+				<img class ="plant mint dragObject" id ="barEle3" src ="images/mint2.png" data-plant = "mint" alt="mint" >
+				
 			</div>
       
 
 			     <div class="fruit hide">
-              <img class ="plant strawberries dragObject" id ="barEle5" src="images/strawberries2.png" data-plant = "strawberry">
-              <img class ="plant blueberries dragObject" id ="barEle6" src="images/blueberries.png" data-plant = "blueberry">
-              <img class ="plant rasberries dragObject" id ="barEle7" src="images/raspberries2.png" data-plant = "raspberry">
-              <img class ="plant apple dragObject" id ="barEle8" src="images/apple.png" data-plant = "apple">
+              <img class ="plant strawberries dragObject" id ="barEle5" src="images/strawberries2.png" data-plant = "strawberry" alt="strawberry">
+              <img class ="plant blueberries dragObject" id ="barEle6" src="images/blueberries.png" data-plant = "blueberry" alt="blueberry">
+              <img class ="plant rasberries dragObject" id ="barEle7" src="images/raspberries2.png" data-plant = "raspberry" alt="raspberry">
+              <img class ="plant apple dragObject" id ="barEle8" src="images/apple.png" data-plant = "apple" alt="apple">
             </div>
             
             <div class="vegetable hide">
-              <img class ="plant radish dragObject" id ="barEle9" src ="images/radish.png" data-plant = "radish">
-              <img class ="plant carrot dragObject" id ="barEle10" src="images/carrot.png" data-plant = "carrot">
-              <img class ="plant chilipeppers dragObject" id ="barEle11" src="images/chilipeppers.png" data-plant = "chilipeppers">
-              <img class ="plant tomato dragObject" id ="barEle12" src="images/tomato3.png" data-plant = "tomato">
+              <img class ="plant radish dragObject" id ="barEle9" src ="images/radish.png" data-plant = "radish" alt="radish">
+              <img class ="plant carrot dragObject" id ="barEle10" src="images/carrot.png" data-plant = "carrot" alt="carrot">
+              <img class ="plant chilipeppers dragObject" id ="barEle11" src="images/chilipeppers.png" data-plant = "chilipeppers" alt="chilipeppers">
+              <img class ="plant tomato dragObject" id ="barEle12" src="images/tomatoes.png" data-plant = "tomato" alt="tomato">
             </div>
 
             <div class="flower hide">
-              <img class ="plant rose dragObject" id ="barEle13" src="images/rose.png" data-plant = "rose">
-              <img class ="plant lavender dragObject" id ="barEle14" src="images/lavender.png" data-plant = "lavender">
-              <img class ="plant hydreangea dragObject" id ="barEle15" src="images/hydreangea.png" data-plant = "hydreangea">
-              <img class ="plant tulips dragObject" id ="barEle16" src="images/tulips2.png" data-plant = "tulips">
+              <img class ="plant rose dragObject" id ="barEle13" src="images/rose.png" data-plant = "rose" alt="rose">
+              <img class ="plant lavender dragObject" id ="barEle14" src="images/lavender.png" data-plant = "lavender" alt="lavender" >
+              <img class ="plant hydreangea dragObject" id ="barEle15" src="images/hydreangea.png" data-plant = "hydreangea" alt="hydreangea">
+              <img class ="plant tulips dragObject" id ="barEle16" src="images/tulips2.png" data-plant = "tulips" alt="tulips">
             </div>
 
             <div class="tree hide">
-              <img class ="plant avocado dragObject" id ="barEle17" src="images/avocado.png" data-plant = "rose">
-              <img class ="plant lemons dragObject" id ="barEle18" src="images/lemons.png" data-plant = "lavender">
-              <img class ="plant pear dragObject" id ="barEle19" src="images/pear.png" data-plant = "hydreangea">
-              <img class ="plant apple dragObject" id ="barEle20" src="images/apple.png" data-plant = "apple">
+              <img class ="plant avocado dragObject" id ="barEle17" src="images/avocado.png" data-plant = "rose" alt="avocado">
+              <img class ="plant lemons dragObject" id ="barEle18" src="images/lemons.png" data-plant = "lemon" alt="lemons">
+              <img class ="plant pear dragObject" id ="barEle19" src="images/pear.png" data-plant = "pear" alt="pear">
+              <img class ="plant apple dragObject" id ="barEle20" src="images/apple.png" alt="apple" data-plant = "apple">
             </div>
-	</div>
-  <div class="controls_operators">
-            <div href ="#" class="controls_prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
-            <div href ="#" class="controls_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>  
+	   </div>
+
   </div>
-</div>
 			<div id="operation-bar">
-				<img class ="littleIcon" id ="eraseAllIcon" src ="images/eraseAll.png" alt="eraseAll" width= "40" height ="30">
-				
-				<img class ="littleIcon" id ="printIcon" src ="images/printerIcon.png" alt="printerIcon" width= "40" height ="30" onclick="printdiv('#containerDrop')">
+				<div class="imgtext"><img class ="littleIcon" id ="eraseAllIcon" src ="images/eraseAll.png" alt="eraseAll" width= "40" height ="30">
+				<span class="erase">Clear All</span></div>
 
-				<img class ="littleIcon" id ="addNewIcon" src ="images/addNewIcon.png" alt="addNewIcon" width= "40" height ="30">
-
-				<img class ="littleIcon" id ="openNewIcon" src ="images/openNew.png" alt="openNewIcon" width= "40" height ="30">
-
-				<img class ="littleIcon" id ="saveIcon" src ="images/saveIcon.png" alt="saveIcon" width= "40" height ="30">
+				<div class="imgtext"><img class ="littleIcon" id ="saveIcon" src ="images/saveIcon.png" alt="saveIcon" width= "40" height ="30"><span class="snapshot">Save Image to Computer</span></div>
         
 			</div>
 			<div class = "containerDrop" id="containerDrop" width="600" height="500">
 				<br>			
 			</div>
+</div>
 
 <!--modal-->
 <div id="mymodal" class="modal">
@@ -183,15 +176,15 @@
         <input type="text" class="formGp" placeholder="enter your username" id="username" name="username">
         <br>
         <label>Password</label>
-        <div id='pwdfield'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
-        <button type="submit" id="loginbtn" class="btn">Login</button>
+        <div id='pwdfield1'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
         <button class="unmask" type="button" title="mask/unmask password" onclick="unmask()">Show</button></div>
         <br>
+
+        <button type="submit" id="loginbtn" class="btn">Login</button>
         <hr>
         <div id='loginerror'></div>
         <br>
         <div class="pwd-group">
-        <input type="checkbox" checked="checked"> Remember Me
         <p><a href="forgot_password.html">Forget Password</a></p>
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display ='none'">Cancel</button>       
         </div>
@@ -199,7 +192,7 @@
     </form>
 </div>
 
-  <!--modal for sign up-->
+<!--modal for sign up-->
   <div id="mymodalsignup" class="modal">
     <form class="modalSignUp" action="mainregister.php" method="POST">
       <div class="modal-content">
@@ -215,11 +208,11 @@
         <div id='pwdfield'><input type="password" class="formGpPass" placeholder="enter your password" id="signPwd" name='signPwd'>
         <button class="unmask" type="button" title="mask/unmask password" onclick="unmaskSignup()">Show</button></div>
         <br>
+        <div id='signuperror'></div>
         <br>
         <button type="submit" id="registerbtn" value="register">Create an Account</button>
-        <div id='signuperror'></div>
-
-        <hr>       
+        <hr>   
+        <p><a href="privacyterm.html">Privacy Term</a></p>     
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodalsignup').style.display ='none'">Cancel</button>
       </div>
     </form>
@@ -291,10 +284,11 @@ var modal = document.getElementById('mymodal');
   } 
 
 </script>
-<script src = "demojs3_new.js"></script>
+<!-- <script src = "demojs3_new.js"></script>
+ -->
+ <script src = "garden.js"></script>
+
 </body>
 <br>
-
 <footer>Educational Purpose</footer>
-
 </html>

@@ -39,7 +39,7 @@ if ($result === TRUE) {
 	//echo $_SESSION['garden_id'];
 	//exit;
 	
-	header('Location:gardenplan.html');
+	//header('Location:gardenplan.html');
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

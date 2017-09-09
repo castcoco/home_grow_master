@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Home Garden</title>
-  <meta charset="utf-8">
+ <title>Home Garden - Plants Search</title>
+ <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content= "Home Grow Master provides a database for you to search the plants you want to grow.">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="mainregister.js"></script>
@@ -17,7 +18,6 @@
 
 	<body>
 		<header id="navigationHeader"></header>
-
 <nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -34,9 +34,9 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="gardenplan.html">Garden Planner</a></li>
-          <li><a href="harvest_diary.html">Harvest Diary</a></li>
-          <li><a href="myphoto.html">My Photo</a></li>
-          <li><a href="gallery.html">My Gallery</a></li>
+          <li><a href="harvestdiary.html">Harvest Diary</a></li>
+          <li class="photohide"><a href="myphoto.html">My Photo</a></li>
+          <li class="photohide"><a href="gallery.html">My Gallery</a></li>
         </ul>
       </li>
       <li><a href="plantsearch.html">Plant Search</a></li>
@@ -49,30 +49,30 @@
       <li class="logoutHide"><a class="logoutbtn" href="logout.php"><span class="loggedout"></span>Logout</a></li>
     </ul>
   </div>
+  </div>
 </nav>
 
 <div class="container">
-  <h3 id="h3title">Home Grow Master</h3>
-  <p></p>
-  <div id= "general top-container">
+ <!--  <h3 id="h3title">Home Grow Master</h3> -->
+  
+  <div id="generalcontainer">
       <br>
       
-        <h2 class="PlantDic">Plant Dictionary</h2>
+        <h1 class="PlantDic">Plant Dictionary</h1>
         <p>Home Grow Master provides an invaluable resource for new and experienced gardeners to look for the plant information.
           This plant searching tool is easily searchable by plant categories and characteristics. You will be able to find the 
           same information when you are planning your garden on our garden planner
         </p>
         <hr>
   </div>
-      <div class="row sm-flex-center">
+      <div class="row sm-flex">
 		    <div class="col-sm-6 middle">
         	<h3 class="FindAPlant">Find a Plant</h3>
-          	<form action="filter.php" method="get" class="searchForm" id="searchform">
+          	<form action="filternew.php" method="get" class="searchForm" id="searchform">
             <div class= "general searchRow">
               <div class="general plantName">
                 <input type="text" id="plantName" class="searchBox" placeholder="search by plant name" name='search'>
                 <button type='button' id="findbtn">search</button>
-                <!-- <span class="fa fa-search" aria-hidden="true"></span> -->
               </div>
             </div>
 
@@ -93,38 +93,14 @@
                 <select class="plantSearchMenu" id="soilMenu" name="soilMenu">
                   <option value="">Select Option </option>
                   <option value="Sandy">Sandy</option>
-                  <option value="Loam">Loam</option>
+                  <option value="Loamy">Loamy</option>
                   <option value="Clay">Clay </option>
 
                 </select>
               </div>
               <br>
               <br>
-              <!-- <div id="cataOp">
-              <label class="plantcategories">Categories</label>
-                <select class="plantSearchMenu" id="typeMenu" name="typeMenu">
-                  <option value="">Select Option </option>
-                  <option value="herbs">Herbs </option>
-                  <option value="vegetable">Vegetable </option>
-                  <option value="fruits">Fruits </option>
-                  <option value="tree">Tree </option>
-                  <option value="flowers">Flowers </option>
-                  <option value="yellow">Yellow</option>
-                  <option value="orange">Orange</option>
-                </select>
-              </div>
-                <br>
-                <br>
-              <div id="seaOp">
-              <label class="season">Season</label>
-                <select class="plantSearchMenu" id="seasonMenu" name="seasonMenu">
-                  <option value="">Select Option </option>
-                  <option value="spring">Spring </option>
-                  <option value="summer">Summer </option>
-                  <option value="autumn">Autumn </option>
-                  <option value="winter">Winter </option>
-                </select>
-              </div> -->
+              
                 <br>
               </div>
 
@@ -134,7 +110,7 @@
         </div>  
           <div class="col-sm-6 middle pull-right">
             <div class="tablelist">
-            	<table id="tableresult" class="hidden" width='450', height='500'>	
+            	<table id="tableresult" class="hidden" width="450" height="500">	
             	</table>
             </div>
           </div>
@@ -142,5 +118,127 @@
   </div>
   <br>
   </div>
+
+<!--modal-->
+<div id="mymodal" class="modal">
+    <form class="modalLogin" action="dummysignin.php" method="POST">
+      <div class="modal-content">
+        <span class="close" onclick="document.getElementById('mymodal').style.display ='none'">&times;</span>
+        <h4>Login</h4>        
+        <label>Username</label>
+        <input type="text" class="formGp" placeholder="enter your username" id="username" name="username">
+        <br>
+        <label>Password</label>
+        <div id='pwdfield1'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password"><button class="unmask" type="button" title="mask/unmask password" onclick="unmask()">Show</button></div>
+        <br>
+
+        <button type="submit" id="loginbtn" class="btn">Login</button>
+        <hr>
+        <div id='loginerror'></div>
+        <br>
+        <div class="pwd-group">
+        <p><a href="forgot-password.html">Forget Password</a></p>
+        <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display ='none'">Cancel</button>       
+        </div>
+      </div>
+    </form>
+</div>
+
+  <!--modal for sign up-->
+  <div id="mymodalsignup" class="modal">
+    <form class="modalSignUp" action="mainregister.php" method="POST">
+      <div class="modal-content">
+        <span class="close" onclick="document.getElementById('mymodalsignup').style.display='none'">&times;</span>
+        <h4>Sign Up</h4>
+        <label>Username</label>
+        <input type="text" class="formGp" placeholder="enter your email" id='signUser' name='signUser'>
+        <br/>
+        <label>Email</label>
+        <input type="text" class="formGp" placeholder="enter your email" id=signEmail name='signEmail'>
+        <br/>
+        <label>Password</label>
+        <div id='pwdfield'><input type="password" class="formGpPass" placeholder="enter your password" id="signPwd" name='signPwd'>
+        <button class="unmask" type="button" title="mask/unmask password" onclick="unmaskSignup()">Show</button></div>
+        <br>
+        <div id='signuperror'></div>
+        <br>
+        <button type="submit" id="registerbtn" value="register">Create an Account</button>
+        <hr> 
+        <p><a href="privacyterm.html">Privacy Term</a></p>       
+        <button type="button" class="cancelbtn" onclick="document.getElementById('mymodalsignup').style.display ='none'">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+<script>
+
+  var modal = document.getElementById('mymodal');
+  var btn= document.getElementById('mybtn');
+  // Get the <span> element that closes the modal
+  // var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function(){
+    modal.style.display ="block";
+  }
+  // span.onclick = function(){
+  //   modal.style.display = "none";
+  // }
+  window.onclick = function(event){
+    if(event.target == modal){
+      modal.style.display ="none";
+    }
+  }
+
+  //for sign up
+  var signupmodal = document.getElementById('mymodalsignup');
+  var mysignupbtn = document.getElementById('signupbtn');
+  // var span = document.getElementsByClassName("close")[0];
+  mysignupbtn.onclick = function(){
+    signupmodal.style.display = "block";
+  }
+  // span.onclick = function(){
+  //   signupmodal.style.display = "none";
+  // }
+  window.onclinck = function(event){
+    if(event.target == signupmodal){
+      signupmodal.style.display = "none";
+    }
+  }
+
+
+//mask password for sign in and sign up
+  function unmask(){
+    var passUnmask = document.getElementById('password').type = 'text';
+    var passValue = password.value;
+      console.log(passValue);
+      $('.unmask').on('click', function(){
+        if(password.type =='password'){
+          password.type ='text';
+        }
+        else{
+          password.type = 'password';
+        }
+        password.value = passValue;
+      });
+  }       
+
+  function unmaskSignup(){
+    var passUnmask = document.getElementById('signPwd').type = 'text';
+    var passValue = signPwd.value;
+      console.log(passValue);
+      $('.unmask').on('click', function(){
+        if(signPwd.type =='password'){
+          signPwd.type ='text';
+        }
+        else{
+          signPwd.type = 'password';
+        }
+        signPwd.value = passValue;
+      });
+  } 
+</script>
+
 	</body>
+  <br>
+  <br>
+<footer>Educational Purpose</footer>
 </html>
