@@ -118,52 +118,26 @@ elseif ((!empty($soilval)) && ($sunval === NULL))
 	
 	$result3 = $conn->query($sql3);
 	//var_dump($result3);
-	
-	if($result3) {
-		$soils = array();
-		if ($result3->num_rows ==1)
-		{
-			$soils[0] = $result3->fetch_assoc();
-		}
-		elseif ($result3->num_rows > 1 )
-		{
-			while($soil = $result3->fetch_assoc())
-				{
-					$soils[] = $soil; 			
-				}	
-		}
-		echo json_encode($soils);
-		exit();
-	} else {
-		echo "empty";
+	$soils = array();
+	if ($result3->num_rows ==1)
+	{
+		$soils[0] = $result3->fetch_assoc();
 	}
+	elseif ($result3->num_rows > 1 )
+	{
+		while($soil = $result3->fetch_assoc())
+			{
+				$soils[] = $soil; 			
+			}	
+	}else
+	{
+		
+	}
+	echo json_encode($soils);
+	exit();
 }
 else {
 	echo "please submit the search term";
 };	
-
-function runQuery($sql) {
-	$result3 = $conn->query($sql);
-	//var_dump($result3);
-	
-	if($result3) {
-		$soils = array();
-		if ($result3->num_rows ==1)
-		{
-			$soils[0] = $result3->fetch_assoc();
-		}
-		elseif ($result3->num_rows > 1 )
-		{
-			while($soil = $result3->fetch_assoc())
-				{
-					$soils[] = $soil; 			
-				}	
-		}
-		echo json_encode($soils);
-		exit();
-	} else {
-		echo "empty";
-	}
-}
 	
 	

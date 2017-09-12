@@ -6,14 +6,15 @@ if ( 'localhost' == $_SERVER['SERVER_NAME'] ) {
 	$username = "root";
 	$password = "James0505!";
 	$dbname = "home_grow";
-}
+	
+} else {
 
-if ( in_array($_SERVER['SERVER_NAME'], array('homegrowmaster.com','www.homegrowmaster.com')) ) {
+//if ( $_SERVER['SERVER_NAME'] == ('http://35.177.243.135')) ) {
 	
 	$servername = "localhost";
-	$username = "mangomag_home_grow";
+	$username = "hgm_web_app";
 	$password = "C0c0C0c0C0c0!";
-	$dbname = "mangomag_home_grow";
+	$dbname = "homegrowmaster";
 }
 
 // Create connection
@@ -24,3 +25,4 @@ if ($conn->connect_error) {
 	exit();
 }
 
+//$conn->close();

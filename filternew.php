@@ -12,7 +12,7 @@ header('Content-type:application/json');
 	
 if(isset($_GET['search'])){	
 	
-	$sql = "SELECT `path`, `common_name`,`variety_name`, `sun_type`, soil_type FROM plants WHERE common_name COLLATE UTF8_GENERAL_CI LIKE '%".$search."%' GROUP BY `common_name`";
+	$sql = "SELECT `path`, `common_name`,`variety_name`, `sun_type`, `soil_type` FROM plants WHERE common_name COLLATE UTF8_GENERAL_CI LIKE '%".$search."%' GROUP BY `common_name`";
 
 	$result = rtrim($sql, ',');
 	//echo htmlspecialchars($result);
@@ -60,19 +60,19 @@ if(isset($_GET['search'])){
 if (isset($_GET['sunlightMenu']) && isset($_GET['soilMenu']))
 {
 	
-	$sql = 'SELECT `path`, `common_name`, `variety_name`, `soil_type`, `season` FROM `plants` WHERE `sun_type`=  "' . $sunval . '" AND `soil_type` = "' . $soilval . '";';
+	$sql = 'SELECT `path`, `common_name`, `variety_name`, `sun_type`, `soil_type`, `season` FROM `plants` WHERE `sun_type`=  "' . $sunval . '" AND `soil_type` = "' . $soilval . '";';
 	
 }	
 elseif ((!empty($sunval)) && ($soilval === NULL)) {
 
 	//var_dump($sunval);
-	$sql = 'SELECT `path`, `common_name`, `variety_name`, `soil_type`, `season` FROM `plants` WHERE `sun_type`= "' . $sunval . '";';
+	$sql = 'SELECT `path`, `common_name`, `variety_name`, `sun_type`, `soil_type`, `season` FROM `plants` WHERE `sun_type`= "' . $sunval . '";';
 	
 	
 }
 elseif ((!empty($soilval)) && ($sunval === NULL))
 {
-	$sql = 'SELECT `path`, `common_name`, `variety_name`, `soil_type`, `season` FROM `plants` WHERE `soil_type`= "' . $soilval . '";';
+	$sql = 'SELECT `path`, `common_name`, `variety_name`, `sun_type`, `soil_type`, `season` FROM `plants` WHERE `soil_type`= "' . $soilval . '";';
 	
 	
 }

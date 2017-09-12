@@ -121,6 +121,9 @@ function searchAll(data){
 						+ "</tr>"
 						+ "<tr>"
 						+ "<td>"+" <b>Soil Type: </b>" + data[i].soil_type+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+						+ "<td>"+" <b>Season: </b>" + data[i].season+"</td>"
 						+ "</tr>";				
 					}
 

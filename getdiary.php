@@ -33,7 +33,7 @@ if(isset($_SESSION['user_id'])) {
 		} else {
 			// return some text and handle fail in ajax success function
 			echo json_encode("FAIL1");
-		}	
+		}
 
 	} else {
 		// return some text and handle fail in ajax success function

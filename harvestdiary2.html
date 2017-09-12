@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Home Garden</title>
+  <title>Home Garden - Harvest Diary</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta name="description" content= "Harvest Diary assists you to track record for your garden.">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -15,26 +16,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="plantdiary.css">
   <link rel="stylesheet" type="text/css" href="commoncss.css">
-  <style>
-    .item-details{
-      margin-top:10px;
-      border:1.5px solid black;
-      padding:6px;
-      font-size: 16px;
-      font-family: Georgia;
-    }
-    
-    .datadisplay{
-      background:#ffffff;
-      width:100%;
-      height:auto;
-    }
-
-  </style>
 </head>
 <body>
 
 <header id="navigationHeader"></header>
+
 <nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -52,8 +38,8 @@
         <ul class="dropdown-menu">
           <li><a href="gardenplan.html">Garden Planner</a></li>
           <li><a href="harvest_diary.html">Harvest Diary</a></li>
-          <li class="photohide"><a href="myphoto.html">My Photo</a></li>
-          <li class="photohide"><a href="gallery.html">My Gallery</a></li>
+          <li><a href="myphoto.html">My Photo</a></li>
+          <li><a href="gallery.html">My Gallery</a></li>
         </ul>
       </li>
       <li><a href="plantsearch.html">Plant Search</a></li>
@@ -66,24 +52,35 @@
       <li class="logoutHide"><a class="logoutbtn" href="logout.php"><span class="loggedout"></span>Logout</a></li>
     </ul>
   </div>
-  </div>
 </nav>
 
 
 <div class="container">
+  <!-- <h3 id="h3title">Home Grow Master</h3> -->
   <p></p>
-  	<div class="general top-container">
-    	<br>
-      <h2 class="Gardening">Harvest Diary</h2>
+    <div class="general top-container">
+      <br>
+      <h1 class="Gardening">Harvest Diary</h1>
         <p>Using our harvest diary enables you to know how much you can save and get each year compared with the supermarket.</p>
-        <p><strong>You can input the plants name, quantity, date, the volume you harvested and the price of the crops in the following table </strong></p>
+        <br />
+      <h3>Instruction</h3>
+      <p1 class="p1"><strong>You can click on the input field of the table to enter the plant name, quantity, date, the volume you harvested and the price of the crops in the following table. </strong></p1>
+      <p class="p1">Insert the sow date and harvest date by inputting year(YYYY),month(MM) and day(DD), eg. 2017-05-05.</p>
+      <br />
+      <p class="p1">If you want to insert a row, please click <strong>insert</strong> button.</p>
+      <p class="p1">If you want to delete a row, please click <strong>delete</strong> button.</p>
+      <p class="p1">If you want to save the record, please click <strong>save</strong> button.</p>
+      <p class="p1">If you want to retrieve the record, please click <strong>My Record</strong> button </p>
+      <p class="p1">If you want to update the record, please click <strong>Update</strong> button </p>
+      <p class="p1">If you want to update a new row in existing record, please insert the new row in the table, input the same record name and click <strong>Save</strong> button</p>
+
     </div>
     <br>
     <div class="diaryForm">
       <div id="dialogbox"></div>
       <button id="myRecord">My Record</button>
-	    <button id="clearAllBtn">Clear All</button>
-	    <button id="saveBtn">Save</button>
+      <button id="clearAllBtn">Clear All</button>
+      <button id="saveBtn">Save</button>
     </div>
     
     <p></p>
@@ -93,11 +90,12 @@
           <th>Insert</th>
           <th>Plant Name</th>
           <th>Quantities</th>
-          <th>Months to Sow</th>
-          <th>Months to Harvest</th>
+          <th>Months to Sow (YYYY-MM-DD)</th>
+          <th>Months to Harvest (YYYY-MM-DD)</th>
           <th>Harvested in KG</th>
           <th>Price in KG</th>
           <th>Total Amount</th>
+<!--          <th></th> -->
           <th>Delete</th>
         </tr>
       </thead>
@@ -124,6 +122,7 @@
           <td><input type="text" class="pPrice" name="pPrice" /></td>
           <td><div class="total" name="total">0.00</div></td>
           <td></td>
+<!--          <td><i class="fa fa-trash-o" aria-hidden="true"></i></td> -->
         </tr>
         <tr class="hello">
           <td><button class="rowBtn">insert</button></td>
@@ -138,9 +137,12 @@
         </tr>
       </tbody>   
     </table>
+    <div id="updateMsg"></div>
     <br/>
+    <div id=selectedRecord class="hidden">My Record</div>
     <div class="datadisplay">
     <form class='recordform' method='post' action='updatediaryrecord.php'>
+    <div id=selectedRecord class="hidden">My Record</div>
       <table id="hiddentable" class="hidden">
       <tr class='recordtable'>
           <th>Plant Name</th>
@@ -160,11 +162,8 @@
     <br />
 </div>
 <br />
-
-
-
  
-<!--modal-->
+   <!--modal-->
 <div id="mymodal" class="modal">
     <form class="modalLogin" action="dummysignin.php" method="POST">
       <div class="modal-content">
@@ -175,12 +174,10 @@
         <br>
         <label>Password</label>
         <div id='pwdfield'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
+        <button type="submit" id="loginbtn" class="btn">Login</button>
         <button class="unmask" type="button" title="mask/unmask password" onclick="unmask()">Show</button></div>
         <br>
-
-        <button type="submit" id="loginbtn" class="btn">Login</button>
         <hr>
-        <div id='loginerror'></div>
         <br>
         <div class="pwd-group">
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display ='none'">Cancel</button>       
@@ -205,24 +202,26 @@
         <div id='pwdfield'><input type="password" class="formGpPass" placeholder="enter your password" id="signPwd" name='signPwd'>
         <button class="unmask" type="button" title="mask/unmask password" onclick="unmaskSignup()">Show</button></div>
         <br>
-        <div id='signuperror'></div>
         <br>
         <button type="submit" id="registerbtn" value="register">Create an Account</button>
+        <div id='ack'></div>
+
         <hr>       
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodalsignup').style.display ='none'">Cancel</button>
       </div>
     </form>
   </div>
-
-
 <script>
   var modal = document.getElementById('mymodal');
   var btn= document.getElementById('mybtn');
- 
+  // Get the <span> element that closes the modal
+  // var span = document.getElementsByClassName("close")[0];
   btn.onclick = function(){
     modal.style.display ="block";
   }
-  
+  // span.onclick = function(){
+  //   modal.style.display = "none";
+  // }
   window.onclick = function(event){
     if(event.target == modal){
       modal.style.display ="none";
@@ -232,11 +231,13 @@
   //for sign up
   var signupmodal = document.getElementById('mymodalsignup');
   var mysignupbtn = document.getElementById('signupbtn');
-  
+  // var span = document.getElementsByClassName("close")[0];
   mysignupbtn.onclick = function(){
     signupmodal.style.display = "block";
   }
-  
+  // span.onclick = function(){
+  //   signupmodal.style.display = "none";
+  // }
   window.onclick = function(event){
     if(event.target == signupmodal){
       signupmodal.style.display = "none";
@@ -278,7 +279,7 @@
 </script>
 
 </body>
-
+<br />
 <br />
 <footer>Educational Purpose</footer>
 </html>

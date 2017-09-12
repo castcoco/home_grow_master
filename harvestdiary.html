@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Home Garden - Harvest Diary</title>
+  <title>Home Garden</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content= "Harvest Diary assists you to track record for your garden.">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -16,24 +15,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="plantdiary.css">
   <link rel="stylesheet" type="text/css" href="commoncss.css">
-  <style>
-    .item-details{
-      margin-top:10px;
-      border:1.5px solid black;
-      padding:6px;
-      font-size: 16px;
-      font-family: Georgia;
-    }
-    
-    .datadisplay{
-      background:#ffffff;
-      width:100%;
-      height:auto;
-    }
-    
-  </style>
+  
 </head>
 <body>
+
 <header id="navigationHeader"></header>
 <nav class="navbar navbar-inverse" style="background-color:#ffffff; font-color: #eeeeee;">
   <div class="container-fluid">
@@ -51,7 +36,7 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Garden <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="gardenplan.html">Garden Planner</a></li>
-          <li><a href="harvestdiary.html">Harvest Diary</a></li>
+          <li><a href="harvest_diary.html">Harvest Diary</a></li>
           <li class="photohide"><a href="myphoto.html">My Photo</a></li>
           <li class="photohide"><a href="gallery.html">My Gallery</a></li>
         </ul>
@@ -71,15 +56,15 @@
 
 
 <div class="container">
-
-  <h3 id="h3title">Home Grow Master</h3>
   <p></p>
   	<div class="general top-container">
     	<br>
       <h2 class="Gardening">Harvest Diary</h2>
         <p>Using our harvest diary enables you to know how much you can save and get each year compared with the supermarket.</p>
+        <p><strong>You can input the plants name, quantity, date, the volume you harvested and the price of the crops in the following table </strong></p>
     </div>
     <br>
+    <div id="updateMsg"></div>
     <div class="diaryForm">
       <div id="dialogbox"></div>
       <button id="myRecord">My Record</button>
@@ -99,7 +84,6 @@
           <th>Harvested in KG</th>
           <th>Price in KG</th>
           <th>Total Amount</th>
-<!--          <th></th> -->
           <th>Delete</th>
         </tr>
       </thead>
@@ -126,7 +110,6 @@
           <td><input type="text" class="pPrice" name="pPrice" /></td>
           <td><div class="total" name="total">0.00</div></td>
           <td></td>
-<!--          <td><i class="fa fa-trash-o" aria-hidden="true"></i></td> -->
         </tr>
         <tr class="hello">
           <td><button class="rowBtn">insert</button></td>
@@ -144,6 +127,7 @@
     <br/>
     <div class="datadisplay">
     <form class='recordform' method='post' action='updatediaryrecord.php'>
+    <div id=selectedRecord class="hidden">My Record</div>
       <table id="hiddentable" class="hidden">
       <tr class='recordtable'>
           <th>Plant Name</th>
@@ -164,6 +148,9 @@
 </div>
 <br />
 
+
+
+ 
 <!--modal-->
 <div id="mymodal" class="modal">
     <form class="modalLogin" action="dummysignin.php" method="POST">
@@ -174,7 +161,7 @@
         <input type="text" class="formGp" placeholder="enter your username" id="username" name="username">
         <br>
         <label>Password</label>
-        <div id='pwdfield1'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
+        <div id='pwdfield'><input type="password" class="formGp" placeholder="enter your password" id="password" name="password">
         <button class="unmask" type="button" title="mask/unmask password" onclick="unmask()">Show</button></div>
         <br>
 
@@ -183,7 +170,6 @@
         <div id='loginerror'></div>
         <br>
         <div class="pwd-group">
-        <p><a href="forgot-password.html">Forget Password</a></p>
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display ='none'">Cancel</button>       
         </div>
       </div>
@@ -209,10 +195,8 @@
         <div id='signuperror'></div>
         <br>
         <button type="submit" id="registerbtn" value="register">Create an Account</button>
-        <hr>    
-        <p><a href="privacyterm.html">Privacy Term</a></p>   
+        <hr>       
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodalsignup').style.display ='none'">Cancel</button>
-
       </div>
     </form>
   </div>
@@ -221,14 +205,11 @@
 <script>
   var modal = document.getElementById('mymodal');
   var btn= document.getElementById('mybtn');
-  // Get the <span> element that closes the modal
-  // var span = document.getElementsByClassName("close")[0];
+ 
   btn.onclick = function(){
     modal.style.display ="block";
   }
-  // span.onclick = function(){
-  //   modal.style.display = "none";
-  // }
+  
   window.onclick = function(event){
     if(event.target == modal){
       modal.style.display ="none";
@@ -238,13 +219,11 @@
   //for sign up
   var signupmodal = document.getElementById('mymodalsignup');
   var mysignupbtn = document.getElementById('signupbtn');
-  // var span = document.getElementsByClassName("close")[0];
+  
   mysignupbtn.onclick = function(){
     signupmodal.style.display = "block";
   }
-  // span.onclick = function(){
-  //   signupmodal.style.display = "none";
-  // }
+  
   window.onclick = function(event){
     if(event.target == signupmodal){
       signupmodal.style.display = "none";
@@ -286,7 +265,7 @@
 </script>
 
 </body>
-<br />
+
 <br />
 <footer>Educational Purpose</footer>
 </html>

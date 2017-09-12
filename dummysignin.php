@@ -1,53 +1,39 @@
 <?php
-	include_once("connection.php");
-	
-	session_start();
-	//cookie setting
-	$cookie_name = "loggedin";
-	
-	$username = mysqli_real_escape_string($conn, trim($_POST['username']));
-	//$password = mysqli_real_escape_string($conn, trim(md5($_POST['password'])));
-	$password = mysqli_real_escape_string($conn, trim(($_POST['password'])));
-	
-	$password_encrypted = password_hash($password, PASSWORD_DEFAULT); 
-	var_dump($password_encrypted);
-	
-	$sql = "SELECT id,username,email FROM users WHERE (`username` = '$username')";
-	$sql = rtrim($sql, ',');
-	$result = $conn->query($sql);
-	
-	if ($result->num_rows == 1)
-	{
-		$user = $result->fetch_assoc();
-		
-		$_SESSION['user_id'] = $user['id'];
-		$_SESSION['username'] = $user['username'];
-		if (password_verify($password, $user["password"]))
-		{
-		echo 'success';
-		}
-		else
-		{
-			echo 'fail!';	
-		}
-		setcookie("loggedin", 'true');
-		header('Location: /index.html');
-				
-	}
-	else
-	{
-		echo "Login fail! Please try again!";
-	} 
-	
-	//validate
-	
-	if (empty($username) || empty($password))
-	{
-		//echo "username and password are missing!!";
-		header('Location: /index.html#');
-		exit();
-	}
-	
-	$conn->close();
-	
-?>
+
+include_once("connection.php");
+
+session_start();
+
+//cookie setting
+$cookie_name = "loggedin";
+
+$username = mysqli_real_escape_string($conn, trim($_POST['username']));
+$password = mysqli_real_escape_string($conn, trim(($_POST['password'])));
+
+$sql = "SELECT id, username, pwd, email FROM users WHERE (`username` = '$username')";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows == 1) {
+
+    $user = $result->fetch_assoc();
+
+    if (password_verify($password, $user["pwd"])) {
+
+        // Set user session info
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SEESION['email'] = $user['email'];
+
+        echo 'success';
+        setcookie($cookie_name, 'true');
+
+        exit;
+    }
+}
+
+setcookie($cookie_name, "", time() - 3600);
+
+echo "fail";
+
+$conn->close();

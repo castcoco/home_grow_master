@@ -103,3 +103,29 @@ tfoot{
 	float:right;
 	margin-bottom:20px;
 }
+.item-details{
+      margin-top:10px;
+      border:1.5px solid black;
+      padding:6px;
+      font-size: 16px;
+      font-family: Georgia;
+    }
+    
+.datadisplay{
+  background:#ffffff;
+  width:100%;
+  height:auto;
+}
+
+p{
+  font-size:1.6em;
+}
+
+h3{
+  color:purple;
+  font-weight:bold;
+}
+.p1{
+  color:purple;
+  font-size:1.6em;
+}
