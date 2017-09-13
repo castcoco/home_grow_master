@@ -120,23 +120,25 @@ width:500px;
 	cursor:pointer;
 }
 
-#measurement-form input[type=text]{
+/*#measurement-form input[type=text]{
   width:80%;
-  max-width: 200px;
+  max-width: 150px;
   padding:0;
   height:auto;
   margin: 8px 0;
   box-sizing: border-box;
   border: 1px solid #ccc;
-}
+}*/
 
 #measurement-form{
-	float: left;
-  	width:85%;
+	/*float: left;*/
+  	width:40%;
 	background-color:#C0FF3E;
 	padding-left:10px;
+	padding-top:10px;
 	clear:both;
-	height:auto;
+	height:40px;
+	margin:0 auto;
 	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
 }
 .form-content{
@@ -151,23 +153,12 @@ width:500px;
 	background-size: 60px 60px;
 }
 
-.controls_operators{
-  margin:0 auto;
-  width:200px;
-  cursor:pointer;
-}
 
-.controls_prev{
-  float:left;
-  cursor:pointer;
-}
-.controls_next{
-  float:right;
-}
 #containerDrop .plant{
   overflow:auto;
   resize:both;
 }
 #controls{
-	margin-top:80px;
+	/*margin-top:80px;*/
+	margin:0 auto;
 }

@@ -58,17 +58,11 @@
 <div class = "container">
 	<h1 id="h3title">Garden Planner</h1>
   <p>Garden plan provides you an experience to arrange the plants in your garden. You can customeise the garden size by selecting the width and length of your garden.</p>
-	<br>
-          <div class="loginmsg"></div>
-          <div class="logoutmsg"></div>
+	
   <br>
   <div id="formsavedmsg"></div>
 	<div class="form-content">
           <form id="measurement-form" action="process_measurements.php" method="POST">
-            <label>Garden Name:</label>
-            <input type = "text" class="gardenInput" id="garName" name="garName" size="8">
-            <label>Garden Type:</label>
-            <input type = "hidden" name="user_id" value="1">
             <label>Width: </label>
               <select class ="widthMenu" id= "widthMenu" name="widthMenu" style="width: 100px">
               <option value="1000"> 10 meters </option>
@@ -95,7 +89,7 @@
               <option value="200"> 2 meters</option>
               <option value="100"> 1 meters</option>
               </select>
-              <button type="submit" id="saveBtn" name="formSave" >SAVE</button>
+              <!-- <button type="submit" id="saveBtn" name="formSave" >SAVE</button> -->
           </form>
     </div>
     <div class="popUpElem"></div>
@@ -185,7 +179,6 @@
         <div id='loginerror'></div>
         <br>
         <div class="pwd-group">
-        <p><a href="forgot_password.html">Forget Password</a></p>
         <button type="button" class="cancelbtn" onclick="document.getElementById('mymodal').style.display ='none'">Cancel</button>       
         </div>
       </div>
@@ -284,8 +277,7 @@ var modal = document.getElementById('mymodal');
   } 
 
 </script>
-<!-- <script src = "demojs3_new.js"></script>
- -->
+
  <script src = "garden.js"></script>
 
 </body>

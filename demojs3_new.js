@@ -70,35 +70,35 @@ $("#eraseAllIcon").click(function(){
 
 //save dropped item via button in container
 
-$("#saveIcon").click(function(){
-	//var jsonData = {"data":[]};
-	var dataObj = {"data":[]};
-	$("#containerDrop > .plant").each(function () { 
-		var obj = { "type":$(this).data('plant'),"height":$(this).css("height"), "width": $(this).css("width"), "top": $(this).css("top"), 
-					"bottom": $(this).css("bottom"), "left": $(this).css("left"), "right": $(this).css("right"), "garden_id": garden_id};
-		dataObj["data"].push(obj);
-		//var obj = { "height":this.height, "width": this.width, "top": $(this).css("top")};
-		//console.log(dataObj["data"][0]);
-	});
+// $("#saveIcon").click(function(){
+// 	//var jsonData = {"data":[]};
+// 	var dataObj = {"data":[]};
+// 	$("#containerDrop > .plant").each(function () { 
+// 		var obj = { "type":$(this).data('plant'),"height":$(this).css("height"), "width": $(this).css("width"), "top": $(this).css("top"), 
+// 					"bottom": $(this).css("bottom"), "left": $(this).css("left"), "right": $(this).css("right"), "garden_id": garden_id};
+// 		dataObj["data"].push(obj);
+// 		//var obj = { "height":this.height, "width": this.width, "top": $(this).css("top")};
+// 		//console.log(dataObj["data"][0]);
+// 	});
 
-	console.log(JSON.stringify(dataObj));
+// 	console.log(JSON.stringify(dataObj));
 
-	var request = $.ajax({
-	  url: "mygarden.php",
-	  method: "POST",
-	  data: dataObj,
-	  dataType: "JSON",
-	  complete: function(data){console.log(data);}
-	});
-		//.done(function( data ) {
-    	//if ( console && console.log ) {
-      	//	console.log( "Coco " + data );
-    	//}
-  	//});
-});
+// 	var request = $.ajax({
+// 	  url: "mygarden.php",
+// 	  method: "POST",
+// 	  data: dataObj,
+// 	  dataType: "JSON",
+// 	  complete: function(data){console.log(data);}
+// 	});
+// 		//.done(function( data ) {
+//     	//if ( console && console.log ) {
+//       	//	console.log( "Coco " + data );
+//     	//}
+//   	//});
+// });
 
-//print out the page
-$("#printIcon").click(function(){
-	$("#containerDrop").show();
-	window.print();
-});
+// //print out the page
+// $("#printIcon").click(function(){
+// 	$("#containerDrop").show();
+// 	window.print();
+// });

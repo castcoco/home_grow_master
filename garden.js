@@ -115,7 +115,9 @@ function saveToImg(){
 				else{
 					//for other browsers
 					var img = canvas.toDataURL();
+					
 					downloadURI(img, "garden.png");
+					
 				}
   			}
 		});
