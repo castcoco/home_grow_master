@@ -45,50 +45,49 @@ function removeFunction() {
 // sum of the quantities
 function addFunction() {
     var sumValue = 0;
-    console.log('sumValue', sumValue);
+   // console.log('sumValue', sumValue);
     $('tr.hello').each(function () {
         var qty = parseInt($(this).find('input.pQty', this).val(), 10);
-        console.log('qty', qty)
+       // console.log('qty', qty)
         if (!isNaN(qty)) {
             sumValue = ((sumValue + qty));
         }
 
-        console.log("sumValue, Qty", sumValue, qty);
+       // console.log("sumValue, Qty", sumValue, qty);
     });
     $("tfoot td.sumQty").text(sumValue);
 }
 
 // multiply price*harvested volume in KG 
-function multiplyFunction() {
-    var multiValue = parseFloat(0);
-    var addVolValue = parseFloat(0);
-    console.log(multiValue);
-    //calculate each row
-    $("tr.hello").each(function () {
-        // var number = parseFloat($(this).find('div.pVol', this).text(),10);
-        // var price = parseFloat($(this).find('div.pPrice', this).text(),10);
-        var number = parseFloat($(this).find('input.pVol', this).val(), 10);
-        var price = parseFloat($(this).find('input.pPrice', this).val(), 10);
-        var qty = parseFloat($(this).find('input.pQty', this).val(), 10);
-        var sumVolume = $("tfoot td.sumVol");
-        console.log(number, price);
-        var ptotal = ((number * 1) * (price * 1) * (qty * 1) || 0) // multiply value formula plus converting nan to zero
-        var priceTot = ptotal.toFixed(2)
-        console.log(number, price, priceTot);
-        $(".total", this).text((priceTot));
-        console.log(number, price, ptotal, multiValue);
-        multiValue = (multiValue + ptotal);
-        if (!isNaN(number)) {
-            addVolValue = addVolValue + number;
-        }
-        console.log("multivalue,ptotal", multiValue, ptotal);
-    });
-    //$("tfoot td.sumAmt").text(multiValue);
-    var sumAmtDec = multiValue.toFixed(2);
-    $("tfoot td.sumAmt").text(sumAmtDec);
-    var sumVolume = addVolValue.toFixed(2);
-    $("tfoot td.sumVol").text((sumVolume) || 0);
-}
+function multiplyFunction(){
+        var multiValue = parseFloat(0);
+        var addVolValue = parseFloat(0);
+        //console.log(multiValue);
+        //calculate each row
+        $("tr.hello").each(function(){
+            // var number = parseFloat($(this).find('div.pVol', this).text(),10);
+            // var price = parseFloat($(this).find('div.pPrice', this).text(),10);
+             var number = parseFloat($(this).find('input.pVol', this).val(),10);
+             var price = parseFloat($(this).find('input.pPrice', this).val(),10);
+             var sumVolume = $("tfoot td.sumVol");
+            //console.log(number, price);
+            var ptotal = ((number*1) * (price*1)|| 0) // multiply value formula plus converting nan to zero
+            var priceTot = ptotal.toFixed(2)
+            //console.log(number,price,priceTot);
+            $(".total",this).text((priceTot));
+            //console.log(number,price,ptotal, multiValue);
+            multiValue= (multiValue + ptotal);
+            if (!isNaN(number)){
+                addVolValue = addVolValue + number;
+            }
+           // console.log("multivalue,ptotal",multiValue, ptotal);
+            });
+            //$("tfoot td.sumAmt").text(multiValue);
+            var sumAmtDec = multiValue.toFixed(2);
+            $("tfoot td.sumAmt").text(sumAmtDec);
+            var sumVolume = addVolValue.toFixed(2);
+            $("tfoot td.sumVol").text((sumVolume)||0);
+    }
 
 
 //datepicker in inputfield
@@ -131,7 +130,7 @@ function clearAllFunction() {
 //click save button to save the table
 function saveDiary() {
     var diaryname = window.prompt("Enter diary name", ""); // pop up to ask user to give the name of the diary
-    console.log(diaryname);
+   // console.log(diaryname);
     var dataObj = {"data": []};
     $("#myTable tr.hello").each(function () {
         var obj = {"name": $(this).find('input.plantName').val(),
@@ -144,18 +143,18 @@ function saveDiary() {
             "diary_name": diaryname};
 
         dataObj["data"].push(obj);
-        console.log(dataObj["data"][0]);
+       // console.log(dataObj["data"][0]);
         //console.log(result);
     });
 
-    console.log(JSON.stringify(dataObj));
+   // console.log(JSON.stringify(dataObj));
     var request = $.ajax({
         url: "postdiary.php",
         method: "POST",
         data: dataObj,
         dataType: "JSON",
         complete: function (data) {
-            console.log(data);
+            //console.log(data);
         }
 
     });
@@ -186,7 +185,7 @@ function showDiaryName() {
             of: $('h2')
         }
     }).parents(".ui-dialog").css("opacity", "0.8");
-    console.log("Coco");
+    //console.log("Coco");
     $('#dialogbox').empty();
     $.ajax({
         method: 'GET',
@@ -194,7 +193,7 @@ function showDiaryName() {
         url: 'getdiaryname.php',
         //success: function(data){console.log(data)},
     }).done(function (data) {
-        console.log(data);
+       // console.log(data);
         var text = '';
         if (typeof (data) == "object" && data.length > 0) {
             //if(data.length >0){
@@ -207,7 +206,7 @@ function showDiaryName() {
                         + '<p><input type="button" id="' + saveddiaryname + '" name="saveddiaryname" value="' + data[i].diary_name + '" onClick="clickthis(this.id)"></p></form>';
 
             }
-            console.log(text);
+           // console.log(text);
             if (text != "") {
                 $("#dialogbox").append(text).css({"font-size": "1.6em", "cursor": "pointer"});  //append the saved diaryname from the user in dialogbox
 
@@ -250,7 +249,7 @@ function clickthis(click_id) {
                         + '<td class="hidden" id="id2"><div name="id2- ' + rowId + ' ">' + data[i].id + '</div></td>'
                         + '<td><button type="button" value="' + rowId + '" class="recordsavebtn">Update</td>'
                         + '</tr>';
-                console.log(rowId, data[i].name);
+               // console.log(rowId, data[i].name);
             }
             if (str != "") {
                 $(".datadisplay #hiddentable").append(str).removeClass("hidden");
@@ -269,7 +268,7 @@ function updateDiary(ev) {
     //console.log("button value = " + btnclick);
     ev.preventDefault();
     //var diaryn = $('#diary_name').text();
-    console.log($("div#plantName-" + rowId).text());
+   // console.log($("div#plantName-" + rowId).text());
     //var dataObj = {"data":[]};
 
     var dataObj = {
@@ -288,7 +287,7 @@ function updateDiary(ev) {
         data: dataObj,
         url: 'updatediaryrecord.php',
     }).done(function (data) {
-        console.log(data);
+       // console.log(data);
         if (data.success == true) {
             //if (data!=''){
             $('#updateMsg').html("Your record is updated successfully!").css({'color': 'red', 'font-size':'1.6em'}).slideDown();

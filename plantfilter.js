@@ -19,14 +19,14 @@ function reset(){
 
 function searchName(){
 var plantname = $('#plantName').val();
-	console.log("hi");	
+	//console.log("hi");	
 	$.ajax({
 		method:'GET',
 		url:'filternew.php',
 		data:{search:plantname},
 		dataType:'JSON',
 		success:function(data){
-			console.log(data);
+			//console.log(data);
 			$('#tableresult').empty();
 			var info = '';
 
@@ -48,7 +48,7 @@ var plantname = $('#plantName').val();
 					+ "<td>"+" <b>Soil Type: </b>" + data[i].soil_type+"</td>"
 					+ "</tr>";				
 				}
-				console.log("info="+info);
+				//console.log("info="+info);
 				$('#tableresult').append(info).removeClass('hidden');
 			} 
 				else{
@@ -62,28 +62,28 @@ var plantname = $('#plantName').val();
 function searchList(){
 	$('#tableresult').empty();
 	var sunvalue = $('#sunlightMenu').val();
-	console.log('sun val:',sunvalue);
+	//console.log('sun val:',sunvalue);
 	var soilvalue = $('#soilMenu').val();
-	console.log('soil value:',soilvalue);
+	//console.log('soil value:',soilvalue);
 	$('#tableresult').empty();
 	var info = '';
 
 	if ((sunvalue !='') && (soilvalue==='')){
 		data = {sunlightMenu:sunvalue};
 		//searchSun();
-		console.log('sun',sunvalue);
+	//	console.log('sun',sunvalue);
 	}else if
 		((sunvalue==='') && (soilvalue !='')){
 		data = {soilMenu:soilvalue};
 		//searchSoil();
-		console.log(soilvalue);
+	//	console.log(soilvalue);
 	}else if
 		((sunvalue !='') && (soilvalue!='')){
 		data = {
 			sunlightMenu:sunvalue,
 			soilMenu:soilvalue
 		};
-		console.log(sunvalue, soilvalue);
+	//	console.log(sunvalue, soilvalue);
 	}
 
 	searchAll(data);
@@ -102,7 +102,7 @@ function searchAll(data){
 			data:data,
 			dataType:'JSON',
 			success:function(data){
-				console.log('data',data);
+	//			console.log('data',data);
 				//console.log(typeof(data));
 				$('#tableresult').empty();
 				var info = '';
@@ -133,7 +133,7 @@ function searchAll(data){
 					$('#tableresult').append(info).removeClass('hidden');
 				}
 				else{
-					console.log("KHVKDSHKDSNV" + info);
+	//				console.log("KHVKDSHKDSNV" + info);
 					$('#tableresult').html('No record!').removeClass('hidden');
 				}
 			}

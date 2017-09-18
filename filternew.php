@@ -56,13 +56,14 @@ if(isset($_GET['search'])){
 	//var_dump($_GET);
 	$sql = "";
 	
-	
+	//if sun and soil have values
 if (isset($_GET['sunlightMenu']) && isset($_GET['soilMenu']))
 {
 	
 	$sql = 'SELECT `path`, `common_name`, `variety_name`, `sun_type`, `soil_type`, `season` FROM `plants` WHERE `sun_type`=  "' . $sunval . '" AND `soil_type` = "' . $soilval . '";';
 	
 }	
+//if sun value is empty and soil value is not empty
 elseif ((!empty($sunval)) && ($soilval === NULL)) {
 
 	//var_dump($sunval);
@@ -70,6 +71,7 @@ elseif ((!empty($sunval)) && ($soilval === NULL)) {
 	
 	
 }
+// if soil value is not empty and sun value is empty
 elseif ((!empty($soilval)) && ($sunval === NULL))
 {
 	$sql = 'SELECT `path`, `common_name`, `variety_name`, `sun_type`, `soil_type`, `season` FROM `plants` WHERE `soil_type`= "' . $soilval . '";';

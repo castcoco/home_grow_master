@@ -40,25 +40,25 @@ function register() {
         email.css('border-color', '#ccc');
         username.css('border-color', '#ccc');
         $('#singuperror').empty();
-        console.log('register');
+       // console.log('register');
         if (validation()) {
-            console.log("validation if");
+           // console.log("validation if");
             //serialise the data
             $.post($('.modalSignUp').attr('action'),
                     $('.modalSignUp :input').serializeArray(),
                     function (info) {
                         //call back 
-                        console.log("callback");
+                       // console.log("callback");
                         $('#singuperror').empty();
                         $('.modalSignUp :input').val('');
                         $('#signuperror').html('success, please go to login!');
                     }
             );
         } else {
-            console.log("validation else");
+            //console.log("validation else");
             //serialise the data
             $('#singuperror').empty();
-            $('#signuperror').html('Fail!');
+            $('#signuperror').html('Fail!').css('color','red');
         }
         $('.modalSignUp').submit(function () {
             return false;
@@ -106,10 +106,10 @@ function signin() {
 function checkLoggedin() {
     var loggedin = getCookie('loggedin');
     // hide login button
-    console.log("Logged in: " + loggedin);
+   // console.log("Logged in: " + loggedin);
     if (loggedin === 'true') {
         $('html').addClass('loggedin');
-        console.log($('html').addClass('loggedin'));
+        //console.log($('html').addClass('loggedin'));
         $('.loginHide').hide();
         //enable the link for registered users
         $("li .photohide").removeClass("disabled").find("a").removeAttr("onclick");

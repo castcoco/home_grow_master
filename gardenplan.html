@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="commoncss.css">
   <link rel="stylesheet" type="text/css" href="gardenplanning.css">
-  <link rel="stylesheet" type="text/css" href="gardenprint.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
@@ -76,8 +75,8 @@
               <option value="200"> 2 meters</option>
               <option value="100"> 1 meters</option>
               </select>
-            <label>Length:</label>
-              <select class="heightMenu" id= "heightMenu" name="lengthMenu" style="width: 100px">
+            <label>Height:</label>
+              <select class="heightMenu" id= "heightMenu" name="heightMenu" style="width: 100px">
               <option value="1000" > 10 meters </option>
               <option value="900"> 9 meters </option>
               <option value="800"> 8 meters </option>
@@ -114,7 +113,7 @@
 				<img class ="plant basil dragObject" id ="barEle1" src ="images/basil.png" data-plant = "basil" alt="basil" >
 				<img class ="plant parsely dragObject" id ="barEle2" src ="images/parsely.png" data-plant = "parsely" alt="parsely">
 				<img class ="plant mint dragObject" id ="barEle3" src ="images/mint2.png" data-plant = "mint" alt="mint" >
-				
+				<img class ="plant rosemary dragObject" id ="barEle4" src ="images/rosemary.png" data-plant = "rosemary" alt="rosemary" >
 			</div>
       
 
@@ -192,7 +191,7 @@
         <span class="close" onclick="document.getElementById('mymodalsignup').style.display='none'">&times;</span>
         <h4>Sign Up</h4>
         <label>Username</label>
-        <input type="text" class="formGp" placeholder="enter your email" id='signUser' name='signUser'>
+        <input type="text" class="formGp" placeholder="enter your username" id='signUser' name='signUser'>
         <br/>
         <label>Email</label>
         <input type="text" class="formGp" placeholder="enter your email" id=signEmail name='signEmail'>

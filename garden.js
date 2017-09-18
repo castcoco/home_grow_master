@@ -13,7 +13,7 @@ $(document).on('change', '.categoriesSelect', function() {
   var show = $("option:selected", this).data('show');
  $(target).children().addClass('hide');
   $(show).removeClass('hide');
-  console.log(show, target);
+ // console.log(show, target);
 });
 
 
@@ -47,39 +47,10 @@ $("#eraseAllIcon").click(function(){
 })
 
 
-//save dropped item via button in container
-
-// $("#saveIcon").click(function(){
-// 	//var jsonData = {"data":[]};
-// 	var dataObj = {"data":[]};
-// 	$("#containerDrop > .plant").each(function () { 
-// 		var obj = { "type":$(this).data('plant'),"height":$(this).css("height"), "width": $(this).css("width"), "top": $(this).css("top"), 
-// 					"bottom": $(this).css("bottom"), "left": $(this).css("left"), "right": $(this).css("right"), "garden_id": garden_id};
-// 		dataObj["data"].push(obj);
-// 		//var obj = { "height":this.height, "width": this.width, "top": $(this).css("top")};
-// 		//console.log(dataObj["data"][0]);
-// 	});
-
-// 	console.log(JSON.stringify(dataObj));
-
-// 	var request = $.ajax({
-// 	  url: "mygarden.php",
-// 	  method: "POST",
-// 	  data: dataObj,
-// 	  dataType: "JSON",
-// 	  complete: function(data){console.log(data);}
-// 	});
-		//.done(function( data ) {
-    	//if ( console && console.log ) {
-      	//	console.log( "Coco " + data );
-    	//}
-  	//});
-//});
-
 function changeWidth(){
 	$("select.widthMenu").bind("change", function(evt){
 	var selwidth = $("option:selected", this).attr("value");
-	console.log("selected width");
+	//console.log("selected width");
 	$("#containerDrop").width(selwidth);
 	});
 }
@@ -88,7 +59,7 @@ function changeWidth(){
 function changeLength(){
 	$("select.heightMenu").bind("change", function(evt){
 	var selLength = $("option:selected", this).attr("value");
-	console.log("selected length");
+	//console.log("selected length");
 	$("#containerDrop").height(selLength);
 	});
 }

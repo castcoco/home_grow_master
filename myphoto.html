@@ -12,7 +12,7 @@
  <!--  <script src="demo_myphoto.js"></script> -->
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="demo_myphoto.css">
+  <link rel="stylesheet" type="text/css" href="myphoto.css">
   <link rel="stylesheet" type="text/css" href="commoncss.css">
   
 </head>
@@ -54,9 +54,11 @@
 </nav>
 
 <div class="container">
-  <h1>Photo Gallery</h1>
+  <h1>Photo Upload</h1>
   <p>Enjoy your garden gallery to keep track your garden.</p>
   <br/> 
+  <h2>Instruction</h2>
+  <p>This photo upload is only limited to 2MB per photo and it is only limited in image format such as JPG, PNG and GIF</p>
   <br/>
   <div class="wrapper">
 <form class="uploadBox" action="imagetestdb.php" method="post" enctype="multipart/form-data"> 
@@ -108,7 +110,7 @@
         <span class="close" onclick="document.getElementById('mymodalsignup').style.display='none'">&times;</span>
         <h4>Sign Up</h4>
         <label>Username</label>
-        <input type="text" class="formGp" placeholder="enter your email" id='signUser' name='signUser'>
+        <input type="text" class="formGp" placeholder="enter your username" id='signUser' name='signUser'>
         <br/>
         <label>Email</label>
         <input type="text" class="formGp" placeholder="enter your email" id=signEmail name='signEmail'>
@@ -146,7 +148,7 @@
         
         if (!fileTypeAllowed.test(fileName))
           $('#error').html('Only images are allowed!');
-        else if(fileSize > 1000000)
+        else if(fileSize > 2000000)
           $('#error').html("your file size is too large!");
         else {
           $('#error').html('');

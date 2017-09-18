@@ -137,7 +137,7 @@ width:500px;
 	padding-left:10px;
 	padding-top:10px;
 	clear:both;
-	height:40px;
+	height:auto;
 	margin:0 auto;
 	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
 }
